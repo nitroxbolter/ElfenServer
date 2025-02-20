@@ -225,11 +225,9 @@ end
 	-- Promotion
 	local vocation = player:getVocation()
 	local promotion = vocation:getPromotion()
-	if player:isPremium() then
-		local value = player:getStorageValue(PlayerStorageKeys.promotion)
-		if value == 1 then
-			player:setVocation(promotion)
-		end
+	local value = player:getStorageValue(PlayerStorageKeys.promotion)
+	if value == 1 then
+		player:setVocation(promotion)
 	elseif not promotion then
 		player:setVocation(vocation:getDemotion())
 	end
@@ -237,6 +235,7 @@ end
 		player:setStorageValue(Storage.combatProtectionStorage, os.time() + 10)
 		onMovementRemoveProtection(playerId, player:getPosition(), 10)
 	end
+	
 	-- Events
 	player:registerEvent("GameStore")
 	player:registerEvent("GameExtendedOpcode")
