@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Captain Frosthold" script="Captain Frosthold.lua" walkinterval="2000" floorchange="0" speechbubble="5">
+	<health now="100" max="100" />
+	<look type="1211" head="59" body="37" legs="41" feet="94" addons="3"/>
+</npc>
+

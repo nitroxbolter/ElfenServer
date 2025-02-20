@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Nedos" script="Nedos.lua" walkinterval="2000" floorchange="0" speechbubble="11">
+	<health now="100" max="100" />
+	<look type="1206" head="54" body="14" legs="27" feet="108" addons="3"/>
+</npc>
+

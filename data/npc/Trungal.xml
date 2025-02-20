@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Trungal" script="Trungal.lua" walkinterval="2000" floorchange="0" speechbubble="7">
+	<health now="100" max="100" />
+	<look type="906" head="41" body="78" legs="109" feet="14" addons="0"/>
+</npc>
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Captain Dorn" script="Captain Dorn.lua" walkinterval="2000" floorchange="0" speechbubble="5">
+	<health now="100" max="100" />
+	<look type="1213" head="83" body="77" legs="91" feet="88" addons="3"/>
+</npc>
+

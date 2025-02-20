@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Captain Vyrsk" script="Captain Vyrsk.lua" walkinterval="2000" floorchange="0" speechbubble="5">
+	<health now="100" max="100" />
+	<look type="1202" head="114" body="86" legs="38" feet="94" addons="3"/>
+</npc>
+

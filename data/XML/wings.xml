@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wings>
+<wing id="1" clientid="937" name="Fiery Wings" speed="20" /> 
+<wing id="2" clientid="938" name="Lullaby Wings" speed="20" />
+<wing id="3" clientid="939" name="Falanaar Wings" speed="20" />
+<wing id="4" clientid="940" name="Vampire Wings" speed="20" />
+<wing id="5" clientid="941" name="Bark Wings" speed="20" />
+<wing id="6" clientid="1177" name="Electric Rider Wings" speed="20" />
+<wing id="7" clientid="1178" name="Vorondor Flames" speed="20" />
+<wing id="8" clientid="1179" name="Mortis Mirage" speed="20" />
+<wing id="9" clientid="1180" name="Angelic Wings" speed="20" />
+<wing id="10" clientid="1181" name="Nimbus Wings" speed="20" />
+<wing id="11" clientid="1182" name="Butterfly Wings" speed="20" />
+<wing id="12" clientid="1183" name="Dreadbone Spectra" speed="20" />
+<wing id="13" clientid="1184" name="Enslaved Wings" speed="20" />
+<wing id="14" clientid="1185" name="Bride Wings" speed="20" />
+<wing id="15" clientid="1186" name="Strenght Wings" speed="20" />
+</wings>

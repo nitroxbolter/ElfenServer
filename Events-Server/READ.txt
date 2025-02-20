@@ -1,0 +1,9 @@
+You need open RME
+
+And place Spawns Zone of NPC 'Shiny Bunny' for example, one per city, on strategic points like: Depots.
+
+Look the files that are needed to change > First Backup Your files, then add this files, more simple: Select Data / Add to a .rar file, then paste new files on it for start the event,
+Restart server to take effect, when you wish to stop the event, then simply delete data and revert your data folder, or, you need search by event and delete one by one the event of monsters and delete NPC.
+
+
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Ryfus" script="Ryfus.lua" walkinterval="2000" floorchange="0" speechbubble="6">
+	<health now="100" max="100" />
+	<look type="1375" head="10" body="38" legs="71" feet="45" addons="0"/>
+</npc>
+

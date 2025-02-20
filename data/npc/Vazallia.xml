@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Vazallia" script="Vazallia.lua" walkinterval="2000" floorchange="0" speechbubble="8">
+	<health now="100" max="100" />
+	<look type="1372" head="31" body="78" legs="56" feet="41" addons="3"/>
+</npc>
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Abxal" script="Abxal.lua" walkinterval="2000" floorchange="0" speechbubble="6">
+	<health now="100" max="100" />
+	<look type="1375" head="18" body="40" legs="117" feet="89" addons="3"/>
+</npc>
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Hotharn" script="Hotharn.lua" walkinterval="2000" floorchange="0" speechbubble="7">
+	<health now="100" max="100" />
+	<look type="911" head="57" body="100" legs="18" feet="32" addons="0"/>
+</npc>
+

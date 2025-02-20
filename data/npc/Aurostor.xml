@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Aurostor" script="Aurostor.lua" walkinterval="2000" floorchange="0" speechbubble="7">
+	<health now="100" max="100" />
+	<look type="696" head="77" body="14" legs="31" feet="44" addons="3"/>
+</npc>
+

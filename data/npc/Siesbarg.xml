@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Siesbarg" script="Siesbarg.lua" walkinterval="2000" floorchange="0" speechbubble="10">
+	<health now="100" max="100" />
+	<look type="1196" head="61" body="73" legs="33" feet="91" addons="3"/>
+</npc>
+

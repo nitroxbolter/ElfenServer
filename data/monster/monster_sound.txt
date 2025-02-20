@@ -1,0 +1,9 @@
+To make a monster having sound:
+
+First, "melee" on monster doesnt have sound, like any other spell.
+In order to make attack (melee) and spells having sound you should create a new spell on data/spells/spells.xml, create a file inside the monster folder, after function onCastSpell , depending on your spell, find a sound and add:
+playSound(creature, "mysound.ogg), sound should be a .ogg extension, where creature, can be: creature, player or cid.
+
+After that, the monster should play the sound on the attack.
+
+Each monster has approx 3-6 attacks, it envolves a very big change to add all sounds to monsters in game, so i will start doing it by tiers, it means, slowly starting until i finish, so it can take a while.

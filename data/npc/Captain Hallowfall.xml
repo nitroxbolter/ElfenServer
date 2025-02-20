@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Captain Hallowfall" script="Captain Hallowfall.lua" walkinterval="2000" floorchange="0" speechbubble="5">
+	<health now="100" max="100" />
+	<look type="1215" head="43" body="67" legs="101" feet="58" addons="3"/>
+</npc>
+

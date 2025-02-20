@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weapons>
+	<!-- Rods -->
+	<wand id="23721" level="1" mana="1" min="3" max="7" type="ice"> <!-- The Chiller -->
+	</wand>
+	<wand id="2182" level="7" mana="2" min="8" max="18" type="earth"> <!-- Snakebit Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2186" level="13" mana="3" min="13" max="25" type="ice"> <!-- Moonlight Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2185" level="19" mana="5" min="27" max="33" type="death"> <!-- Necrotic Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="8911" level="22" mana="5" min="27" max="33" type="ice"> <!-- Northwind Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2181" level="26" mana="8" min="42" max="48" type="earth"> <!-- Terra Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2183" level="33" mana="13" min="55" max="75" type="ice"> <!-- Hailstorm Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="8912" level="37" mana="13" min="55" max="75" type="earth"> <!-- Springsprout Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="8910" level="42" mana="13" min="55" max="75" type="death"> <!-- Underworld Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="13872" level="40" mana="13" min="55" max="75" type="ice"> <!-- Shimmer Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="18411" level="65" mana="17" min="70" max="100" type="earth"> <!-- Muck Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="18412" level="65" mana="17" min="70" max="100" type="ice"> <!-- Glacial Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="24839" level="37" mana="13" min="56" max="74" type="earth"> <!-- Ogre Scepta -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="26757" level="100" mana="25" min="115" max="165" type="earth"> <!-- Venom Wand -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27197" level="300" mana="20" min="87" max="101" type="earth"> <!-- Falcon Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27386" level="400" mana="21" min="98" max="118" type="ice"> <!-- Soulhexer -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27396" level="270" mana="20" min="85" max="105" type="ice"> <!-- Lion rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27479" level="600" mana="25" min="110" max="130" type="ice"> <!-- Sanguine Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27480" level="600" mana="26" min="120" max="140" type="ice"> <!-- Grand Sanguine Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27209" level="220" mana="21" min="70" max="110" type="earth"> <!-- Cobra Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27649" level="150" mana="19" min="80" max="100" type="ice"> <!-- Jungle Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27671" level="250" mana="22" min="85" max="105" type="ice"> <!-- Eldritch Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27672" level="250" mana="25" min="95" max="115" type="ice"> <!-- Gilded Eldritch Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27689" level="250" mana="21" min="90" max="110" type="ice"> <!-- Naga Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="28042" level="400" mana="28" min="135" max="155" type="energy"> <!-- Arodis Wand -->
+		<vocation name="Druid" />
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="28133" level="330" mana="20" min="98" max="140" type="ice"> <!-- amber rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="28717" level="220" mana="22" min="92" max="125" type="ice"> <!-- Candy Wand -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+		<vocation name="Sorcerer" />
+	</wand>
+	<wand id="29489" level="300" mana="24" min="100" max="140" type="water"> <!-- Water Inferniarch Rod -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="29490" level="300" mana="24" min="100" max="140" type="arcane"> <!-- Arcane Inferniarch Rod  -->
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="29571" level="400" mana="28" min="120" max="165" type="arcane"> <!-- Soulbinder Wand  -->
+		<vocation name="Druid" />
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+
+	<!-- Wands -->
+	<wand id="23719" level="1" mana="1" min="3" max="7" type="fire"> <!-- The Scorcher -->
+	</wand>
+	<wand id="2190" level="7" mana="2" min="8" max="18" type="energy"> <!-- Wand of Vortex -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2191" level="13" mana="3" min="13" max="25" type="fire"> <!-- Wand of Dragonbreath -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2188" level="19" mana="5" min="27" max="33" type="death"> <!-- Wand of Decay -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="8921" level="22" mana="5" min="27" max="33" type="fire"> <!-- Wand of Draconia -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2189" level="26" mana="8" min="42" max="48" type="energy"> <!-- Wand of Cosmic Energy -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="2187" level="33" mana="13" min="55" max="75" type="fire"> <!-- Wand of Inferno -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="8920" level="37" mana="13" min="55" max="75" type="energy"> <!-- Wand of Starmstorm -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="8922" level="42" mana="13" min="55" max="75" type="death"> <!-- Wand of Voodoo -->
+		<vocation name="Sorcerer" />
+	</wand>
+	<wand id="13760" level="37" mana="13" min="55" max="75" type="death"> <!-- Wand of Dimensions -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="13880" level="40" mana="13" min="55" max="75" type="energy"> <!-- Shimmer Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="18390" level="65" mana="17" min="70" max="100" type="energy"> <!-- Wand of Defiance -->
+		<vocation name="Sorcerer" />
+	</wand>
+	<wand id="18409" level="65" mana="17" min="70" max="100" type="fire"> <!-- Wand of Everblazing -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="19391" level="1" mana="2" min="8" max="18" type="energy"> <!-- Sorc and Druid Staff -->
+		<vocation name="None" />
+	</wand>
+	<wand id="25421" level="65" mana="17" min="65" max="95" type="energy"> <!-- Ferumbras' Staff (Failed) -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="25422" level="100" mana="19" min="80" max="110" type="energy"> <!-- Ferumbras' Staff (Enchanted) -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="26756" level="100" mana="25" min="115" max="165" type="ice"> <!-- Frozen Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27193" level="180" mana="23" min="86" max="98" type="ice"> <!-- Deepling Ceremonial Dagger -->
+		<vocation name="Sorcerer" />
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27194" level="230" mana="23" min="80" max="120" type="ice"> <!-- Deepling Fork -->
+		<vocation name="Sorcerer" />
+		<vocation name="Druid" />
+	</wand>
+	<wand id="27198" level="300" mana="21" min="86" max="102" type="energy"> <!-- Falcon Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27208" level="270" mana="22" min="94" max="100" type="energy"> <!-- Cobra Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27385" level="400" mana="22" min="100" max="120" type="death"> <!-- Soultainter -->
+		<vocation name="Sorcerer" />
+	</wand>
+	<wand id="27397" level="270" mana="21" min="89" max="109" type="ice"> <!-- Lion Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27476" level="600" mana="25" min="110" max="130" type="energy"> <!-- Sanguine Coil -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27477" level="600" mana="26" min="120" max="140" type="energy"> <!-- Grand Sanguine Coil -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27650" level="150" mana="19" min="80" max="100" type="earth"> <!-- Jungle Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27665" level="250" mana="22" min="85" max="105" type="fire"> <!-- Eldritch Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27666" level="250" mana="25" min="95" max="115" type="fire"> <!-- Gilded Eldritch Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="27688" level="250" mana="21" min="95" max="115" type="energy"> <!-- Gilded Eldritch Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="28110" level="300" mana="23" min="90" max="130" type="death"> <!-- vigils Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+		<vocation name="Druid" />
+	</wand>
+	<wand id="28132" level="330" mana="20" min="98" max="140" type="energy"> <!-- amber Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="28376" level="350" mana="23" min="115" max="160" type="water"> <!-- Moist Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Druid" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="29487" level="300" mana="24" min="100" max="140" type="water"> <!-- Water Inferniarch Wand -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+	<wand id="29488" level="300" mana="24" min="100" max="140" type="arcane"> <!-- Arcane Inferniarch Wand  -->
+		<vocation name="Sorcerer" />
+		<vocation name="Illusionist" />
+	</wand>
+
+	<!-- Swords -->
+	<melee id="26806" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2396" action="removecharge" />
+	<melee id="2413" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7385" level="20" unproperly="1" />
+	<melee id="2377" level="20" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7408" level="25" unproperly="1" />
+	<melee id="7449" level="25" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2392" level="30" unproperly="1" />
+	<melee id="2407" level="30" unproperly="1" />
+	<melee id="2438" level="30" unproperly="1" />
+	<melee id="7407" level="30" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7424" level="30" unproperly="1" />
+	<melee id="7406" level="35" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2451" level="35" unproperly="1" />
+	<melee id="7404" level="40" unproperly="1" />
+	<melee id="7386" level="40" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2446" level="45" unproperly="1" />
+	<melee id="7402" level="45" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7383" level="50" unproperly="1" />
+	<melee id="7391" level="50" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7416" level="55" unproperly="1" />
+	<melee id="2393" level="55" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7384" level="60" unproperly="1" />
+	<melee id="7382" level="60" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7417" level="65" unproperly="1" />
+	<melee id="7403" level="65" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7418" level="70" unproperly="1" />
+	<melee id="7405" level="70" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7390" level="75" unproperly="1" />
+	<melee id="6528" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2400" level="80" unproperly="1" />
+	<melee id="8930" level="100" unproperly="1" />
+	<melee id="8931" level="120" unproperly="1" />
+	<melee id="8932" level="100" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2408" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2390" level="140" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="11306" level="50" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="11307" level="55" unproperly="1" />
+	<melee id="12649" level="82" unproperly="1" />
+	<melee id="12613" level="58" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="13871" level="40" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="18450" level="62" unproperly="1" />
+	<melee id="20092" level="15" unproperly="1" />
+	<melee id="22398" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22399" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22400" level="250" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22401" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22402" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22403" level="250" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="25416" level="150" unproperly="1" />
+	<melee id="26759" level="100" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="26760" level="100" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27204" level="300" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27214" level="220" unproperly="1"> <!-- Cobra Sword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27269" level="250" unproperly="1"> <!-- Tagralt Blade -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27377" level="400" unproperly="1"> <!-- Soulcutter -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27378" level="400" unproperly="1"> <!-- Soulshredder -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27400" level="270" unproperly="1"> <!-- Lion Longsword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27458" level="600" unproperly="1"> <!-- Sanguine Blade -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27459" level="600" unproperly="1"> <!-- Grand Sanguine Blade -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27464" level="600" unproperly="1"> <!-- Sanguine Razor -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27465" level="600" unproperly="1"> <!-- Grand Sanguine Razor -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27654" level="250" unproperly="1"> <!-- Eldritch Claymore -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27655" level="250" unproperly="1"> <!-- Gilded Eldritch Claymore -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27681" level="300" unproperly="1"> <!-- Naga Sword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28026" level="400" unproperly="1"> <!-- Astro Sword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28102" level="300" unproperly="1"> <!-- Embersage Sword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28128" level="330" unproperly="1"> <!-- Amber Slayer -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28134" level="330" unproperly="1"> <!-- Amber Sabre -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28373" level="350" unproperly="1"> <!-- Moist Sword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28716" level="220" unproperly="1"> <!-- Candy Sword -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29485" level="300" unproperly="1"> <!-- Water Inferniarch Blade -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29486" level="300" unproperly="1"> <!-- Arcane Inferniarch Blade -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29558" level="400" unproperly="1"> <!-- Deathlord Blade -->
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Fire -->
+	<melee id="7744" action="removecharge" />
+	<melee id="7745" level="50" action="removecharge" unproperly="1" />
+	<melee id="7746" level="60" action="removecharge" unproperly="1" />
+	<melee id="7747" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7748" level="45" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Ice -->
+	<melee id="7763" action="removecharge" />
+	<melee id="7764" level="50" action="removecharge" unproperly="1" />
+	<melee id="7765" level="60" action="removecharge" unproperly="1" />
+	<melee id="7766" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7767" level="45" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Earth -->
+	<melee id="7854" action="removecharge" />
+	<melee id="7855" level="50" action="removecharge" unproperly="1" />
+	<melee id="7856" level="60" action="removecharge" unproperly="1" />
+	<melee id="7857" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7858" level="45" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Energy -->
+	<melee id="7869" action="removecharge" />
+	<melee id="7870" level="50" action="removecharge" unproperly="1" />
+	<melee id="7871" level="60" action="removecharge" unproperly="1" />
+	<melee id="7872" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7873" level="45" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Axes -->
+	<melee id="2378" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2429" level="20" unproperly="1" />
+	<melee id="2435" level="20" unproperly="1" />
+	<melee id="2425" level="20" unproperly="1" />
+	<melee id="2430" level="25" unproperly="1" />
+	<melee id="2387" level="25" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2381" level="25" unproperly="1" />
+	<melee id="2440" level="25" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2426" level="25" unproperly="1" />
+	<melee id="3962" level="30" unproperly="1" />
+	<melee id="7454" level="30" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2432" level="35" unproperly="1" />
+	<melee id="7380" level="35" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7456" level="35" unproperly="1" />
+	<melee id="7419" level="40" unproperly="1" />
+	<melee id="7413" level="40" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7412" level="45" unproperly="1" />
+	<melee id="7436" level="45" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7411" level="50" unproperly="1" />
+	<melee id="7435" level="85" unproperly="1" />
+	<melee id="2447" level="50" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7388" level="55" unproperly="1" />
+	<melee id="2427" level="55" unproperly="1" />
+	<melee id="7389" level="60" unproperly="1" />
+	<melee id="2414" level="60" unproperly="1" />
+	<melee id="2454" level="65" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2443" level="70" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7420" level="70" unproperly="1" />
+	<melee id="7434" level="75" unproperly="1" />
+	<melee id="7433" level="65" unproperly="1" />
+	<melee id="6553" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7453" level="85" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2431" level="90" unproperly="1" />
+	<melee id="2415" level="95" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="8924" level="110" unproperly="1" />
+	<melee id="8925" level="130" unproperly="1" />
+	<melee id="8926" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="11305" level="60" unproperly="1" />
+	<melee id="11309" level="20" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="11323" level="25" unproperly="1" />
+	<melee id="15404" level="80" unproperly="1" />
+	<melee id="15451" level="40" unproperly="1" />
+	<melee id="15454" level="50" unproperly="1" />
+	<melee id="15492" level="70" unproperly="1" />
+	<melee id="13838" level="25" unproperly="1" />
+	<melee id="22404" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22405" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22406" level="250" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22407" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22408" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22409" level="250" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="24828" level="25" unproperly="1" />
+	<melee id="25383" level="70" unproperly="1" />
+	<melee id="25415" level="150" unproperly="1" />
+	<melee id="27205" level="300" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27216" level="220" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27285" level="180" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27379" level="400" unproperly="1"> <!-- Soulbiter -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27380" level="400" unproperly="1"> <!-- Souleater -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27404" level="270" unproperly="1"> <!-- Lion Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27462" level="600" unproperly="1"> <!-- Sanguine Hatchet -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27463" level="600" unproperly="1"> <!-- Grand Sanguine Hatchet -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27468" level="600" unproperly="1"> <!-- Sanguine Battleaxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27469" level="600" unproperly="1"> <!-- Grand Sanguine Battleaxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27643" level="150" unproperly="1"> <!-- Throwing Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27658" level="250" unproperly="1"> <!-- Eldritch Greataxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27659" level="250" unproperly="1"> <!-- Gilded Eldritch Greataxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27682" level="300" unproperly="1"> <!-- Naga Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28025" level="400" unproperly="1"> <!-- Astro Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28103" level="300" unproperly="1"> <!-- Embersage Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28129" level="330" unproperly="1"> <!-- amber greataxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28135" level="330" unproperly="1"> <!-- Amber axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28374" level="350" unproperly="1"> <!-- Moist Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28712" level="220" unproperly="1"> <!-- Candy Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29481" level="300" unproperly="1"> <!-- Water inferniarch battleaxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29482" level="300" unproperly="1"> <!-- Arcane inferniarch battleaxe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29556" level="400" unproperly="1"> <!-- Deathlord Cleaver -->
+		<vocation name="Knight" />
+	</melee>
+
+
+	<!-- Fire -->
+	<melee id="7749" level="20" action="removecharge" unproperly="1" />
+	<melee id="7750" level="25" action="removecharge" unproperly="1" />
+	<melee id="7751" level="60" action="removecharge" unproperly="1" />
+	<melee id="7752" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7753" level="65" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Ice -->
+	<melee id="7768" level="20" action="removecharge" unproperly="1" />
+	<melee id="7769" level="25" action="removecharge" unproperly="1" />
+	<melee id="7770" level="60" action="removecharge" unproperly="1" />
+	<melee id="7771" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7772" level="65" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Earth -->
+	<melee id="7859" level="20" action="removecharge" unproperly="1" />
+	<melee id="7860" level="25" action="removecharge" unproperly="1" />
+	<melee id="7861" level="60" action="removecharge" unproperly="1" />
+	<melee id="7862" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7863" level="65" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Energy -->
+	<melee id="7874" level="20" action="removecharge" />
+	<melee id="7875" level="25" action="removecharge" unproperly="1" />
+	<melee id="7876" level="60" action="removecharge" unproperly="1" />
+	<melee id="7877" level="35" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7878" level="65" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!--Clubs -->
+	<melee id="2423" level="20" unproperly="1" />
+	<melee id="7381" level="20" unproperly="1" />
+	<melee id="7425" level="20" unproperly="1" />
+	<melee id="7432" level="20" unproperly="1" />
+	<melee id="2434" level="25" unproperly="1" />
+	<melee id="7387" level="25" unproperly="1" />
+	<melee id="7379" level="25" unproperly="1" />
+	<melee id="7430" level="30" unproperly="1" />
+	<melee id="2436" level="30" unproperly="1" />
+	<melee id="7437" level="30" unproperly="1" />
+	<melee id="3961" level="40" unproperly="1" />
+	<melee id="7452" level="30" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7450" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2445" level="35" unproperly="1" />
+	<melee id="7451" level="35" unproperly="1" />
+	<melee id="2424" level="45" unproperly="1" />
+	<melee id="7455" level="80" unproperly="1" />
+	<melee id="7392" level="35" unproperly="1" />
+	<melee id="7426" level="40" unproperly="1" />
+	<melee id="7427" level="45" unproperly="1" />
+	<melee id="2391" level="50" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7410" level="55" unproperly="1" />
+	<melee id="7428" level="55" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7415" level="60" unproperly="1" />
+	<melee id="7414" level="60" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2444" level="65" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7421" level="65" unproperly="1" />
+	<melee id="2452" level="70" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7422" level="75" unproperly="1" />
+	<melee id="7429" level="75" unproperly="1" />
+	<melee id="2453" level="75" unproperly="1" />
+	<melee id="7431" level="80" unproperly="1" />
+	<melee id="7409" level="50" unproperly="1" />
+	<melee id="7423" level="85" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="2421" level="85" unproperly="1" />
+	<melee id="8928" level="100" unproperly="1" />
+	<melee id="8929" level="100" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="8927" level="120" unproperly="1" />
+	<melee id="11308" level="55" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="12648" level="82" unproperly="1" />
+	<melee id="15400" level="38" unproperly="1" />
+	<melee id="15414" level="90" unproperly="1" />
+	<melee id="15647" level="48" unproperly="1" />
+	<melee id="20093" level="15" unproperly="1" />
+	<melee id="20108" level="50" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="20139" level="20" unproperly="1" />
+	<melee id="22410" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22411" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22412" level="250" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22413" level="75" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22414" level="120" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="22415" level="250" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="24827" level="50" unproperly="1" />
+	<melee id="25418" level="150" unproperly="1" />
+	<melee id="25420" level="100" unproperly="1" />
+	<melee id="27206" level="300" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="27210" level="220" unproperly="1"> <!-- Cobra Club -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27229" level="220" unproperly="1"> <!-- Mortal Mace -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27381" level="400" unproperly="1"> <!-- Soulcrusher -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27382" level="400" unproperly="1"> <!-- Soulmaimer -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27405" level="270" unproperly="1"> <!-- Lion Hammer -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27460" level="600" unproperly="1"> <!-- Sanguine Cudgel -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27461" level="600" unproperly="1"> <!-- Grand Sanguine Cudgel -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27466" level="600" unproperly="1"> <!-- Sanguine Bludgeon -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27467" level="600" unproperly="1"> <!-- Grand Sanguine Bludgeon -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27642" level="150" unproperly="1"> <!-- Jungle Flail -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27656" level="250" unproperly="1"> <!-- Eldritch Warmace -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27657" level="250" unproperly="1"> <!-- Gilded Eldritch Warmace -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="27683" level="300" unproperly="1"> <!-- Naga Club -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="28027" level="400" unproperly="1"> <!-- Astro Club -->
+	<vocation name="Knight" />
+	</melee>
+	<melee id="28104" level="300" unproperly="1"> <!-- Embersage Axe -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28130" level="330" unproperly="1"> <!-- Amber bludgeon -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28136" level="330" unproperly="1"> <!-- Amber cudgel -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28375" level="350" unproperly="1"> <!-- Moist Hammer -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="28714" level="220" unproperly="1"> <!-- Candy Mace -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29483" level="300" unproperly="1"> <!-- Water Inferniarch Mace -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29484" level="300" unproperly="1"> <!-- Arcane Inferniarch Mace -->
+		<vocation name="Knight" />
+	</melee>
+	<melee id="29557" level="400" unproperly="1"> <!-- Deathlord Mace -->
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Fire -->
+	<melee id="7754" level="20" action="removecharge" unproperly="1" />
+	<melee id="7755" level="35" action="removecharge" unproperly="1" />
+	<melee id="7756" level="60" action="removecharge" unproperly="1" />
+	<melee id="7757" level="35" action="removecharge" unproperly="1" />
+	<melee id="7758" level="50" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Ice -->
+	<melee id="7773" level="20" action="removecharge" unproperly="1" />
+	<melee id="7774" level="35" action="removecharge" unproperly="1" />
+	<melee id="7775" level="60" action="removecharge" unproperly="1" />
+	<melee id="7776" level="35" action="removecharge" unproperly="1" />
+	<melee id="7777" level="50" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Earth -->
+	<melee id="7864" level="20" action="removecharge" unproperly="1" />
+	<melee id="7865" level="35" action="removecharge" unproperly="1" />
+	<melee id="7866" level="60" action="removecharge" unproperly="1" />
+	<melee id="7867" level="35" action="removecharge" unproperly="1" />
+	<melee id="7868" level="50" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Energy -->
+	<melee id="7879" level="20" action="removecharge" unproperly="1" />
+	<melee id="7880" level="35" action="removecharge" unproperly="1" />
+	<melee id="7881" level="60" action="removecharge" unproperly="1" />
+	<melee id="7882" level="35" action="removecharge" unproperly="1" />
+	<melee id="7883" level="50" action="removecharge" unproperly="1">
+		<vocation name="Knight" />
+	</melee>
+
+	<!-- Bows and Crossbows -->
+	<distance id="5803" level="75" unproperly="1"> <!-- Arbalest -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8849" level="45" unproperly="1"> <!-- Modified Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8850" level="60" unproperly="1"> <!-- Chain Bolter -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8853" level="80" unproperly="1"> <!-- Ironworker -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8852" level="100" unproperly="1"> <!-- Devileye -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8851" level="130" unproperly="1"> <!-- Royal Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8857" level="40" unproperly="1"> <!-- Silkweaver Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8855" level="50" unproperly="1"> <!-- Composite Hornbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8856" level="60" unproperly="1"> <!-- Yol's Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8858" level="70" unproperly="1"> <!-- Elethriel's Elemental Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="8854" level="80" unproperly="1"> <!-- Warsinger Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="13873" level="40" unproperly="1"> <!-- Shimmer Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="15643" level="85" unproperly="1"> <!-- Hive Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="15644" level="50" unproperly="1"> <!-- Ornate Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="16111" level="150" unproperly="1"> <!-- Thorn Spitter -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="18453" level="90" unproperly="1"> <!-- Crystal Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="18454" level="105" unproperly="1"> <!-- Mycological Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="21690" level="70" unproperly="1"> <!-- Triple Bolt Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="21696" unproperly="1" /> <!-- Icicle Bow -->
+	<distance id="22416" level="75" unproperly="1"> <!-- Crude Umbral Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="22417" level="150" unproperly="1"> <!-- Umbral Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="22418" level="250" unproperly="1"> <!-- Umbral Master Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="22419" level="75" unproperly="1"> <!-- Crude Umbral Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="22420" level="150" unproperly="1"> <!-- Umbral Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="22421" level="250" unproperly="1"> <!-- Umbral Master Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="25522" level="120" unproperly="1"> <!-- Rift Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="25523" level="120" unproperly="1"> <!-- Rift Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="26758" level="100" unproperly="1"> <!-- Lazering Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="26765" level="100" unproperly="1"> <!-- Exowing Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27199" level="300" unproperly="1"> <!-- Falcon Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27212" level="220" unproperly="1"> <!-- Cobra crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27230" level="220" unproperly="1"> <!-- Bow of Cataclysm -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27383" level="400" unproperly="1"> <!-- Soulbleeder -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27384" level="400" unproperly="1"> <!-- Soulpiercer -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27395" level="270" unproperly="1"> <!-- Lion Longbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27471" level="600" unproperly="1"> <!-- Sanguine Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27472" level="600" unproperly="1"> <!-- Grand Sanguine Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27473" level="600" unproperly="1"> <!-- Sanguine Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27474" level="600" unproperly="1"> <!-- Grand Sanguine Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27646" level="150" unproperly="1"> <!-- Jungle Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27661" level="250" unproperly="1"> <!-- Eldritch Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27662" level="250" unproperly="1"> <!-- Gilded Eldritch Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="27685" level="300" unproperly="1"> <!-- Naga Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28116" level="300" unproperly="1"> <!-- Shadewalker Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28131" level="330" unproperly="1"> <!-- amber Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28137" level="330" unproperly="1"> <!-- amber crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28377" level="350" unproperly="1"> <!-- Moist Bow  -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28378" level="350" unproperly="1"> <!-- Moist Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28713" level="220" unproperly="1"> <!-- Candy Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="28715" level="220" unproperly="1"> <!-- Candy Crossbow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="29477" level="300" unproperly="1"> <!-- Water Inferniarch Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="29478" level="300" unproperly="1"> <!-- Arcane Inferniarch Bow -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="29479" level="300" unproperly="1"> <!-- Water Inferniarch Arbalest -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="29480" level="300" unproperly="1"> <!-- Arcane Inferniarch Arbalest -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="29564" level="400" unproperly="1"> <!-- Haloed Bolter -->
+		<vocation name="Paladin" />
+	</distance>
+	<distance id="29565" level="400" unproperly="1"> <!-- Haloed Bow -->
+		<vocation name="Paladin" />
+	</distance>
+
+	<!-- Ammunition -->
+	<distance id="1294" breakchance="3" /> <!-- small stone -->
+	<distance id="2111" action="removecount" /> <!-- snowball -->
+	<distance id="2389" breakchance="3" /> <!-- spear -->
+	<distance id="2399" breakchance="10" /> <!-- throwing star -->
+	<distance id="2410" breakchance="7" /> <!-- throwing knife -->
+	<distance id="2543" action="removecount" /> <!-- bolt -->
+	<distance id="2544" action="removecount" /> <!-- arrow -->
+	<distance id="2545" action="removecount" script="poison_arrow.lua" />
+	<distance id="2546" action="removecount" script="burst_arrow.lua" />
+	<distance id="2547" action="removecount" unproperly="1" level="55" /> <!-- Power Bolt -->
+	<distance id="3965" breakchance="6" unproperly="1" level="20" /> <!-- Hunting Spear -->
+	<distance id="6529" action="removecount" unproperly="1" level="110" /> <!-- Infernal Bolt -->
+	<distance id="7363" action="removecount" unproperly="1" level="30" /> <!-- Piercing Bolt -->
+	<distance id="7364" action="removecount" unproperly="1" level="20" /> <!-- Sniper Arrow -->
+	<distance id="7365" action="removecount" unproperly="1" level="40" /> <!-- Onyx Arrow -->
+	<distance id="7366" breakchance="9" script="viper_star.lua" />
+	<distance id="7367" breakchance="1" unproperly="1" level="42" /> <!-- Enchanted Spear -->
+	<distance id="7368" breakchance="33" unproperly="1" level="80" /> <!-- Assassin Star -->
+	<distance id="7378" breakchance="3" unproperly="1" level="25" /> <!-- Royal Spear -->
+	<distance id="7838" action="removecount" unproperly="1" level="20" /> <!-- Flash Arrow -->
+	<distance id="7839" action="removecount" unproperly="1" level="20" /> <!-- Shiver Arrow -->
+	<distance id="7840" action="removecount" unproperly="1" level="20" /> <!-- Flaming Arrow -->
+	<distance id="7850" action="removecount" unproperly="1" level="20" /> <!-- Earth Arrow -->
+	<distance id="15648" action="removecount" unproperly="1" level="30" /> <!-- Tarsal Arrow -->
+	<distance id="15649" action="removecount" unproperly="1" level="40" /> <!-- Vortex Bolt -->
+	<distance id="18303" action="removecount" /> <!-- crystal bolt -->
+	<distance id="18304" action="removecount" unproperly="1" level="90" /> <!-- Crystalline Arrow -->
+	<distance id="18435" action="removecount" unproperly="1" level="90" /> <!-- Prismatic Bolt -->
+	<distance id="18436" action="removecount" unproperly="1" level="70" /> <!-- Drill Bolt -->
+	<distance id="18437" action="removecount" unproperly="1" level="70" /> <!-- Envenomed Arrow -->
+	<distance id="23529" breakchance="31" unproperly="1" level="60" /> <!-- Glooth Spear -->
+	<distance id="23839" action="removecount" unproperly="0" level="1" /> <!-- Simple Arrow -->
+	<distance id="25526" breakchance="10" /> <!-- throwing star of Sula -->
+	<distance id="27218" breakchance="40" unproperly="1" level="60" /> <!-- Leaf Star -->
+	<distance id="27219" breakchance="30" unproperly="1" level="120" /> <!-- Royal Star -->
+	<distance id="27641" action="removecount" script="diamond_arrow.lua" level="150"/> <!-- Diamond Arrow -->
+	<distance id="28140" action="removecount" /> <!-- spectral bolt -->
+	<distance id="29491" action="removecount" /> <!-- water arrow -->
+	<distance id="29492" action="removecount" /> <!-- arcane arrow -->
+	<distance id="29493" action="removecount" /> <!-- water bolt -->
+	<distance id="29494" action="removecount" /> <!-- arcane bolt -->
+</weapons>

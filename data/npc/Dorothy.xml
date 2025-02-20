@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Dorothy" script="Dorothy.lua" walkinterval="2000" floorchange="0" speechbubble="7">
+	<health now="100" max="100" />
+	<look type="366" head="17" body="37" legs="61" feet="8" addons="3"/>
+</npc>
+

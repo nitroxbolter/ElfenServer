@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Romella" script="Romella.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="139" head="79" body="39" legs="77" feet="115" addons="1" />
+<voices>
+<voice text="Check out my good and sturdy weapons!" interval2="100" margin="1" yell="no" />
+</voices>
+<parameters>
+		<parameter key="message_greet" value="I welcome thee, |PLAYERNAME|. I suppose you are looking for a {trade} in fine weapons!" />
+		<parameter key="message_farewell" value="Goodbye and please bring more gold next time. I mean, it would be nice to see you again" />
+		<parameter key="module_keywords" value="1" />
+		<parameter key="keywords" value="job;" />
+		<parameter key="keyword_reply1" value="I am Romella and I will be serving you today." />
+		<parameter key="module_shop" value="1" />
+		<parameter key="shop_buyable" value="
+	axe,2386,20;
+	battle axe,2378,235;
+	battle hammer,2417,350;
+	bone sword,2450,75;
+	carlin sword,2395,473;
+	club,2382,5;
+	coat,2651,8;
+	crowbar,2416,260;
+	dagger,2379,5;
+	hand axe,2380,8;
+	longsword,2397,160;
+	mace,2398,90;
+	morning star,2394,430;
+	rapier,2384,15;
+	sabre,2385,35;
+	short sword,2406,26;
+	sickle,2405,7;
+	spike sword,2383,8000;
+	sword,2376,25;
+	throwing knife,2410,25;
+	two handed sword,2377,950;
+	war hammer,2391,10000;
+	exercise sword chest, 27761, 100000;
+	exercise axe chest, 27762, 100000;
+	exercise club chest, 27763, 100000;
+	exercise bow chest, 27764, 100000;
+	exercise rod chest, 27765, 100000;
+	exercise wand chest, 27766, 100000;
+	exercise shield chest, 27767, 100000;
+	durable exercise sword chest, 27768, 360000;
+	durable exercise axe chest, 27769, 360000;
+	durable exercise club chest, 27770, 360000;
+	durable exercise bow chest, 27771, 360000;
+	durable exercise rod chest, 27772, 360000;
+	durable exercise wand chest, 27773, 360000;
+	durable exercise shield chest, 27774, 360000;
+	lasting exercise sword chest, 27775, 2800000;
+	lasting exercise axe chest, 27776, 2800000;
+	lasting exercise club chest, 27777, 2800000;
+	lasting exercise bow chest, 27778, 2800000;
+	lasting exercise rod chest, 27779, 2800000;
+	lasting exercise wand chest, 27780, 2800000;
+	lasting exercise shield chest, 27781, 2800000;" />
+		<parameter key="shop_sellable" value="
+	axe,2386,7;
+	battle axe,2378,80;
+	battle hammer,2417,120;
+	bone club,2449,5;
+	bone sword,2450,20;
+	carlin sword,2395,118;
+	club,2382,1;
+	crowbar,2416,50;
+	dagger,2379,2;
+	double axe,2387,260;
+	doublet,2485,3;
+	dwarven shield,2525,100;
+	fire sword,2392,1000;
+	halberd,2381,400;
+	hand axe,2380,4;
+	hatchet,2388,25;
+	katana,2412,35;
+	longsword,2397,51;
+	mace,2398,30;
+	morning star,2394,100;
+	orcish axe,2428,350;
+	rapier,2384,5;
+	sabre,2385,12;
+	short sword,2406,10;
+	sickle,2405,3;
+	small axe,2559,5;
+	spike sword,2383,240;
+	studded club,2448,10;
+	swampling club,20104,40;
+	sword,2376,25;
+	throwing knife,2410,2;
+	two handed sword,2377,450;
+	war hammer,2391,470;" />
+	</parameters>
+</npc>

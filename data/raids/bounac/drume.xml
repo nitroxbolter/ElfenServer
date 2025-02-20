@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<raid>
+	<announce delay="1000" type="event" message="Drume has appeared on Bounac! " />
+	<areaspawn delay="1000" fromx="33621" fromy="31458" fromz="7" tox="33631" toy="31470" toz="7">
+		<monster name="drume" amount="1" />
+		<monster name="usurper archer" amount="4" />
+		<monster name="usurper warlock" amount="4" />
+		<monster name="usurper knight" amount="4" />
+	</areaspawn>
+</raid>

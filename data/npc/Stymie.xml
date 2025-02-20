@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Stymie" script="Stymie.lua" walkinterval="2000" floorchange="0" speechbubble="6">
+	<health now="100" max="100" />
+	<look type="684" head="97" body="41" legs="33" feet="67" addons="2"/>
+</npc>
+

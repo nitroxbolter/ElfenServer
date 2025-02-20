@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Maegu" script="Maegu.lua" walkinterval="2000" floorchange="0" speechbubble="12">
+	<health now="100" max="100" />
+	<look type="1219" head="47" body="11" legs="32" feet="96" addons="3"/>
+</npc>
+

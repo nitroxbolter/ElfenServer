@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Fairy" script="Fairy.lua" walkinterval="2000" floorchange="0" speechbubble="6">
+	<health now="100" max="100" />
+	<look type="1015" head="47" body="69" legs="101" feet="27" addons="2"/>
+</npc>
+

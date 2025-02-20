@@ -1,0 +1,2 @@
+ALTER TABLE players ADD COLUMN pet_experience INT DEFAULT 0;
+ALTER TABLE players ADD COLUMN pet_level INT DEFAULT 0;

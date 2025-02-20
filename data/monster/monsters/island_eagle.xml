@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Island Eagle" nameDescription="a Island Eagle" race="undead" experience="6800" speed="450" manacost="0">
+	<health now="6800" max="6800" />
+	<look type="1303" corpse="26691" />
+	<targetchange interval="5000" chance="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag staticattack="90" />
+		<flag runonhealth="6800" />
+		<flag canwalkonenergy="0" />
+		<flag canwalkonfire="0" />
+		<flag canwalkonpoison="0" />
+	</flags>
+	<script>
+  		<event name="playerAttackSound"/>
+	</script>
+	<defenses armor="85" defense="85" />
+	<loot>
+		<item id="2148" countmax="198" chance="82000" />
+		<item id="2152" countmax="8" chance="67610" />
+		<item id="9971" countmax="1" chance="390" />
+		<item id="5911" countmax="1" chance="3230" />
+		<item id="2666" countmax="1" chance="7320" />
+		<item id="29284" countmax="1" chance="14000" />
+		<item id="9970" countmax="2" chance="5810" />
+		<item id="2147" countmax="2" chance="4520" />
+		<item id="2430" countmax="1" chance="770" />
+		<item id="7413" countmax="1" chance="390" />
+		<item id="7401" countmax="1" chance="520" />
+	</loot>
+</monster>

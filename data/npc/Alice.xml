@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Alice" script="bless.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="139" head="20" body="39" legs="45" feet="7" addons="0" />
+	<parameters>
+		<parameter key="message_greet" value="Hi there |PLAYERNAME|, are you looking for {first bless}, {second bless}, {third bless}, {fourth bless} and {fifth bless} ? Each one costs 10.000 gold coins." />
+		<parameter key="message_farewell" value="Good bye." />
+		<parameter key="message_walkaway" value="Good bye." />
+	</parameters>
+</npc>

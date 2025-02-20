@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Cendevin" script="Cendevin.lua" walkinterval="2000" floorchange="0" speechbubble="6">
+	<health now="100" max="100" />
+	<look type="516" head="57" body="61" legs="19" feet="45" addons="2"/>
+</npc>
+

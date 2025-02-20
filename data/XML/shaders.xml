@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shaders>
+    <shader id="1" name="blue_loohs" premium="no" />
+    <shader id="2" name="bloohs_green" premium="no" />
+     <shader id="3" name="bloohs_red" premium="no" />
+       <shader id="4" name="bloohs_white" premium="no" />
+       <shader id="5" name="blue Dortmond" premium="no" />
+       <shader id="6" name="red_dortmond" premium="no" />
+       <shader id="7" name="white_dortmond" premium="no" />
+       <shader id="8" name="green_dortmond" premium="no" />
+       <shader id="9" name="pink_energizer" premium="no" />
+       <shader id="10" name="blue_energizer" premium="no" />
+       <shader id="11" name="red_energizer" premium="no" />
+       <shader id="12" name="yellow _energizer" premium="no" />
+       <shader id="13" name="white_Energizer" premium="no" />
+       <shader id="14" name="orange_energizer" premium="no" />
+       <shader id="15" name="yellow_pixent" premium="no" />
+       <shader id="16" name="green_pixent" premium="no" />
+       <shader id="17" name="blue_pixent" premium="no" />
+</shaders>
