@@ -9,7 +9,7 @@ combat:addCondition(speed)
 
 local cooldownAttackGroup = Condition(CONDITION_SPELLGROUPCOOLDOWN)
 cooldownAttackGroup:setParameter(CONDITION_PARAM_SUBID, 1)
-cooldownAttackGroup:setParameter(CONDITION_PARAM_TICKS, 10000)
+cooldownAttackGroup:setParameter(CONDITION_PARAM_TICKS, 2000)
 combat:addCondition(cooldownAttackGroup)
 
 local pacified = Condition(CONDITION_PACIFIED)

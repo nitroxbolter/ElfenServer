@@ -215,28 +215,28 @@ slotAttribute.onSlotEquip = function(player, slots, slotIndex)
 end
 
 local vocationAttributes = {
-    ["Knight"] = {"Axe", "Club", "Sword", "Shield"},
-    ["Elite Knight"] = {"Axe", "Club", "Sword", "Shield"},
-    ["Paladin"] = {"Distance", "Shield"},
-    ["Royal Paladin"] = {"Distance", "Shield"},
+    ["Guerreiro"] = {"Axe", "Club", "Sword", "Shield"},
+    ["Barbaro"] = {"Axe", "Club", "Sword", "Shield"},
+    ["Paladino"] = {"Distance", "Shield"},
+    ["Templario"] = {"Distance", "Shield"},
     ["Sorcerer"] = {"MagicLevel", "Shield"},
-    ["Master Sorcerer"] = {"MagicLevel", "Shield"},
+    ["Mago"] = {"MagicLevel", "Shield"},
     ["Druid"] = {"MagicLevel", "Shield"},
-    ["Elder Druid"] = {"MagicLevel", "Shield"},
+    ["Alquimista"] = {"MagicLevel", "Shield"},
     ["Illusionist"] = {"MagicLevel", "Shield"},
     ["Arch Illusionist"] = {"MagicLevel", "Shield"},
 }
 
 function stringVocations(vocationString)
     local vocationMap = {
-        ["knights"] = "Knight",
-        ["elite knights"] = "Elite Knight",
-        ["paladins"] = "Paladin",
-        ["royal paladins"] = "Royal Paladin",
+        ["Guerreiros"] = "Guerreiro",
+        ["Barbaros"] = "Barbaro",
+        ["Paladinos"] = "Paladino",
+        ["Templarios"] = "Templario",
         ["sorcerers"] = "Sorcerer",
-        ["master sorcerers"] = "Master Sorcerer",
+        ["Magos"] = "Mago",
         ["druids"] = "Druid",
-        ["elder druids"] = "Elder Druid",
+        ["Alquimistas"] = "Alquimista",
         ["illusionists"] = "Illusionist",
         ["arch illusionists"] = "Arch Illusionist",
     }

@@ -115,37 +115,24 @@ combatEarth:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetEarthValues")
 combatHoly:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetHolyValues")
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
-local COOLDOWN_STORAGE = 309456
-local COOLDOWN_TIME = 40
-
 function onCastSpell(creature, variant)
 	local player = Player(creature)
-    local currentTime = os.time()
-    local lastCastTime = creature:getStorageValue(COOLDOWN_STORAGE)
-    if lastCastTime < currentTime then
-        creature:setStorageValue(COOLDOWN_STORAGE, currentTime + COOLDOWN_TIME)
-        playSound(creature, "thunder.ogg")
-	    if player and player:getStorageValue(37027) == 1 then
-            combatIce:execute(creature, variant)
-		    return true
-        end
-	    if player and player:getStorageValue(37026) == 1 then
-            combatDeath:execute(creature, variant)
-		    return true
-        end
-	    if player and player:getStorageValue(37025) == 1 then
-            combatEarth:execute(creature, variant)
-		    return true
-        end
-        if player and player:getStorageValue(37024) == 1 then
-            combatHoly:execute(creature, variant)
-		    return true
-        end
-        return combat:execute(creature, variant)
-    else
-        local remainingCooldown = lastCastTime - currentTime
-        creature:sendTextMessage(MESSAGE_INFO_DESCR, "You must wait " .. remainingCooldown .. " seconds.")
-        creature:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
+    playSound(creature, "thunder.ogg")
+	if player and player:getStorageValue(37027) == 1 then
+        combatIce:execute(creature, variant)
+		return true
     end
+	if player and player:getStorageValue(37026) == 1 then
+        combatDeath:execute(creature, variant)
+		return true
+    end
+	if player and player:getStorageValue(37025) == 1 then
+        combatEarth:execute(creature, variant)
+		return true
+    end
+    if player and player:getStorageValue(37024) == 1 then
+        combatHoly:execute(creature, variant)
+		return true
+    end
+    return combat:execute(creature, variant)
 end

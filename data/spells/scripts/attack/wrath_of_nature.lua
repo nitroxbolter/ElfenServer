@@ -11,20 +11,7 @@ end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
-local COOLDOWN_STORAGE = 309457
-local COOLDOWN_TIME = 40
-
 function onCastSpell(creature, variant)
-	local currentTime = os.time()
-    local lastCastTime = creature:getStorageValue(COOLDOWN_STORAGE)
-    if lastCastTime < currentTime then
-        creature:setStorageValue(COOLDOWN_STORAGE, currentTime + COOLDOWN_TIME)
-		playSound(creature, "earth_3.ogg")
-		return combat:execute(creature, variant)
-	else
-		local remainingCooldown = lastCastTime - currentTime
-        creature:sendTextMessage(MESSAGE_INFO_DESCR, "You must wait " .. remainingCooldown .. " seconds.")
-		creature:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
-	end
+	playSound(creature, "earth_3.ogg")
+	return combat:execute(creature, variant)
 end

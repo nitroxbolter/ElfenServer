@@ -1,7 +1,7 @@
 local combat = Combat()
 combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_PHYSICALDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HITAREA)
-combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ETHEREALSPEAR)
+combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, 60)
 combat:setParameter(COMBAT_PARAM_BLOCKARMOR, true)
 
 function onGetFormulaValues(player, skill, attack, factor)

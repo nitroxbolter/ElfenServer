@@ -16,7 +16,7 @@ local function addEmpowermentCondition(creature)
     local condition = Condition(CONDITION_ATTRIBUTES, CONDITIONID_DEFAULT)
     condition:setTicks(5000) -- Duration of 5 seconds
     condition:setParameter(CONDITION_PARAM_BUFF_SPELL, true)
-    condition:setParameter(CONDITION_PARAM_SKILL_DISTANCEPERCENT, 110) -- Increase distance skill by 10%
+    condition:setParameter(CONDITION_PARAM_SKILL_SWORDPERCENT, 110) -- Increase distance skill by 10%
 	condition:setParameter(CONDITION_PARAM_STAT_MAGICPOINTSPERCENT, 110) -- Increase distance skill by 10%
 
     creature:addCondition(condition)

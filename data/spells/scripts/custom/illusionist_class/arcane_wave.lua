@@ -5,7 +5,7 @@ setCombatArea(combat0_Brush,createCombatArea({{1, 3, 1}}))
 
 function onGetFormulaValues(player, level, magicLevel)
     local min = (level / 5) + (magicLevel * 4) + 75
-    local max = (level / 5) + (magicLevel * 7.6) + 48
+    local max = (level / 5) + (magicLevel * 10) + 150
     return -min, -max
 end
 
@@ -21,7 +21,7 @@ setCombatArea(combat1_Brush,createCombatArea({
 
 function onGetFormulaValues(player, level, magicLevel)
     local min = (level / 5) + (magicLevel * 4) + 75
-    local max = (level / 5) + (magicLevel * 7.6) + 48
+    local max = (level / 5) + (magicLevel * 10) + 150
     return -min, -max
 end
 
@@ -38,7 +38,7 @@ setCombatArea(combat3_Brush,createCombatArea({
 
 function onGetFormulaValues(player, level, magicLevel)
     local min = (level / 5) + (magicLevel * 4) + 75
-    local max = (level / 5) + (magicLevel * 7.6) + 48
+    local max = (level / 5) + (magicLevel * 10) + 150
     return -min, -max
 end
 
@@ -53,7 +53,7 @@ setCombatArea(combat2_Brush,createCombatArea({{1, 1, 1},
 
 function onGetFormulaValues(player, level, magicLevel)
     local min = (level / 5) + (magicLevel * 4) + 75
-    local max = (level / 5) + (magicLevel * 7.6) + 48
+    local max = (level / 5) + (magicLevel * 10) + 150
     return -min, -max
 end
 
@@ -70,7 +70,7 @@ setCombatArea(combat4_Brush,createCombatArea({{1},
 
 function onGetFormulaValues(player, level, magicLevel)
     local min = (level / 5) + (magicLevel * 4) + 75
-    local max = (level / 5) + (magicLevel * 7.6) + 48
+    local max = (level / 5) + (magicLevel * 10) + 150
     return -min, -max
 end
 
@@ -89,7 +89,7 @@ setCombatArea(combat5_Brush,createCombatArea({{1},
 
 function onGetFormulaValues(player, level, magicLevel)
     local min = (level / 5) + (magicLevel * 4) + 75
-    local max = (level / 5) + (magicLevel * 7.6) + 48
+    local max = (level / 5) + (magicLevel * 10) + 150
     return -min, -max
 end
 

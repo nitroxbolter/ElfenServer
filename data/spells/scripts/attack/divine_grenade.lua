@@ -1,13 +1,13 @@
 local combatGrenade = Combat()
 combatGrenade:setParameter(COMBAT_PARAM_TYPE, COMBAT_HOLYDAMAGE)
-combatGrenade:setArea(createCombatArea(AREA_CIRCLE2X2))
+combatGrenade:setArea(createCombatArea(AREA_CIRCLE3X3))
 combatGrenade:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HOLYDAMAGE)
 
 function onGetFormulaValues(player, level, maglevel)
     local handWeapon = player:getSlotItem(CONST_SLOT_LEFT)
     local itemMultipliers = {
-        [28131] = 1.12,
-        [28137] = 1.12,
+        [2400] = 1.12,
+        [28102] = 1.12,
     }
     local min = (level / 5) + (maglevel * 4)
     local max = (level / 5) + (maglevel * 6)
