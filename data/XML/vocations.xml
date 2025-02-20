@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- ID: 1, Vocation: Sorcerer -->
+<!-- ID: 2, Vocation: Druid -->
+<!-- ID: 3, Vocation: Paladino -->
+<!-- ID: 4, Vocation: Guerreiro -->
+<!-- ID: 5, Vocation: Mago -->
+<!-- ID: 6, Vocation: Alquimista -->
+<!-- ID: 7, Vocation: Templario -->
+<!-- ID: 8, Vocation: Barbaro -->
+<!-- ID: 9, Vocation: Illusionist -->
+<!-- ID: 10, Vocation: Arch Illusionist -->
+<!-- ID: 11, Vocation: Cidadao -->
+<!-- ID: 12, Vocation: Arqueiro -->
+<!-- ID: 13, Vocation: Hunter -->
+<!-- ID: 14, Vocation: Necromancer -->
+<!-- ID: 15, Vocation: Evoker -->
+
 <vocations>
 	<vocation id="0" clientid="0" name="None" description="none" gaincap="10" gainhp="5"
 		gainmana="5" gainhpticks="6" gainhpamount="1" gainmanaticks="6" gainmanaamount="1"
