@@ -13,6 +13,7 @@ dofile('data/lib/custom/ancestral_task.lua')
 dofile('data/lib/core/dungeon.lua')
 dofile('data/lib/core/vocation_id.lua')
 dofile('data/lib/lionrock.lua')
+dofile('data/lib/npcdialog_lib.lua')
 
 
 dofile('data/lib/custom/daily_list_bosses.lua')
