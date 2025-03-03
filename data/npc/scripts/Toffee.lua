@@ -85,10 +85,6 @@ function creatureSayCallback(cid, type, msg)
 		return false
 	end
 	if msgcontains(msg, 'dark chocolate') or msgcontains(msg, 'dark chocolate coins') then
-		local player = Player(cid)
-        player:sendExtendedOpcode(ServerOpcodes.currencyType, "DC")
-        local coinAmount = player:getItemCount(28697) or 0
-        player:sendExtendedOpcode(ServerOpcodes.coinAmount, tostring(coinAmount))
 		openShopWindow(cid, shop, onBuy, onSell)
 		npcHandler:say("For some {dark chocolate coins} i will give you some delicious treats. If you are looking for the outfit or the mount just ask, {outfit} or {honey bee}.", cid)
 	elseif msgcontains(msg, 'honey bee') then

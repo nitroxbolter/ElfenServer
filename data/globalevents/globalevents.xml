@@ -7,22 +7,15 @@
 
 
 
-	<!-- Wrath Of The Emperor Quest -->
-	<globalevent name="WotESpyHoles" interval="5000" script="wrath of the emperor quest/spyHoles.lua" />
-
 	<!-- Demon Oak Quest -->
 	<globalevent name="DemonOakVoices" interval="15000" script="demon oak quest/voices.lua" />
 
 	<!-- Rent Horses -->
 	<globalevent name="RentedMounts" interval="15000" script="others/checkMount.lua" />
 
-	<!-- Blooming Griffinclaw -->
-	<globalevent name="GriffinclawFlower" type="startup" script="others/griffinclawFlower.lua" />
 
-	<!-- World Changes -->
-	<globalevent name="FuryGates" type="startup" script="worldchanges/furygates.lua" />
-	<globalevent name="Yasir" type="startup" script="worldchanges/yasir.lua" />
 
+	
 	<!-- Spawn -->
 	<globalevent name="RaidSystem" interval="10000" script="spawn/raids.lua" />
 	<globalevent name="BossSystem" interval="3600000" script="spawn/BossSpawn.lua" />

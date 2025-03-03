@@ -17,28 +17,28 @@ function onThink()
 end
 
 local shop = {
-	{id=26756, buy=50, sell=25, name='frozen wand'},
-	{id=26757, buy=50, sell=25, name='venom rod'},
-	{id=26758, buy=50, sell=25, name='lazering bow'},
-	{id=26759, buy=50, sell=25, name='seetheras sword'},
-	{id=26760, buy=50, sell=25, name='varruth sword'},
-	{id=26761, buy=30, sell=15, name='netherwave helmet'},
-	{id=26762, buy=30, sell=15, name='netherwave armor'},
-	{id=26763, buy=30, sell=15, name='netherwave legs'},
-	{id=26764, buy=30, sell=15, name='netherwave boots'},
-	{id=26765, buy=50, sell=25, name='exowing bow'},
-	{id=26766, buy=30, sell=15, name='varruth helmet'},
-	{id=26767, buy=30, sell=15, name='varruth armor'},
-	{id=26768, buy=30, sell=15, name='varruth legs'},
-	{id=26769, buy=30, sell=15, name='varruth boots'},
-	{id=26770, buy=30, sell=15, name='seetheras helmet'},
-	{id=26771, buy=30, sell=15, name='seetheras armor'},
-	{id=26772, buy=30, sell=15, name='seetheras legs'},
-	{id=26773, buy=30, sell=15, name='seetheras boots'},
-	{id=26774, buy=30, sell=15, name='felsinger helmet'},
-	{id=26775, buy=30, sell=15, name='felsinger armor'},
-    {id=26776, buy=30, sell=15, name='felsinger legs'},
-    {id=26777, buy=30, sell=15, name='felsinger boots'},
+	{id=26756, buy=150, sell=75, name='frozen wand'},
+	{id=26757, buy=150, sell=75, name='venom rod'},
+	{id=26758, buy=150, sell=75, name='lazering bow'},
+	{id=26759, buy=150, sell=75, name='seetheras sword'},
+	{id=26760, buy=150, sell=75, name='varruth sword'},
+	{id=26761, buy=100, sell=50, name='netherwave helmet'},
+	{id=26762, buy=100, sell=50, name='netherwave armor'},
+	{id=26763, buy=100, sell=50, name='netherwave legs'},
+	{id=26764, buy=100, sell=50, name='netherwave boots'},
+	{id=26765, buy=150, sell=75, name='exowing bow'},
+	{id=26766, buy=100, sell=50, name='varruth helmet'},
+	{id=26767, buy=100, sell=50, name='varruth armor'},
+	{id=26768, buy=100, sell=50, name='varruth legs'},
+	{id=26769, buy=100, sell=50, name='varruth boots'},
+	{id=26770, buy=100, sell=50, name='seetheras helmet'},
+	{id=26771, buy=100, sell=50, name='seetheras armor'},
+	{id=26772, buy=100, sell=50, name='seetheras legs'},
+	{id=26773, buy=100, sell=50, name='seetheras boots'},
+	{id=26774, buy=100, sell=50, name='felsinger helmet'},
+	{id=26775, buy=100, sell=50, name='felsinger armor'},
+    {id=26776, buy=100, sell=50, name='felsinger legs'},
+    {id=26777, buy=100, sell=50, name='felsinger boots'},
 }
 
 local function setNewTradeTable(table)
@@ -113,12 +113,8 @@ function creatureSayCallback(cid, type, msg)
 	if msgcontains(msg, 'trade') or msgcontains(msg, 'exchange') then
 		npcHandler:say("If you have any {azure} coin with you, let's have a look! Maybe I can offer you something in exchange.", cid)
 	elseif msgcontains(msg, 'azure') then
-		local player = Player(cid)
-        player:sendExtendedOpcode(ServerOpcodes.currencyType, "AZ")
-        local coinAmount = player:getItemCount(26780) or 0
-        player:sendExtendedOpcode(ServerOpcodes.coinAmount, tostring(coinAmount))
 		openShopWindow(cid, shop, onBuy, onSell)
-		npcHandler:say({"Stuff for all vocations, Seetheras and varruth for knights, netherwave, for sorcerers and druids and felsinger for paladins."}, cid)
+		npcHandler:say({"Stuff for all vocations, Seetheras and varruth for Knights, netherwave, for sorcerers and druids and felsinger for paladins."}, cid)
 	end
 	return true
 end

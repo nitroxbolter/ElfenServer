@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Sam" script="Sam.lua" walkinterval="2000" floorchange="0">
+<npc name="Sam" script="sam.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
 	<look type="131" head="38" body="113" legs="67" feet="95" addons="0" />
 	<parameters>
@@ -54,28 +54,7 @@
 			viking helmet,2473,265;
 			viking shield,2531,260;
 			war hammer,2391,10000;
-			wooden shield,2512,15;
-			exercise sword chest, 27761, 100000;
-	exercise axe chest, 27762, 100000;
-	exercise club chest, 27763, 100000;
-	exercise bow chest, 27764, 100000;
-	exercise rod chest, 27765, 100000;
-	exercise wand chest, 27766, 100000;
-	exercise shield chest, 27767, 100000;
-	durable exercise sword chest, 27768, 360000;
-	durable exercise axe chest, 27769, 360000;
-	durable exercise club chest, 27770, 360000;
-	durable exercise bow chest, 27771, 360000;
-	durable exercise rod chest, 27772, 360000;
-	durable exercise wand chest, 27773, 360000;
-	durable exercise shield chest, 27774, 360000;
-	lasting exercise sword chest, 27775, 2800000;
-	lasting exercise axe chest, 27776, 2800000;
-	lasting exercise club chest, 27777, 2800000;
-	lasting exercise bow chest, 27778, 2800000;
-	lasting exercise rod chest, 27779, 2800000;
-	lasting exercise wand chest, 27780, 2800000;
-	lasting exercise shield chest, 27781, 2800000;" />
+			wooden shield,2512,15;" />
 		<parameter key="shop_sellable" value="
 			axe,2386,7;
 			battle axe,2378,80;

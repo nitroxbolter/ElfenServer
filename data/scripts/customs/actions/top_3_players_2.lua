@@ -1,9 +1,9 @@
 local testtexttopplayers = GlobalEvent("textfloat2")
 
 local positions = {
-    {pos = Position(32369, 32246, 7), effect = 257},
-    {pos = Position(32367, 32247, 7), effect = 254},
-    {pos = Position(32371, 32247, 7), effect = 256}
+    {pos = Position(1108, 414, 7), effect = 257},
+    {pos = Position(1106, 415, 7), effect = 254},
+    {pos = Position(1110, 415, 7), effect = 256}
 }
 
 function testtexttopplayers.onThink(interval)

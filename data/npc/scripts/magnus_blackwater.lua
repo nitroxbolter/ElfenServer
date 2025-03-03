@@ -15,9 +15,9 @@ local function creatureSayCallback(cid, type, msg)
 	if msg:lower() == "discover" then
 		npcHandler:say("Ssshh puff, ssshh puff, so ahem, ahem, sorry about that, you want {explore} the ocean and found lost treasures ?.", cid)
 	elseif msg:lower() == "explore" then
-		npcHandler:say("Before explore the ocean, you need a boat, let's construct a boat, for this you need some {materials}, some exquisite planks for the hull and deck, some nails to hold the boat together,  metal fittings to reinforce and connect various components, a silk, important to stretch the sail of the boat, a small golden anchor to keep the boat in place when not sailing and some paint to protect the wood. Of course, you can buy all of this items to an old merchant. A whimsical merchant, an elusive ally, hoarding every ship part to sell to any daring enough to brave the tumultuous seas, called Shipwright Trader. You can found him on at north of Thais at exit.", cid)
+		npcHandler:say("Before explore the ocean, you need a boat, let's construct a boat, for this you need some {materials}, some exquisite planks for the hull and deck, some nails to hold the boat together,  metal fittings to reinforce and connect various components, a silk, important to stretch the sail of the boat, a small golden anchor to keep the boat in place when not sailing and some paint to protect the wood. Of course, you can buy all of this items to an old merchant. A whimsical merchant, an elusive ally, hoarding every ship part to sell to any daring enough to brave the tumultuous seas, called Shipwright Trader. You can found him on Dolwatha, on the passage to Falanaar Jungle.", cid)
 	elseif msg:lower() == "materials" then
-		npcHandler:say("Here is the list about what we need. You can found Shipwright Trader at north of Thais, come back when you get the materials for we start construction of the boat.\nFor Start we need some exquisite {planks}, for the hull and deck.", cid)
+		npcHandler:say("Here is the list about what we need. You can found Shipwright Trader on the passage to falanaar at south of Dolwatha, come back when you get the materials for we start construction of the boat.\nFor Start we need some exquisite {planks}, for the hull and deck.", cid)
 		player:addItem(7844, 1)
 	elseif msg:lower() == "planks" then
 		if player:removeItem(12503, 10) then

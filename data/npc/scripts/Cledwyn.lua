@@ -102,10 +102,6 @@ function creatureSayCallback(cid, type, msg)
 	elseif msgcontains(msg, 'information') then
 		npcHandler:say("With pleasure. <bows> I trade {token}s. There are several ways to obtain the {token}s I am interested in - killing certain bosses, for example. In exchange for a certain amount of tokens, I can offer you some first-class items.", cid)
 	elseif msgcontains(msg, 'silver') then
-		local player = Player(cid)
-        player:sendExtendedOpcode(ServerOpcodes.currencyType, "SC")
-        local coinAmount = player:getItemCount(25172) or 0
-        player:sendExtendedOpcode(ServerOpcodes.coinAmount, tostring(coinAmount))
 		openShopWindow(cid, shop, onBuy, onSell)
 		npcHandler:say({"Here's the deal, " .. player:getName() .. ". For 100 of your silver tokens, I can offer you some first-class torso armor. These armors provide a solid boost to your main attack skill, as well as ...",
 		"some elemental protection of your choice! I also sell a magic shield potion for one silver token. So these are my offers."}, cid)

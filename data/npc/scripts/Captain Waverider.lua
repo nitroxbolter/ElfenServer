@@ -1,65 +1,32 @@
- local keywordHandler = KeywordHandler:new()
+local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
- 
-function onCreatureAppear(cid)			npcHandler:onCreatureAppear(cid)			end
-function onCreatureDisappear(cid)		npcHandler:onCreatureDisappear(cid)			end
-function onCreatureSay(cid, type, msg)		npcHandler:onCreatureSay(cid, type, msg)		end
-function onThink()				npcHandler:onThink()					end
 
-function creatureSayCallback(cid, type, msg)
-	if(not npcHandler:isFocused(cid)) then
-		return false
-	end
-	
-	local player = Player(cid)
+function onCreatureAppear(cid)              npcHandler:onCreatureAppear(cid)            end
+function onCreatureDisappear(cid)           npcHandler:onCreatureDisappear(cid)         end
+function onCreatureSay(cid, type, msg)      npcHandler:onCreatureSay(cid, type, msg)    end
+function onThink()                          npcHandler:onThink()                        end
 
-	if(msgcontains(msg, "peg leg")) then
-		if(getPlayerLevel(cid) > 8) then
-			npcHandler:say("Ohhhh. So... <lowers his voice> you know who sent you so I sail you to you know where. <wink> <wink> It will cost 50 gold to cover my expenses. Is it that what you wish?", cid)
-			npcHandler.topic[cid] = 1
-		else
-			npcHandler:say("Sorry, my old ears can't hear you.", cid)
-			npcHandler.topic[cid] = 0
-		end
-	elseif(msgcontains(msg, "passage")) then
-		if isPlayer(cid) then
-			npcHandler:say("<sigh> I knew someone else would claim all the treasure someday. But at least it will be you and not some greedy and selfish person. For a small fee of 200 gold pieces I will sail you to your rendezvous with fate. Do we have a deal?", cid)
-			npcHandler.topic[cid] = 2
-		elseif(getPlayerStorageValue(cid, 28901) == 4) then
-			npcHandler:say("I have to admit this leaves me a bit puzzled.", cid)
-			npcHandler.topic[cid] = 0
-		end
-	elseif(msgcontains(msg, "yes")) then
-		if(npcHandler.topic[cid] == 1) then
-				if player:getMoney() >= 50 then
-				player:removeMoney(50)
-				npcHandler:say("And there we go!", cid)
-				doTeleportThing(cid, {x = 32346, y = 32625, z = 7})
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler.topic[cid] = 0
-		else
-				npcHandler:say("You don't have enough money.", cid)
-				npcHandler.topic[cid] = 0
-			end
-		elseif(npcHandler.topic[cid] == 2) then
-			if player:getMoney() >= 200 then
-				player:removeMoney(200)
-				npcHandler:say("And there we go!", cid)
-				doTeleportThing(cid, {x = 32131, y = 32913, z = 7})
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler.topic[cid] = 0
-			else
-				npcHandler:say("You don't have enough money.", cid)
-				npcHandler.topic[cid] = 0
-			end
-		end
-	end
-	return true
-end
+keywordHandler:addKeyword({'captain'}, StdModule.say, {npcHandler = npcHandler, text = 'I am the captain of this sailing-ship.'})
+keywordHandler:addKeyword({'sail'}, StdModule.say, {npcHandler = npcHandler, text = 'Where do you want to go? To {Echtelion}, {Rivendell}, {Crab Island} or {Arkeron}?'})
 
-npcHandler:setMessage(MESSAGE_GREET, "Greetings, daring adventurer. If you need a {passage}, let me know.")
-npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye.")
-npcHandler:setMessage(MESSAGE_WALKAWAY, "Oh well.")
-npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
+
+local node1 = keywordHandler:addKeyword({'rivendell'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Do you seek a passage to Rivendell for 850 gold?'})
+    node1:addChildKeyword({'yes'}, StdModule.travel, {npcHandler = npcHandler, premium = true, cost = 850, destination = Position(1991, 1170, 7)})
+    node1:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, reset = true, text = 'We would like to serve you some time.'})
+
+local node2 = keywordHandler:addKeyword({'crab island'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Do you seek a passage to Crab Island for 150 gold?'})
+    node2:addChildKeyword({'yes'}, StdModule.travel, {npcHandler = npcHandler, premium = true, cost = 150, destination = Position(1533, 1159, 7)})
+    node2:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, reset = true, text = 'We would like to serve you some time.'})
+
+local node3 = keywordHandler:addKeyword({'echtelion'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Do you seek a passage to Echtelion for 400 gold?'})
+    node3:addChildKeyword({'yes'}, StdModule.travel, {npcHandler = npcHandler, premium = true, cost = 400, destination = Position(1483, 1011, 7)})
+    node3:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, reset = true, text = 'We would like to serve you some time.'})
+
+local node4 = keywordHandler:addKeyword({'arkeron'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Do you seek a passage to Arkeron for 400 gold?'})
+    node4:addChildKeyword({'yes'}, StdModule.travel, {npcHandler = npcHandler, premium = true, cost = 400, destination = Position(1457, 1210, 5)})
+    node4:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, reset = true, text = 'We would like to serve you some time.'})
+
+
+
 npcHandler:addModule(FocusModule:new())

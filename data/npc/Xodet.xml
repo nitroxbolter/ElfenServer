@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Xodet" script="Xodet.lua" walkinterval="2000" floorchange="0">
+<npc name="Xodet" script="xodet.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
 	<look type="130" head="19" body="86" legs="87" feet="95" addons="0" />
 	<parameters>
@@ -23,15 +23,6 @@
 			convince creature rune,2290,80;
 			cure poison rune,2266,65;
 			destroy field rune,2261,15;
-			nimble life potion, 26733, 620;
-			hazel life potion, 26734, 730;
-			tumble life potion, 26735, 845;
-			nimble mana potion, 26736, 450;
-			hazel mana potion, 26737, 560;
-			tumble mana potion, 26738, 700;
-			nimble spirit potion, 28085, 620;
-			hazel spirit potion, 28086, 730;
-			tumble spirit potion, 28087, 845;
 			energy field rune,2277,38;
 			energy wall rune,2279,85;
 			explosion rune,2313,31;
@@ -52,27 +43,26 @@
 			poison field rune,2285,21;
 			poison wall rune,2289,52;
 			snakebite rod,2182,500;
-			stamina extension, 27990, 80000;
 			spellbook,2175,150;
 			stalagmite rune,2292,12;
 			strong health potion,7588,100;
+			stamina extension, 27990, 80000;
 			strong mana potion,7589,80;
 			sudden death rune,2268,50;
 			terra rod,2181,10000;
 			Hailstorm Rod,2183,15000;
 			Wand of Voodoo,8922,22000;
-            underworld rod,8910,30000;
+                        underworld rod,8910,30000;
 			ultimate healing rune,2273,175;
 			ultimate health potion,8473,310;
 			wand of cosmic energy,2189,10000;
 			wand of decay,2188,5000;
 			wand of dragonbreath,2191,1000;
-			wand of vortex,2190,500;
-			stamina extension, 27990, 80000;" />
+			wand of vortex,2190,500;" />
 		<parameter key="shop_sellable" value="
-			empty potion flask, 7634, 5;
-			empty potion flask, 7635, 5;
-			empty potion flask, 7636, 5;
+			empty potion flask,7634,5;
+			empty potion flask,7635,5;
+			empty potion flask,7636,5;
 			empty nimble flask, 26753, 9;
 			empty hazel flask, 26754, 12;
 			empty tumble flask, 26755, 15;

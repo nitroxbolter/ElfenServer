@@ -8,24 +8,24 @@ function onCreatureSay(cid, type, msg)    npcHandler:onCreatureSay(cid, type, ms
 function onThink()                        npcHandler:onThink()    end
 
 -- Storage IDs --
-citizen     = 22001 
-hunter        = 22004     
-mage        = 22056     
-knight        = 22007     
-nobleman    = 22009     
-summoner    = 22011     
-warrior        = 22013     
-barbarian    = 22015     
-druid        = 22017     
-wizard        = 22019     
-oriental    = 22021     
-pirate        = 22023     
-assassin    = 22025     
-beggar        = 22027     
-shaman        = 22029     
-norseman    = 22031     
-nightmare    = 22033     
-jester        = 22035     
+citizen     = 22001
+hunter        = 22004
+mage        = 22056
+Guerreiro        = 22007
+nobleman    = 22009
+summoner    = 22011
+warrior        = 22013
+barbarian    = 22015
+druid        = 22017
+wizard        = 22019
+oriental    = 22021
+pirate        = 22023
+assassin    = 22025
+beggar        = 22027
+shaman        = 22029
+norseman    = 22031
+nightmare    = 22033
+jester        = 22035
 brotherhood    = 22037
 wayfarer = 22039
 pumpkin = 22040
@@ -39,9 +39,9 @@ newaddon    = 'Here you are, enjoy your brand new addon!'
 noitems        = 'You do not have all the required items.'
 noitems2    = 'You do not have all the required items or you do not have the first addon, which by the way, is a requirement for this addon.'
 already        = 'It seems you already have this addon, don\'t you try to mock me son!'
-    
-    
-    
+
+
+
       -- ELEMENTALIST START --
 function elementalistFirst(cid, message, keywords, parameters, node)
 
@@ -55,7 +55,7 @@ function elementalistFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,13940) >= 1 then
         if PlayerRemoveItem(cid,13940,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 432, 2)
             PlayerAddOutfit(cid, 433, 2)
@@ -83,7 +83,7 @@ function elementalistSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,13756) >= 1 then
         if PlayerRemoveItem(cid,13756,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 432, 1)
             PlayerAddOutfit(cid, 433, 1)
@@ -101,8 +101,8 @@ end
 -- ELEMENTALIST END --
 
 
-    
-    
+
+
       -- rift START --
 function riftFirst(cid, message, keywords, parameters, node)
 
@@ -116,7 +116,7 @@ function riftFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,25378) >= 3 then
         if PlayerRemoveItem(cid,25378,3) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 845, 1)
             PlayerAddOutfit(cid, 846, 1)
@@ -144,7 +144,7 @@ function riftSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,25172) >= 200 then
         if PlayerRemoveItem(cid,25172,200) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 845, 2)
             PlayerAddOutfit(cid, 846, 2)
@@ -160,7 +160,7 @@ function riftSecond(cid, message, keywords, parameters, node)
 
 end
 -- rift END --
-    
+
      -- GLOOTH START --
 function GloothFirst(cid, message, keywords, parameters, node)
 
@@ -174,7 +174,7 @@ function GloothFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,21400) >= 10 then
         if PlayerRemoveItem(cid,21400,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 610, 1)
             PlayerAddOutfit(cid, 618, 1)
@@ -202,7 +202,7 @@ function GloothSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,21400) >= 10 then
         if PlayerRemoveItem(cid,21400,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 610, 2)
             PlayerAddOutfit(cid, 618, 2)
@@ -220,7 +220,7 @@ end
 -- GLOOTH END --
 
 
-    
+
      -- YALAHAR START --
 function YalaharianFirst(cid, message, keywords, parameters, node)
 
@@ -234,7 +234,7 @@ function YalaharianFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,21400) >= 10 then
         if PlayerRemoveItem(cid,21400,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 324, 1)
             PlayerAddOutfit(cid, 325, 1)
@@ -262,7 +262,7 @@ function YalaharianSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,21400) >= 10 then
         if PlayerRemoveItem(cid,21400,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 324, 2)
             PlayerAddOutfit(cid, 325, 2)
@@ -293,7 +293,7 @@ function PumpkinFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,21400) >= 20 then
         if PlayerRemoveItem(cid,21400,20) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 759, 1)
             PlayerAddOutfit(cid, 760, 1)
@@ -321,7 +321,7 @@ function PumpkinSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,21400) >= 20 then
         if PlayerRemoveItem(cid,21400,20) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 759, 2)
             PlayerAddOutfit(cid, 760, 2)
@@ -351,7 +351,7 @@ function WarmasterFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,11116) > 0 then
         if PlayerRemoveItem(cid,11116, 1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 335, 1)
             PlayerAddOutfit(cid, 336, 1)
@@ -379,7 +379,7 @@ function WarmasterSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,11115) > 0 then
         if PlayerRemoveItem(cid,11115,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 335, 2)
             PlayerAddOutfit(cid, 336, 2)
@@ -408,7 +408,7 @@ function CitizenFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5878) >= 100 then
         if PlayerRemoveItem(cid,5878,100) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 128, 1)
             PlayerAddOutfit(cid, 136, 1)
@@ -436,7 +436,7 @@ function CitizenSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5890) >= 100 and getPlayerItemCount(cid,5902) >= 50 and getPlayerItemCount(cid,2480) >= 1 then
         if PlayerRemoveItem(cid,5890,100) and PlayerRemoveItem(cid,5902,50) and PlayerRemoveItem(cid,2480,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 128, 2)
             PlayerAddOutfit(cid, 136, 2)
@@ -466,10 +466,10 @@ function HunterFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5947) >= 1 and getPlayerItemCount(cid,5876) >= 100 and getPlayerItemCount(cid,5948) >= 100 and getPlayerItemCount(cid,5891) >= 5 and getPlayerItemCount(cid,5887) >= 1 and getPlayerItemCount(cid,5888) >= 1 and getPlayerItemCount(cid,5889) >= 1 then
         if PlayerRemoveItem(cid,5947,1) and PlayerRemoveItem(cid,5876,100) and PlayerRemoveItem(cid,5948,100) and PlayerRemoveItem(cid,5891,5) and PlayerRemoveItem(cid,5887,1) and PlayerRemoveItem(cid,5888,1) and PlayerRemoveItem(cid,5889,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 129, 1)
-PlayerAddOutfit(cid, 137, 1)           
+PlayerAddOutfit(cid, 137, 1)
             PlayerSetStorageValue(cid,hunter,1)
         end
         else
@@ -494,7 +494,7 @@ function HunterSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5875) >= 1 then
         if PlayerRemoveItem(cid,5875,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 129, 2)
             PlayerAddOutfit(cid, 137, 2)
@@ -525,7 +525,7 @@ function MageFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5958) >= 1 then
         if PlayerRemoveItem(cid,5958,1) then
             selfSay(newaddon, cid)
-                  
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 138, 1)
             --PlayerAddOutfit(cid, 130, 1)
@@ -538,7 +538,7 @@ function MageFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,2181) >= 1 and getPlayerItemCount(cid,2182) >= 1 and getPlayerItemCount(cid,2183) >= 1 and getPlayerItemCount(cid,2185) >= 1 and getPlayerItemCount(cid,2186) >= 1 and getPlayerItemCount(cid,2187) >= 1 and getPlayerItemCount(cid,2188) >= 1 and getPlayerItemCount(cid,2189) >= 1 and getPlayerItemCount(cid,2190) >= 1 and getPlayerItemCount(cid,2191) >= 1 and getPlayerItemCount(cid,5904) >= 10 and getPlayerItemCount(cid,2193) >= 20 and getPlayerItemCount(cid,5809) >= 1 then
         if PlayerRemoveItem(cid,2181,1) and PlayerRemoveItem(cid,2182,1) and PlayerRemoveItem(cid,2183,1) and PlayerRemoveItem(cid,2185,1) and PlayerRemoveItem(cid,2186,1) and PlayerRemoveItem(cid,2187,1) and PlayerRemoveItem(cid,2188,1) and PlayerRemoveItem(cid,2189,1) and PlayerRemoveItem(cid,2190,1) and PlayerRemoveItem(cid,2191,1) and PlayerRemoveItem(cid,5904,10) and PlayerRemoveItem(cid,2193,20) and PlayerRemoveItem(cid,5809,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 130, 1)
             PlayerAddOutfit(cid, 138, 1)
@@ -562,13 +562,13 @@ function MageSecond(cid, message, keywords, parameters, node)
     end
 
     if isPremium(cid) then
-    addon = getPlayerStorageValue(cid,mage+1) 
+    addon = getPlayerStorageValue(cid,mage+1)
     if addon < 2 then
         if getPlayerSex(cid) == 0 then -- PLAYERSEX == 0 é female
         if getPlayerItemCount(cid,5894) >= 70 and getPlayerItemCount(cid,5911) >= 20 and getPlayerItemCount(cid,5883) >= 40 and getPlayerItemCount(cid,5922) >= 35 and getPlayerItemCount(cid,5886) >= 10 and getPlayerItemCount(cid,5881) >= 60 and getPlayerItemCount(cid,5882) >= 40 and getPlayerItemCount(cid,5904) >= 15 and getPlayerItemCount(cid,5905) >= 30 then
         if PlayerRemoveItem(cid,5894,70) and PlayerRemoveItem(cid,5911,20) and PlayerRemoveItem(cid,5883,40) and PlayerRemoveItem(cid,5922,35) and PlayerRemoveItem(cid,5886,10) and PlayerRemoveItem(cid,5881,60) and PlayerRemoveItem(cid,5882,40) and PlayerRemoveItem(cid,5904,15) and PlayerRemoveItem(cid,5905,30) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 138, 2)
             --PlayerAddOutfit(cid, 130, 2)
@@ -581,7 +581,7 @@ function MageSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5903) >= 1 then
         if PlayerRemoveItem(cid,5903,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 130, 2)
             PlayerAddOutfit(cid, 138, 2)
@@ -599,24 +599,24 @@ function MageSecond(cid, message, keywords, parameters, node)
 end
 -- MAGE END --
 
--- KNIGHT START --
-function KnightFirst(cid, message, keywords, parameters, node)
+-- Guerreiro START --
+function GuerreiroFirst(cid, message, keywords, parameters, node)
 
     if(not npcHandler:isFocused(cid)) then
         return false
     end
 
     if isPremium(cid) then
-    addon = getPlayerStorageValue(cid,knight)
+    addon = getPlayerStorageValue(cid,Guerreiro)
     if addon == -1 then
         if getPlayerItemCount(cid,5892) >= 1 and getPlayerItemCount(cid,5880) >= 100 then
         if PlayerRemoveItem(cid,5892,1) and PlayerRemoveItem(cid,5880,100) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 131, 1)
             PlayerAddOutfit(cid, 139, 1)
-            PlayerSetStorageValue(cid,knight,1)
+            PlayerSetStorageValue(cid,Guerreiro,1)
         end
         else
             selfSay(noitems, cid)
@@ -628,23 +628,23 @@ function KnightFirst(cid, message, keywords, parameters, node)
 
 end
 
-function KnightSecond(cid, message, keywords, parameters, node)
+function GuerreiroSecond(cid, message, keywords, parameters, node)
 
     if(not npcHandler:isFocused(cid)) then
         return false
     end
 
     if isPremium(cid) then
-    addon = getPlayerStorageValue(cid,knight+1)
+    addon = getPlayerStorageValue(cid,Guerreiro+1)
     if addon == -1 then
         if getPlayerItemCount(cid,5893) >= 100 and getPlayerItemCount(cid,5924) >= 1 and getPlayerItemCount(cid,5885) >= 1 and getPlayerItemCount(cid,5887) >= 1 then
         if PlayerRemoveItem(cid,5893,100) and PlayerRemoveItem(cid,5924,1) and PlayerRemoveItem(cid,5885,1) and PlayerRemoveItem(cid,5887,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 131, 2)
             PlayerAddOutfit(cid, 139, 2)
-            PlayerSetStorageValue(cid,knight+1,1)
+            PlayerSetStorageValue(cid,Guerreiro+1,1)
         end
         else
             selfSay(noitems, cid)
@@ -655,7 +655,7 @@ function KnightSecond(cid, message, keywords, parameters, node)
     end
 
 end
--- KNIGHT END --
+-- Guerreiro END --
 
 -- NOBLEMAN START --
 function NoblemanFirst(cid, message, keywords, parameters, node)
@@ -663,7 +663,7 @@ function NoblemanFirst(cid, message, keywords, parameters, node)
     if(not npcHandler:isFocused(cid)) then
         return false
     end
-    
+
     local player_gold     = getPlayerItemCount(cid,2148)
     local player_plat     = getPlayerItemCount(cid,2152)*100
     local player_crys     = getPlayerItemCount(cid,2160)*10000
@@ -675,7 +675,7 @@ function NoblemanFirst(cid, message, keywords, parameters, node)
         if player_money >= 150000 then
         if PlayerRemoveMoney(cid,150000) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 132, 1)
             PlayerAddOutfit(cid, 140, 1)
@@ -696,7 +696,7 @@ function NoblemanSecond(cid, message, keywords, parameters, node)
     if(not npcHandler:isFocused(cid)) then
         return false
     end
-    
+
     local player_gold     = getPlayerItemCount(cid,2148)
     local player_plat     = getPlayerItemCount(cid,2152)*100
     local player_crys     = getPlayerItemCount(cid,2160)*10000
@@ -708,7 +708,7 @@ function NoblemanSecond(cid, message, keywords, parameters, node)
         if player_money >= 150000 then
         if PlayerRemoveMoney(cid,150000) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 132, 2)
             PlayerAddOutfit(cid, 140, 2)
@@ -739,7 +739,7 @@ function SummonerFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5958) >= 1 then
         if PlayerRemoveItem(cid,5958,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 133, 1)
             PlayerAddOutfit(cid, 141, 1)
@@ -752,7 +752,7 @@ function SummonerFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,2181) >= 1 and getPlayerItemCount(cid,2182) >= 1 and getPlayerItemCount(cid,2183) >= 1 and getPlayerItemCount(cid,2185) >= 1 and getPlayerItemCount(cid,2186) >= 1 and getPlayerItemCount(cid,2187) >= 1 and getPlayerItemCount(cid,2188) >= 1 and getPlayerItemCount(cid,2189) >= 1 and getPlayerItemCount(cid,2190) >= 1 and getPlayerItemCount(cid,2191) >= 1 and getPlayerItemCount(cid,5904) >= 10 and getPlayerItemCount(cid,2193) >= 20 and getPlayerItemCount(cid,5809) >= 1 then
         if PlayerRemoveItem(cid,2181,1) and PlayerRemoveItem(cid,2182,1) and PlayerRemoveItem(cid,2183,1) and PlayerRemoveItem(cid,2185,1) and PlayerRemoveItem(cid,2186,1) and PlayerRemoveItem(cid,2187,1) and PlayerRemoveItem(cid,2188,1) and PlayerRemoveItem(cid,2189,1) and PlayerRemoveItem(cid,2190,1) and PlayerRemoveItem(cid,2191,1) and PlayerRemoveItem(cid,5904,10) and PlayerRemoveItem(cid,2193,20) and PlayerRemoveItem(cid,5809,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 133, 1)
             PlayerAddOutfit(cid, 141, 1)
@@ -782,7 +782,7 @@ function SummonerSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5894) >= 70 and getPlayerItemCount(cid,5911) >= 20 and getPlayerItemCount(cid,5883) >= 40 and getPlayerItemCount(cid,5922) >= 35 and getPlayerItemCount(cid,5886) >= 10 and getPlayerItemCount(cid,5881) >= 60 and getPlayerItemCount(cid,5882) >= 40 and getPlayerItemCount(cid,5904) >= 15 and getPlayerItemCount(cid,5905) >= 30 then
         if PlayerRemoveItem(cid,5894,70) and PlayerRemoveItem(cid,5911,20) and PlayerRemoveItem(cid,5883,40) and PlayerRemoveItem(cid,5922,35) and PlayerRemoveItem(cid,5886,10) and PlayerRemoveItem(cid,5881,60) and PlayerRemoveItem(cid,5882,40) and PlayerRemoveItem(cid,5904,15) and PlayerRemoveItem(cid,5905,30) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 133, 2)
             --PlayerAddOutfit(cid, 141, 2)
@@ -795,7 +795,7 @@ function SummonerSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5903) >= 1 then
         if PlayerRemoveItem(cid,5903,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 133, 2)
             PlayerAddOutfit(cid, 141, 2)
@@ -826,7 +826,7 @@ function WarriorFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5925) >= 100 and getPlayerItemCount(cid,5899) >= 100 and getPlayerItemCount(cid,5884) >= 1 and getPlayerItemCount(cid,5919) >= 1 then
         if PlayerRemoveItem(cid,5925,100) and PlayerRemoveItem(cid,5899,100) and PlayerRemoveItem(cid,5884,1) and PlayerRemoveItem(cid,5919,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 134, 1)
             PlayerAddOutfit(cid, 142, 1)
@@ -854,7 +854,7 @@ function WarriorSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5887) >= 1 and getPlayerItemCount(cid,5880) >= 100 then
         if PlayerRemoveItem(cid,5887,1) and PlayerRemoveItem(cid,5880,100) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 134, 2)
             PlayerAddOutfit(cid, 142, 2)
@@ -884,7 +884,7 @@ function BarbarianFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5884) >= 1 and getPlayerItemCount(cid,5885) >= 1 and getPlayerItemCount(cid,5911) >= 50 and getPlayerItemCount(cid,5910) >= 50 and getPlayerItemCount(cid,5886) >= 10 then
         if PlayerRemoveItem(cid,5884,1) and PlayerRemoveItem(cid,5885,1) and PlayerRemoveItem(cid,5911,50) and PlayerRemoveItem(cid,5910,50) and PlayerRemoveItem(cid,5886,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 143, 1)
             PlayerAddOutfit(cid, 147, 1)
@@ -912,7 +912,7 @@ function BarbarianSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5880) >= 100 and getPlayerItemCount(cid,5892) >= 1 and getPlayerItemCount(cid,5893) >= 50 and getPlayerItemCount(cid,5876) >= 50 and getPlayerStorageValue(cid,barbarian) then
         if PlayerRemoveItem(cid,5880,100) and PlayerRemoveItem(cid,5892,1) and PlayerRemoveItem(cid,5893,50) and PlayerRemoveItem(cid,5876,50) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 143, 2)
             PlayerAddOutfit(cid, 147, 2)
@@ -942,7 +942,7 @@ function DruidFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5897) >= 50 and getPlayerItemCount(cid,5896) >= 50 then
         if PlayerRemoveItem(cid,5897,50) and PlayerRemoveItem(cid,5896,50) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 144, 1)
             PlayerAddOutfit(cid, 148, 1)
@@ -970,7 +970,7 @@ function DruidSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5937) >= 1 and getPlayerItemCount(cid,5939) >= 1 and getPlayerItemCount(cid,5906) >= 100 and getPlayerItemCount(cid,5942) >= 1 and getPlayerItemCount(cid,5940) >= 1 then
         if PlayerRemoveItem(cid,5937,1) and PlayerRemoveItem(cid,5939,1) and PlayerRemoveItem(cid,5906,100) and PlayerRemoveItem(cid,5942,1) and PlayerRemoveItem(cid,5940,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 144, 2)
             PlayerAddOutfit(cid, 148, 2)
@@ -1027,7 +1027,7 @@ function WizardSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5922) >= 50 and getPlayerStorageValue(cid,wizard) then
         if PlayerRemoveItem(cid,5922,50) and getPlayerStorageValue(cid,wizard) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 145, 2)
             PlayerAddOutfit(cid, 149, 2)
@@ -1057,7 +1057,7 @@ function OrientalFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5945) >= 1 then
         if PlayerRemoveItem(cid,5945,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 146, 1)
             PlayerAddOutfit(cid, 150, 1)
@@ -1085,7 +1085,7 @@ function OrientalSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5883) >= 100 and getPlayerItemCount(cid,5895) >= 100 and getPlayerItemCount(cid,5891) >= 2 and getPlayerItemCount(cid,5912) >= 100 then
         if PlayerRemoveItem(cid,5883,100) and PlayerRemoveItem(cid,5895,100) and PlayerRemoveItem(cid,5891,2) and PlayerRemoveItem(cid,5912,100) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 146, 2)
             PlayerAddOutfit(cid, 150, 2)
@@ -1115,7 +1115,7 @@ function PirateFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6126) >= 100 and getPlayerItemCount(cid,6097) >= 100 and getPlayerItemCount(cid,6098) >= 100 then
         if PlayerRemoveItem(cid,6126,100) and PlayerRemoveItem(cid,6097,100) and PlayerRemoveItem(cid,6098,100) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 151, 1)
             PlayerAddOutfit(cid, 155, 1)
@@ -1143,7 +1143,7 @@ function PirateSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6099) >= 1 and getPlayerItemCount(cid,6100) >= 1 and getPlayerItemCount(cid,6101) >= 1 and getPlayerItemCount(cid,6102) >= 1 then
         if PlayerRemoveItem(cid,6099,1) and PlayerRemoveItem(cid,6100,1) and PlayerRemoveItem(cid,6101,1) and PlayerRemoveItem(cid,6102,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 151, 2)
             PlayerAddOutfit(cid, 155, 2)
@@ -1173,7 +1173,7 @@ function AssassinFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5912) >= 50 and getPlayerItemCount(cid,5910) >= 50 and getPlayerItemCount(cid,5911) >= 50 and getPlayerItemCount(cid,5913) >= 50 and getPlayerItemCount(cid,5914) >= 50 and getPlayerItemCount(cid,5909) >= 50 and getPlayerItemCount(cid,5886) >= 10 then
         if PlayerRemoveItem(cid,5912,50) and PlayerRemoveItem(cid,5910,50) and PlayerRemoveItem(cid,5911,50) and PlayerRemoveItem(cid,5913,50) and PlayerRemoveItem(cid,5914,50) and PlayerRemoveItem(cid,5909,50) and PlayerRemoveItem(cid,5886,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 152, 1)
             PlayerAddOutfit(cid, 156, 1)
@@ -1201,7 +1201,7 @@ function AssassinSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5930) >= 1 and getPlayerItemCount(cid,5804) >= 1 then
         if PlayerRemoveItem(cid,5930,1) and PlayerRemoveItem(cid,5804,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 152, 2)
             PlayerAddOutfit(cid, 156, 2)
@@ -1224,7 +1224,7 @@ function BeggarFirst(cid, message, keywords, parameters, node)
     if(not npcHandler:isFocused(cid)) then
         return false
     end
-    
+
     local player_gold     = getPlayerItemCount(cid,2148)
     local player_plat     = getPlayerItemCount(cid,2152)*100
     local player_crys     = getPlayerItemCount(cid,2160)*10000
@@ -1236,7 +1236,7 @@ function BeggarFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5883) >= 100 and player_money >= 20000 then
         if PlayerRemoveItem(cid,5883,100) and PlayerRemoveMoney(cid,20000) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 153, 1)
             PlayerAddOutfit(cid, 157, 1)
@@ -1264,7 +1264,7 @@ function BeggarSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6107) >= 1 then
         if PlayerRemoveItem(cid,6107,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 153, 2)
             PlayerAddOutfit(cid, 157, 2)
@@ -1294,7 +1294,7 @@ function ShamanSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,3955) >= 5 and getPlayerItemCount(cid,5015) >= 1 then
         if PlayerRemoveItem(cid,3955,5) and PlayerRemoveItem(cid,5015,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 154, 2)
             PlayerAddOutfit(cid, 158, 2)
@@ -1322,7 +1322,7 @@ function ShamanFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,3966) >= 5 and getPlayerItemCount(cid,3967) >= 5 then
         if PlayerRemoveItem(cid,3966,5) and PlayerRemoveItem(cid,3967,5) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 154, 1)
             PlayerAddOutfit(cid, 158, 1)
@@ -1352,7 +1352,7 @@ function NorsemanFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,7290) >= 5 then
         if PlayerRemoveItem(cid,7290,5) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 251, 1)
             PlayerAddOutfit(cid, 252, 1)
@@ -1380,7 +1380,7 @@ function NorsemanSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,7290) >= 10 then
         if PlayerRemoveItem(cid,7290,10) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 251, 2)
             PlayerAddOutfit(cid, 252, 2)
@@ -1410,7 +1410,7 @@ function NightmareFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6500) >= 500 then
         if PlayerRemoveItem(cid,6500,500) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 268, 1)
             PlayerAddOutfit(cid, 269, 1)
@@ -1438,7 +1438,7 @@ function NightmareSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6500) >= 1500 then
         if PlayerRemoveItem(cid,6500,1500) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 268, 2)
             PlayerAddOutfit(cid, 269, 2)
@@ -1469,7 +1469,7 @@ function JesterFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5879) >= 1 and getPlayerItemCount(cid,5878) >= 4 then
         if PlayerRemoveItem(cid,5879,1) and PlayerRemoveItem(cid,5878,4) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 273, 1)
             PlayerAddOutfit(cid, 270, 1)
@@ -1497,7 +1497,7 @@ function JesterSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,5909) >= 5 then
         if PlayerRemoveItem(cid,5909,5) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 273, 2)
             PlayerAddOutfit(cid, 270, 2)
@@ -1527,7 +1527,7 @@ function BrotherhoodFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6500) >= 500 then
         if PlayerRemoveItem(cid,6500,500) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 278, 1)
             PlayerAddOutfit(cid, 279, 1)
@@ -1555,7 +1555,7 @@ function BrotherhoodSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,6500) >= 1500 then
         if PlayerRemoveItem(cid,6500,1500) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 278, 2)
             PlayerAddOutfit(cid, 279, 2)
@@ -1586,7 +1586,7 @@ function WayfarerFirst(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,12657) >= 1 then
         if PlayerRemoveItem(cid,12657,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 366, 1)
             PlayerAddOutfit(cid, 367, 1)
@@ -1614,7 +1614,7 @@ function WayfarerSecond(cid, message, keywords, parameters, node)
         if getPlayerItemCount(cid,12656) >= 1 then
         if PlayerRemoveItem(cid,12656,1) then
             selfSay(newaddon, cid)
-              
+
             SendMagicEffect(getCreaturePosition(cid), 13)
             PlayerAddOutfit(cid, 366, 2)
             PlayerAddOutfit(cid, 367, 2)
@@ -1632,7 +1632,7 @@ end
 -- WAYFARER END --
 
 
-keywordHandler:addKeyword({'addons'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "I can offer you first & second addons of the following outfits: Citizen, Hunter, Mage, Knight, Nobleman, Summoner, Warrior, Barbarian, Druid, Wizard, Oriental, Pirate, Assassin, Beggar, Shaman, Norseman, Elementalist, Nightmare, Jester and Brotherhood."})
+keywordHandler:addKeyword({'addons'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "I can offer you first & second addons of the following outfits: Citizen, Hunter, Mage, Guerreiro, Nobleman, Summoner, Warrior, Barbarian, Druid, Wizard, Oriental, Pirate, Assassin, Beggar, Shaman, Norseman, Elementalist, Nightmare, Jester and Brotherhood."})
 keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = "What you do is that you type 'first hunter addon' or 'second hunter addon' where you replace 'hunter' with whatever outfit you'd like to achieve the addons for. Assuming that you already collected all the required pieces, say 'yes' and voíla - you got yourself an addon!"})
 
  node1 = keywordHandler:addKeyword({'first citizen addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first citizen addon you need to give me 100 minotaur leathers. Do you have them with you?'})
@@ -1659,14 +1659,14 @@ keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onl
     node6:addChildKeyword({'yes'}, MageSecond, {})
     node6:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
- node7 = keywordHandler:addKeyword({'first knight addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first knight addon you need to give me a chunk of crude iron and 100 iron ores. Do you have it with you?'})
-    node7:addChildKeyword({'yes'}, KnightFirst, {})
+ node7 = keywordHandler:addKeyword({'first Guerreiro addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first Guerreiro addon you need to give me a chunk of crude iron and 100 iron ores. Do you have it with you?'})
+    node7:addChildKeyword({'yes'}, GuerreiroFirst, {})
     node7:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
- node8 = keywordHandler:addKeyword({'second knight addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the second knight addon you need to give me 100 perfect behemoth fangs, a damaged steel helmet, warrior\'s sweat and a royal steel. Do you have them with you?'})
-    node8:addChildKeyword({'yes'}, KnightSecond, {})
+ node8 = keywordHandler:addKeyword({'second Guerreiro addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the second Guerreiro addon you need to give me 100 perfect behemoth fangs, a damaged steel helmet, warrior\'s sweat and a royal steel. Do you have them with you?'})
+    node8:addChildKeyword({'yes'}, GuerreiroSecond, {})
     node8:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
-    
+
  node9 = keywordHandler:addKeyword({'first nobleman addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first nobleman addon you need to give me 150,000 gold pieces. Do you have it with you?'})
     node9:addChildKeyword({'yes'}, NoblemanFirst, {})
     node9:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
@@ -1682,7 +1682,7 @@ keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onl
  node12 = keywordHandler:addKeyword({'second summoner addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = '{[MALE]} To achieve the second summoner addon you need to give me 70 bat wings, 20 red pieces of cloth, 40 ape fur, 35 holy orchid, 10 spools of spider silk yarn, 60 lizard scales, 40 red dragon scales, 15 magic sulphurs and 30 vampire dusts. {[FEMALE]} You need to give me a ferumbras\' hat. Do you have them with you?'})
     node12:addChildKeyword({'yes'}, SummonerSecond, {})
     node12:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
-    
+
  node13 = keywordHandler:addKeyword({'first warrior addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first warrior addon you need to give me 100 hardened bones, 100 turtle shells, a fighting spirit and a dragon claw. Do you have it with you?'})
     node13:addChildKeyword({'yes'}, WarriorFirst, {})
     node13:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
@@ -1795,7 +1795,7 @@ keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onl
     node40:addChildKeyword({'yes'}, WayfarerSecond, {})
     node40:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
-    
+
     node41 = keywordHandler:addKeyword({'first pumpkin addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first pumpkin addon you need to give me 20 Silver Raid Tokens. Do you have them with you?'})
     node41:addChildKeyword({'yes'}, PumpkinFirst, {})
     node41:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
@@ -1812,7 +1812,7 @@ keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onl
     node44:addChildKeyword({'yes'}, YalaharianSecond, {})
     node44:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
-    
+
     node45 = keywordHandler:addKeyword({'first glooth addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first Glooth addon you need to give me 10 Silver Raid Tokens. Do you have them with you?'})
     node45:addChildKeyword({'yes'}, GloothFirst, {})
     node45:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
@@ -1821,7 +1821,7 @@ keywordHandler:addKeyword({'help'}, StdModule.say, {npcHandler = npcHandler, onl
     node46:addChildKeyword({'yes'}, GloothSecond, {})
     node46:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
 
-    
+
     node47 = keywordHandler:addKeyword({'first rift warrior addon'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'To achieve the first Rift Warrior addon you need to give me 3 Gold Tokens. Do you have them with you?'})
     node47:addChildKeyword({'yes'}, riftFirst, {})
     node47:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Alright then. Come back when you got all neccessary items.', reset = true})
