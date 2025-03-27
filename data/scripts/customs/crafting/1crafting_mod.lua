@@ -6,6 +6,8 @@ local CODE_CRAFTING = 91
 local fetchLimit = 10
 local CHUNK_SIZE = 512
 local categories = {"herbalist", "woodcutting", "mining", "generalcrafting", "armorsmith", "weaponsmith", "jewelsmith"}
+local failChance = 15 -- 15% de chance de falha
+
 
 local skillsStages = {
   { minlevel = 0, maxlevel = 50, multiplier = 1.0 },
@@ -47,21 +49,12 @@ for category, aid in pairs(categoryAIDs) do
 end
 
 local rarities = {
-  { id = 1, name = "Common", chance = 10.0 },
+  { id = 1, name = "Common", chance = 24.0 },
   { id = 2, name = "Uncommon", chance = 20.0 },
-  { id = 3, name = "Rare", chance = 30.0 },
-  { id = 4, name = "Epic", chance = 40.0 },
-  { id = 5, name = "Legendary", chance = 50.0 },
-  { id = 6, name = "Exotic", chance = 60.0 },
-  { id = 7, name = "Mythic", chance = 70.0 },
-  { id = 8, name = "Chaos", chance = 80.0 },
-  { id = 9, name = "Eternal", chance = 90.0 },
-  { id = 10, name = "Divine", chance = 100.0 },
-  { id = 11, name = "Phantasmal", chance = 110.0 },
-  { id = 12, name = "Celestial", chance = 120.0 },
-  { id = 13, name = "Cosmic", chance = 130.0 },
-  { id = 14, name = "Abyssal", chance = 140.0 },
-  { id = 15, name = "Transcendent", chance = 150.0 },
+  { id = 3, name = "Rare", chance = 15.0 },
+  { id = 4, name = "Epic", chance = 2.0 },
+  { id = 5, name = "Legendary", chance = 1.5 },
+  { id = 6, name = "Mythic", chance = 0.5 }
 }
 
 local function rollRarity(player)
@@ -70,20 +63,21 @@ local function rollRarity(player)
   local skillJewelsmith = player:getSkillLevel(SKILL_JEWELSMITH) or 0
 
   local skillCrafting = (skillArmorsmith + skillWeaponsmith + skillJewelsmith) / 3
-  print(string.format("[Crafting] Crafting skill: %.2f", skillCrafting))
+  local rolledChance = math.random() * 100  -- Definido para um m?ximo de 100%
 
-  local rolledChance = math.random() * 150
-  local rarityChance = skillCrafting * 1.5 -- Aumenta a influÃªncia da skill
-  print(string.format("[Crafting] Rarity chance: %.2f, Rolled chance: %.2f", rarityChance, rolledChance))
+  if rolledChance <= 60 then
+    return 0, "None"  -- 60% de chance de n?o ter raridade
+  end
+
+  local rarityChance = skillCrafting * 1.5 -- Aumenta a influ?ncia da skill
 
   for _, r in ipairs(rarities) do
-    if rolledChance <= r.chance + rarityChance then
-      print(string.format("[Crafting] Rarity ID: %d, Name: %s", r.id, r.name))
+    if rolledChance - 60 <= r.chance + rarityChance then
       return r.id, r.name
     end
   end
 
-  return 0, "None"
+  return 0, "None" -- Caso nenhuma raridade seja atingida
 end
 
 local LoginEvent = CreatureEvent("CraftingLogin")
@@ -273,12 +267,11 @@ function Crafting:craft(player, category, craftId)
   local playerSkill = player:getEffectiveSkillLevel(skillType)
   local money = player:getMoney()
 
-  print(string.format("[Crafting] Player skill type: %s, level: %d", skillNames[skillType], playerSkill))
 
   if craft.storage and craft.storage > 0 then
     local playerStorage = player:getStorageValue(craft.storage)
     if playerStorage ~= 1 then
-      local message = "You haven't unlocked this recipe."
+      local message = "Você precisa desbloquear a receita."
       if craft.storageText and craft.storageText ~= "" then
         message = message .. "\n" .. craft.storageText
       end
@@ -288,12 +281,12 @@ function Crafting:craft(player, category, craftId)
   end
 
   if money < craft.cost then
-    player:popupFYI(string.format("You don't have enough money: %d.", craft.cost))
+    player:popupFYI(string.format("Você não tem gold Suficiente: %d.", craft.cost))
     return
   end
 
   if playerSkill < craft.level then
-    player:popupFYI(string.format("You don't have the required %s skill: %d. Your skill is: %d.", skillNames[skillType], craft.level, playerSkill))
+    player:popupFYI(string.format("Você não tem skill requeridos %s skill: %d. Your skill is: %d.", skillNames[skillType], craft.level, playerSkill))
     return
   end
 
@@ -310,39 +303,61 @@ function Crafting:craft(player, category, craftId)
     end
   end
 
-  player:sendExtendedOpcode(CODE_CRAFTING, json.encode({action = "craft", data = {success = true}}))
-
   addEvent(function()
+    -- Verifica se o jogador tem uma mochila equipada e espa?o dispon?vel
+    local backpack = player:getSlotItem(CONST_SLOT_BACKPACK)
+    if not backpack or not backpack:isContainer() or backpack:getEmptySlots() <= 0 then
+        player:popupFYI("Sua mochila está cheia, ou você não está usando uma mochila.")
+        return
+    end
+
+      -- Verifica se o crafting falhou
+      if math.random(100) <= failChance then
+        player:removeMoney(craft.cost)
+        if craft.materials then
+            for _, material in ipairs(craft.materials) do
+                player:removeItem(material.id, material.count)
+            end
+        end
+
+        player:popupFYI("O craft falhou!!.")
+        return
+    end
+
     local rarityId, rarityName = rollRarity(player)
     local item
 
+    local rarityId, rarityName = rollRarity(player)
+    local item
+
+    -- Criar o item com raridade se houver
     if rarityId > 0 then
-      item = Game.createItemWithRarity(craft.id, craft.count, rarityId)
-      player:popupFYI("Your crafted item has acquired a rarity: " .. rarityName)
+        item = Game.createItemWithRarity(craft.id, craft.count, rarityId)
+        player:popupFYI("Você criou um item com Raridade " .. rarityName)
     else
-      item = Game.createItem(craft.id, craft.count)
-      player:popupFYI(string.format("Item Successfully Crafted: %s", ItemType(craft.id):getName()))
+        item = Game.createItem(craft.id, craft.count)
+        player:popupFYI(string.format("Item Criado com Sucesso: %s", ItemType(craft.id):getName()))
     end
 
-    if item then
-      if player:addItemEx(item) then
+    -- Se tiver espaço suficiente, adicionamos o item ? mochila
+    if player:addItemEx(item) then
         player:removeMoney(craft.cost)
         if craft.materials then
-          for _, material in ipairs(craft.materials) do
-            player:removeItem(material.id, material.count)
-          end
+            for _, material in ipairs(craft.materials) do
+                player:removeItem(material.id, material.count)
+            end
         end
 
         local skillMultiplier = 1
         if skillsStages then
-          for _, stage in ipairs(skillsStages) do
-            if playerSkill >= stage.minlevel then
-              if not stage.maxlevel or playerSkill <= stage.maxlevel then
-                skillMultiplier = stage.multiplier
-                break
-              end
+            for _, stage in ipairs(skillsStages) do
+                if playerSkill >= stage.minlevel then
+                    if not stage.maxlevel or playerSkill <= stage.maxlevel then
+                        skillMultiplier = stage.multiplier
+                        break
+                    end
+                end
             end
-          end
         end
 
         local skillTries = math.floor(skillMultiplier)
@@ -352,12 +367,15 @@ function Crafting:craft(player, category, craftId)
         local page = math.ceil(craftId / fetchLimit)
         Crafting:sendCrafts(player, category, page)
         playSound(player, "crafting.ogg")
-      else
-        player:popupFYI("You do not have enough space to receive the crafted item.")
-      end
+
+        -- S? envia a confirma??o de sucesso depois que o item for realmente criado e adicionado
+        player:sendExtendedOpcode(CODE_CRAFTING, json.encode({action = "craft", data = {success = true}}))
+    else
+        player:popupFYI("Você não tem espaço suficiente para receber o item criado.")
     end
-  end, 860)
+end, 860)
 end
+
 
 function Crafting:sendMaterials(player, category, craftId)
   if not Crafting[category] then

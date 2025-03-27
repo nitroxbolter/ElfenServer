@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Peggy" script="Peggy.lua" walkinterval="2000" floorchange="0">
+<npc name="Peggy" script="peggy.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
 	<look type="136" head="38" body="36" legs="48" feet="38" addons="0" />
 <voices>
@@ -30,7 +30,7 @@
 			drawer kit,3915,18;
 			dresser kit,3916,25;
 			flower bowl,2102,6;
-			globe kit,3926,50;
+			globe kit,3923,50;
 			goblin statue kit,3930,50;
 			god flowers,2100,5;
 			goldfish bowl,5928,50;
@@ -42,7 +42,7 @@
 			heart pillow,1685,30;
 			honey flower,2103,5;
 			indoor plant kit,3937,8;
-			knight statue kit,3928,50;
+			Knight statue kit,3928,50;
 			large amphora kit,3931,50;
 			locker kit,3917,30;
 			minotaur statue kit,3929,50;

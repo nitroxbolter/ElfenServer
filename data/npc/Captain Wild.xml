@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Captain Wild" script="captain wild.lua" walkinterval="2000" floorchange="0" speechbubble="5">
+<npc name="Captain Wild" script="captain wild.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
 	<look type="1019" head="92" body="94" legs="61" feet="28" addons="3"/>
 	<parameters>

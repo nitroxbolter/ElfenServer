@@ -20,10 +20,10 @@ local function creatureSayCallback(cid, type, msg)
 	elseif msgcontains(msg, "yes") then
 		if npcHandler.topic[cid] == 1 then
 			local player = Player(cid)
-			if player:getMoney() >= 111 then
+			if player:getTotalMoney() >= 111 then
 				npcHandler:say("Here it is.", cid)
 				player:addItem(2109, 1)
-				player:removeMoney(111)
+				player:removeTotalMoney(111)
 			else
 				npcHandler:say("You don't have enough money.", cid)
 			end
@@ -41,14 +41,14 @@ keywordHandler:addKeyword({'magic'}, StdModule.say, {npcHandler = npcHandler, te
 keywordHandler:addKeyword({'name'}, StdModule.say, {npcHandler = npcHandler, text = "I am Gorn. My goods are known all over Tibia."})
 keywordHandler:addKeyword({'time'}, StdModule.say, {npcHandler = npcHandler, text = "It is exactly |TIME|. Maybe you want to buy a watch?"})
 keywordHandler:addKeyword({'druids'}, StdModule.say, {npcHandler = npcHandler, text = "This druids are nice people, you will find them in the east of the town."})
-keywordHandler:addKeyword({'knights'}, StdModule.say, {npcHandler = npcHandler, text = "Even the strong knights need my equipment on their travels though Tibia."})
+keywordHandler:addKeyword({'Knights'}, StdModule.say, {npcHandler = npcHandler, text = "Even the strong Knights need my equipment on their travels though Tibia."})
 keywordHandler:addKeyword({'sorcerers'}, StdModule.say, {npcHandler = npcHandler, text = "You can find him in the sorcerer guild."})
 keywordHandler:addKeyword({'elane'}, StdModule.say, {npcHandler = npcHandler, text = "She's the leader of the paladin guild."})
 keywordHandler:addKeyword({'baxter'}, StdModule.say, {npcHandler = npcHandler, text = "Old Baxter was a rowdy, once. In our youth we shared some adventures and women."})
 keywordHandler:addKeyword({'bozo'}, StdModule.say, {npcHandler = npcHandler, text = "Bah! Go away with this bozoguy."})
 keywordHandler:addKeyword({'frodo'}, StdModule.say, {npcHandler = npcHandler, text = "Frodo is a jolly fellow."})
 keywordHandler:addKeyword({'ferumbras'}, StdModule.say, {npcHandler = npcHandler, text = "We had a clash or two in the old days."})
-keywordHandler:addKeyword({'gregor'}, StdModule.say, {npcHandler = npcHandler, text = "Even the strong knights need my equipment on their travels though Tibia."})
+keywordHandler:addKeyword({'gregor'}, StdModule.say, {npcHandler = npcHandler, text = "Even the strong Knights need my equipment on their travels though Tibia."})
 keywordHandler:addKeyword({'lynda'}, StdModule.say, {npcHandler = npcHandler, text = "That's a pretty one."})
 keywordHandler:addKeyword({'mcronald'}, StdModule.say, {npcHandler = npcHandler, text = "I hardly know the McRonalds."})
 keywordHandler:addKeyword({'muriel'}, StdModule.say, {npcHandler = npcHandler, text = "You can find him in the sorcerer guild."})

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Rashid" script="Rashid.lua" walkinterval="2000" floorchange="0" walkradius="3">
+<npc name="Rashid" script="rashid.lua" walkinterval="2000" floorchange="0" walkradius="3">
 	<health now="100" max="100" />
 	<look type="146" head="100" body="100" legs="119" feet="115" addons="2" />
 	<parameters>
 		<parameter key="module_shop" value="1" />
 		<parameter key="shop_sellable" value="
-		    RiftLance, 25383, 30000;
-			oriental Shoes, 24637, 15000;
 			abyss hammer, 7414, 20000;
-			Rift Bow, 25522, 35000;
-			Rift XBow, 25523, 35000;
-			Rift Shield, 25382, 40000;
 			amber staff, 7426, 8000;
 			ancient amulet, 2142, 200;
 			assassin dagger, 7404, 20000;

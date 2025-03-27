@@ -1,4 +1,4 @@
- local keywordHandler = KeywordHandler:new()
+local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 NpcSystem.parseParameters(npcHandler)
 
@@ -14,34 +14,28 @@ local function creatureSayCallback(cid, type, msg)
 
 	local player = Player(cid)
 
-	if isInArray({"enchanted chicken wing", "boots of haste", "Enchanted Chicken Wing", "Boots of Haste"}, msg) then
+	if table.contains({"enchanted chicken wing", "boots of haste"}, msg) then
 		npcHandler:say('Do you want to trade Boots of haste for Enchanted Chicken Wing?', cid)
 		npcHandler.topic[cid] = 1
-	elseif isInArray({"warrior sweat", "warrior helmet", "Warrior Sweat", "Warrior Helmet"}, msg) then
+	elseif table.contains({"warrior Sweat", "warrior helmet"}, msg) then
 		npcHandler:say('Do you want to trade 4 Warrior Helmet for Warrior Sweat?', cid)
 		npcHandler.topic[cid] = 2
-	elseif isInArray({"fighting spirit", "royal helmet", "Fighting Spirit", "Royal Helmet"}, msg) then
+	elseif table.contains({"fighting Spirit", "royal helmet"}, msg) then
 		npcHandler:say('Do you want to trade 2 Royal Helmet for Fighting Spirit', cid)
 		npcHandler.topic[cid] = 3
-	elseif isInArray({"magic sulphur", "fire sword", "Magic Sulphur", "Fire Sword"}, msg) then
+	elseif table.contains({"magic sulphur", "fire sword"}, msg) then
 		npcHandler:say('Do you want to trade 3 Fire Sword for Magic Sulphur', cid)
 		npcHandler.topic[cid] = 4
-	elseif isInArray({"job", "items", "Items", "Job"}, msg) then
+	elseif table.contains({"job", "items"}, msg) then
 		npcHandler:say('I trade Enchanted Chicken Wing for Boots of Haste, Warrior Sweat for 4 Warrior Helmets, Fighting Spirit for 2 Royal Helmet Magic Sulphur for 3 Fire Swords', cid)
 		npcHandler.topic[cid] = 0
-	elseif msgcontains(msg, 'cookie') then
-		if player:getStorageValue(Storage.WhatAFoolishQuest.Questline) == 31
-				and player:getStorageValue(Storage.WhatAFoolishQuest.CookieDelivery.Djinn) ~= 1 then
-			npcHandler:say('You brought cookies! How nice of you! Can I have one?', cid)
-			npcHandler.topic[cid] = 5
-		end
 	elseif msgcontains(msg,'yes') then
 		if npcHandler.topic[cid] >= 1 and npcHandler.topic[cid] <= 4 then
 			local trade = {
 					{ NeedItem = 2195, Ncount = 1, GiveItem = 5891, Gcount = 1}, -- Enchanted Chicken Wing
 					{ NeedItem = 2475, Ncount = 4, GiveItem = 5885, Gcount = 1}, -- Flask of Warrior's Sweat
 					{ NeedItem = 2498, Ncount = 2, GiveItem = 5884, Gcount = 1}, -- Spirit Container
-					{ NeedItem = 2392, Ncount = 3, GiveItem = 5904, Gcount = 1}  -- Magic Sulphur
+					{ NeedItem = 2392, Ncount = 3, GiveItem = 5904, Gcount = 1} -- Magic Sulphur
 			}
 
 			if player:getItemCount(trade[npcHandler.topic[cid]].NeedItem) >= trade[npcHandler.topic[cid]].Ncount then
@@ -57,8 +51,6 @@ local function creatureSayCallback(cid, type, msg)
 				npcHandler.topic[cid] = 0
 				return true
 			end
-
-			player:setStorageValue(Storage.WhatAFoolishQuest.CookieDelivery.Djinn, 1)
 			if player:getCookiesDelivered() == 10 then
 				player:addAchievement('Allow Cookies?')
 			end
@@ -81,11 +73,6 @@ local function creatureSayCallback(cid, type, msg)
 end
 
 local function onTradeRequest(cid)
-	--if Player(cid):getStorageValue(Storage.DjinnWar.EfreetFaction.Mission03) ~= 3 then
-		--npcHandler:say('I\'m sorry, but you don\'t have Malor\'s permission to trade with me.', cid)
-		--return false
-	--end
-
 	return true
 end
 
@@ -97,8 +84,4 @@ npcHandler:setMessage(MESSAGE_SENDTRADE, 'At your service, just browse through m
 npcHandler:setCallback(CALLBACK_ONTRADEREQUEST, onTradeRequest)
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 
-local focusModule = FocusModule:new()
-focusModule:addGreetMessage('hi')
-focusModule:addGreetMessage('hello')
-focusModule:addGreetMessage('djanni\'hah')
-npcHandler:addModule(focusModule)
+npcHandler:addModule(FocusModule:new())
