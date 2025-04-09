@@ -19,6 +19,7 @@
 #include "scheduler.h"
 #include "databasetasks.h"
 #include "script.h"
+#include "itemattributes.h"
 #include <fstream>
 #include <fmt/color.h>
 #if __has_include("gitmetadata.h")
@@ -252,6 +253,11 @@ void mainLoader(int, char*[], ServiceManager* services)
 	std::cout << ">> Loading outfits" << std::endl;
 	if (!Outfits::getInstance().loadFromXml()) {
 		startupErrorMessage("Unable to load outfits!");
+		return;
+	}
+	std::cout << ">> Loading Item Attributes" << std::endl;
+	if (!ItemRarityAttributes::getInstance()->load()) {
+		startupErrorMessage("Unable to load item attributes!");
 		return;
 	}
 

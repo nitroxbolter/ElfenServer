@@ -9,6 +9,7 @@
 #include "position.h"
 #include "const.h"
 #include "enums.h"
+#include "items.h"
 
 void printXMLError(const std::string& where, const std::string& fileName, const pugi::xml_parse_result& result);
 
@@ -79,6 +80,10 @@ const char* getReturnMessage(ReturnValue value);
 int64_t OTSYS_TIME();
 
 SpellGroup_t stringToSpellGroup(const std::string& value);
+slots_t getSlotType(const ItemType& it);
+
+std::string getMonsterClassName(uint16_t monsterClass);
+std::string getRarityName(uint16_t rarityId);
 
 std::string timeFromSeconds(uint64_t seconds);
 #endif

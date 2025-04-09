@@ -9,13 +9,7 @@
 #include "events.h"
 
 #include "configmanager.h"
-#include <vector>
-#include <list>
-#include <tuple>
-#include <string>
-#include <random>
-#include <algorithm>
-#include <cstdint>
+
 
 extern Game g_game;
 extern Monsters g_monsters;
@@ -2037,345 +2031,30 @@ void Monster::updateLookDirection()
 	g_game.internalCreatureTurn(this, newDir);
 }
 
-struct RarityAttributes {
-	int numAbsorbs;
-	int numSkills;
-	int numSpecials;
-	int numElements;
-};
-
 void Monster::dropLoot(Container* corpse, Creature* mostDamageCreature)
-{
-	if (!corpse || !lootDrop) {
-		return;
+
+{ 
+	(void)mostDamageCreature; // suprime o warning C4100
+	// Verifica se o contêiner de loot não é nulo e se o monstro realmente dropa o loot
+	if (corpse && lootDrop) {
+		// Notifica os eventos que o monstro está soltando loot
+		g_events->eventMonsterOnDropLoot(this, corpse);
+		// Define o nível de raridade dos itens dentro do container
+        std::list<Container*> containers = { corpse };
+        while (!containers.empty()) {
+            Container* container = containers.front();
+            containers.pop_front();
+            for (Item* item : container->getItemList()) {
+                Container* subContainer = item->getContainer();
+                if (subContainer) {
+                    containers.push_back(subContainer);
+                }
+                else {
+                    item->setRarityLevel(corpse->getPosition(), true);
+                }
+            }
+        }
 	}
-
-	g_events->eventMonsterOnDropLoot(this, corpse);
-	Player* mostDamagePlayer = nullptr;
-	if (mostDamageCreature) {
-		mostDamagePlayer = mostDamageCreature->getPlayer();
-	}
-	if (!mostDamagePlayer) {
-		return;
-	}
-	
-	struct Rarity {
-        int value;
-        double chance;
-        int minLevel;
-        int maxLevel;
-        int minBonus;
-        int maxBonus;
-    };
-
-    std::vector<Rarity> rarities = {
-        {1,   15.0,   1,   10,   1,   1},
-        {2,   14.0,  11,   20,   1,   2},
-        {3,   13.0,  21,   30,   1,   2},
-        {4,   12.0,  31,   40,   1,   3},
-        {5,   10.0,  41,   50,   1,   3},
-        {6,    8.0,  51,   60,   2,   4},
-        {7,    7.0,  61,   70,   2,   5},
-        {8,    6.0,  71,   80,   3,   6},
-        {9,    5.0,  81,   90,   3,   7},
-        {10,   4.5,  91,  100,   4,   8},
-        {11,   3.3, 101,  110,   4,   9},
-        {12,   2.2, 111,  120,   5,  10},
-        {13,   1.8, 121,  130,   6,  10},
-        {14,   1.3, 131,  140,   7,  12},
-        {15,   1.0, 141,  150,   9,  15}
-    };
-
-	std::vector<RarityAttributes> rarityAttributes = {
-    	{1, 1, 0, 0}, // Rarity 1
-    	{1, 1, 0, 1}, // Rarity 2
-    	{1, 1, 0, 1}, // Rarity 3
-    	{1, 1, 1, 1}, // Rarity 4
-    	{1, 1, 1, 1}, // Rarity 5
-    	{1, 2, 1, 1}, // Rarity 6
-    	{1, 2, 1, 1}, // Rarity 7
-    	{1, 2, 2, 1}, // Rarity 8
-    	{2, 2, 2, 1}, // Rarity 9
-    	{2, 2, 2, 1}, // Rarity 10
-    	{2, 2, 2, 1}, // Rarity 11
-    	{2, 2, 2, 1}, // Rarity 12
-    	{2, 2, 2, 1}, // Rarity 13
-    	{3, 3, 2, 1}, // Rarity 14
-    	{3, 3, 2, 1}  // Rarity 15
-	};
-
-    std::vector<std::pair<int, int>> absorptionBonuses = {
-        {1, 1}, {1, 1}, {1, 1}, {1, 2}, {1, 2},
-        {1, 3}, {1, 3}, {1, 4}, {1, 4}, {2, 5},
-        {2, 5}, {2, 5}, {3, 6}, {4, 6}, {5, 6}
-    };
-
-    std::vector<std::pair<int, int>> elementBonuses = {
-        {1, 3}, {3, 6}, {4, 8}, {5, 10}, {6, 12},
-        {7, 14}, {8, 16}, {9, 18}, {10, 20}, {12, 22},
-        {14, 24}, {16, 26}, {18, 28}, {20, 30}, {25, 40}
-    };
-
-    std::vector<Item*> items;
-    std::list<Container*> containers = { corpse };
-    while (!containers.empty()) {
-        Container* container = containers.front();
-        containers.pop_front();
-        for (Item* i : container->getItemList()) {
-            if (Container* sub = i->getContainer()) {
-                containers.push_back(sub);
-            } else {
-                items.push_back(i);
-            }
-        }
-    }
-
-    for (Item* item : items) {
-        const auto rarityAttr = item->getCustomAttribute("rarity");
-        if (!rarityAttr) {
-            continue;
-        }
-
-        int rarityId = 0;
-        const auto& value = rarityAttr->value;
-        if (value.type() == typeid(int64_t)) {
-            rarityId = boost::get<int64_t>(value);
-        }
-        if (rarityId <= 0) {
-            continue;
-        }
-
-        const ItemType& it = Item::items[item->getID()];
-
-		const uint32_t VALID_EQUIP_SLOTS =
-			SLOTP_HEAD |
-			SLOTP_NECKLACE |
-			SLOTP_ARMOR |
-			SLOTP_RIGHT |
-			SLOTP_LEFT |
-			SLOTP_LEGS |
-			SLOTP_FEET |
-			SLOTP_RING |
-			SLOTP_DECKBAD |
-			SLOTP_BELT |
-			SLOTP_GLOVES;
-
-		if ((it.slotPosition & VALID_EQUIP_SLOTS) == 0) {
-			continue;
-		}
-
-        bool isWeapon = (it.weaponType != WEAPON_NONE);
-
-        int finalLevel = 0, minBonus = 0, maxBonus = 0;
-        for (const Rarity& r : rarities) {
-            if (r.value == rarityId) {
-                finalLevel = uniform_random(r.minLevel, r.maxLevel);
-                minBonus = r.minBonus;
-                maxBonus = r.maxBonus;
-                break;
-            }
-        }
-        int bonusRange = maxBonus - minBonus + 1;
-        int finalBonus = minBonus + (finalLevel * bonusRange / 100);
-
-        if (it.attack > 0) {
-            int64_t newAttack = it.attack + finalBonus;
-            item->setIntAttr(ITEM_ATTRIBUTE_ATTACK, newAttack);
-        }
-        if (it.defense > 0) {
-            int64_t newDefense = it.defense + finalBonus;
-            item->setIntAttr(ITEM_ATTRIBUTE_DEFENSE, newDefense);
-        }
-        if (it.armor > 0) {
-            int64_t newArmor = it.armor + finalBonus;
-            item->setIntAttr(ITEM_ATTRIBUTE_ARMOR, newArmor);
-        }
-        if (it.hitChance > 0) {
-            int64_t newHitChance = it.hitChance + finalBonus;
-            item->setIntAttr(ITEM_ATTRIBUTE_HITCHANCE, newHitChance);
-        }
-
-        std::string levelKey = "combatPowerLevel";
-        item->setCustomAttribute(levelKey, static_cast<int64_t>(finalLevel));
-
-        RarityAttributes attrCounts = rarityAttributes[rarityId - 1];
-
-        std::vector<std::tuple<CombatType_t, std::string, std::string>> absorptionTypes = {
-            {COMBAT_PHYSICALDAMAGE, "rarity_physicalAbsorb", "Physical"},
-            {COMBAT_ENERGYDAMAGE, "rarity_energyAbsorb", "Energy"},
-            {COMBAT_EARTHDAMAGE, "rarity_earthAbsorb", "Earth"},
-            {COMBAT_FIREDAMAGE, "rarity_fireAbsorb", "Fire"},
-            {COMBAT_DROWNDAMAGE, "rarity_drownAbsorb", "Drown"},
-            {COMBAT_ICEDAMAGE, "rarity_iceAbsorb", "Ice"},
-            {COMBAT_HOLYDAMAGE, "rarity_holyAbsorb", "Holy"},
-            {COMBAT_DEATHDAMAGE, "rarity_deathAbsorb", "Death"},
-            {COMBAT_WATERDAMAGE, "rarity_waterAbsorb", "Water"},
-            {COMBAT_ARCANEDAMAGE, "rarity_arcaneAbsorb", "Arcane"}
-        };
-
-        std::vector<std::tuple<int, std::string, std::string>> skillTypes = {
-            {SKILL_FIST, "rarity_fistSkill", "Fist"},
-            {SKILL_CLUB, "rarity_clubSkill", "Club"},
-            {SKILL_SWORD, "rarity_swordSkill", "Sword"},
-            {SKILL_AXE, "rarity_axeSkill", "Axe"},
-            {SKILL_DISTANCE, "rarity_distanceSkill", "Distance"},
-            {SKILL_SHIELD, "rarity_shieldSkill", "Shielding"},
-            {SKILL_FISHING, "rarity_fishingSkill", "Fishing"},
-            {SKILL_CRAFTING, "rarity_craftingSkill", "Crafting"},
-            {SKILL_WOODCUTTING, "rarity_woodcuttingSkill", "Woodcutting"},
-            {SKILL_MINING, "rarity_miningSkill", "Mining"},
-            {SKILL_HERBALIST, "rarity_herbalistSkill", "Herbalism"},
-            {SKILL_ARMORSMITH, "rarity_armorsmithSkill", "Armorsmithing"},
-            {SKILL_WEAPONSMITH, "rarity_weaponsmithSkill", "Weaponsmithing"},
-            {SKILL_JEWELSMITH, "rarity_jewelsmithSkill", "Jewelsmithing"},
-            {SKILL_MAGLEVEL, "rarity_maglevelSkill", "Magic"}
-        };
-
-        std::vector<std::tuple<int, std::string, std::string>> specialSkillTypes = {
-            {SPECIALSKILL_CRITICALHITCHANCE, "rarity_criticalHitChance", "Critical Chance"},
-            {SPECIALSKILL_CRITICALHITAMOUNT, "rarity_criticalHitAmount", "Critical Hit"},
-            {SPECIALSKILL_MANALEECHCHANCE, "rarity_manaLeechChance", "Mana Chance"},
-            {SPECIALSKILL_MANALEECHAMOUNT, "rarity_manaLeechAmount", "Mana Amount"},
-            {SPECIALSKILL_LIFELEECHCHANCE, "rarity_lifeLeechChance", "Life Chance"},
-            {SPECIALSKILL_LIFELEECHAMOUNT, "rarity_lifeLeechAmount", "Life Amount"}
-        };
-
-        std::vector<std::tuple<CombatType_t, std::string, std::string>> elementTypes = {
-            {COMBAT_FIREDAMAGE,  "rarity_elementfire",  "Fire"},
-            {COMBAT_ICEDAMAGE,   "rarity_elementice",   "Ice"},
-            {COMBAT_ENERGYDAMAGE,"rarity_elementenergy", "Energy"},
-            {COMBAT_DEATHDAMAGE, "rarity_elementdeath", "Death"},
-            {COMBAT_EARTHDAMAGE, "rarity_elementearth", "Earth"},
-            {COMBAT_WATERDAMAGE, "rarity_elementwater", "Water"},
-            {COMBAT_ARCANEDAMAGE,"rarity_elementarcane", "Arcane"},
-            {COMBAT_HOLYDAMAGE,  "rarity_elementholy",  "Holy"}
-        };
-
-        std::string absorptionDesc;
-        if (attrCounts.numAbsorbs > 0) {
-            std::mt19937 rng(std::random_device{}());
-            std::shuffle(absorptionTypes.begin(), absorptionTypes.end(), rng);
-            for (int i = 0; i < attrCounts.numAbsorbs && i < (int)absorptionTypes.size(); ++i) {
-                auto [ctype, key, name] = absorptionTypes[i];
-                const auto& range = absorptionBonuses[rarityId - 1];
-                int bonus = uniform_random(range.first, range.second);
-                std::string attrKey = key;
-                item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-                absorptionDesc += (absorptionDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus) + "%";
-            }
-        }
-
-        std::string skillsDesc;
-        if (attrCounts.numSkills > 0) {
-            std::mt19937 rng(std::random_device{}());
-            std::shuffle(skillTypes.begin(), skillTypes.end(), rng);
-            for (int i = 0; i < attrCounts.numSkills && i < (int)skillTypes.size(); ++i) {
-                auto [skillId, key, name] = skillTypes[i];
-                const auto& range = absorptionBonuses[rarityId - 1];
-                int bonus = uniform_random(range.first, range.second);
-                std::string attrKey = key;
-                item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-                skillsDesc += (skillsDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus);
-            }
-        }
-
-        std::string specialsDesc;
-		bool criticalApplied = false;
-		bool manaApplied = false;
-		bool lifeApplied = false;
-
-		for (int i = 0; i < attrCounts.numSpecials && i < (int)specialSkillTypes.size(); ++i) {
-    		auto [specialId, key, name] = specialSkillTypes[i];
-    	if (specialId == SPECIALSKILL_CRITICALHITCHANCE || specialId == SPECIALSKILL_CRITICALHITAMOUNT) {
-        	if (!criticalApplied) {
-            	const auto& range = absorptionBonuses[rarityId - 1];
-            	int bonus = uniform_random(range.first, range.second);
-            	std::string critChanceKey = "rarity_criticalHitChance";
-            	std::string critHitKey    = "rarity_criticalHitAmount";
-            	item->setCustomAttribute(critChanceKey, static_cast<int64_t>(bonus));
-            	item->setCustomAttribute(critHitKey,    static_cast<int64_t>(bonus));
-            	specialsDesc += (specialsDesc.empty() ? "" : ", ") +
-                            std::string("Critical Chance +") + std::to_string(bonus) + "%";
-            	specialsDesc += ", " +
-                            std::string("Critical Hit +") + std::to_string(bonus) + "%";
-            	criticalApplied = true;
-        	}
-        	continue;
-    	}
-    	if (specialId == SPECIALSKILL_MANALEECHCHANCE || specialId == SPECIALSKILL_MANALEECHAMOUNT) {
-        	if (!manaApplied) {
-            	const auto& range = absorptionBonuses[rarityId - 1];
-            	int bonus = uniform_random(range.first, range.second);
-            	std::string manaChanceKey = "rarity_manaLeechChance";
-            	std::string manaAmountKey = "rarity_manaLeechAmount";
-            	item->setCustomAttribute(manaChanceKey, static_cast<int64_t>(bonus));
-            	item->setCustomAttribute(manaAmountKey, static_cast<int64_t>(bonus));
-            	specialsDesc += (specialsDesc.empty() ? "" : ", ") +
-                            std::string("Mana Chance +") + std::to_string(bonus) + "%";
-            	specialsDesc += ", " +
-                            std::string("Mana Amount +") + std::to_string(bonus) + "%";
-            	manaApplied = true;
-        	}
-        	continue;
-    	}
-    	if (specialId == SPECIALSKILL_LIFELEECHCHANCE || specialId == SPECIALSKILL_LIFELEECHAMOUNT) {
-        	if (!lifeApplied) {
-            	const auto& range = absorptionBonuses[rarityId - 1];
-            	int bonus = uniform_random(range.first, range.second);
-            	std::string lifeChanceKey = "rarity_lifeLeechChance";
-            	std::string lifeAmountKey = "rarity_lifeLeechAmount";
-            	item->setCustomAttribute(lifeChanceKey, static_cast<int64_t>(bonus));
-            	item->setCustomAttribute(lifeAmountKey, static_cast<int64_t>(bonus));
-            	specialsDesc += (specialsDesc.empty() ? "" : ", ") +
-                            std::string("Life Chance +") + std::to_string(bonus) + "%";
-            	specialsDesc += ", " +
-                            std::string("Life Amount +") + std::to_string(bonus) + "%";
-            	lifeApplied = true;
-        	}
-        	continue;
-    	}
-    	const auto& range = absorptionBonuses[rarityId - 1];
-    	int bonus = uniform_random(range.first, range.second);
-    	std::string attrKey = key;
-    	item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-    	specialsDesc += (specialsDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus) + "%";
-		}
-
-        std::string elementDesc;
-		if (isWeapon && it.attack > 0 && attrCounts.numElements > 0) {
-    		if (!it.abilities || it.abilities->elementDamage <= 0) {
-        		std::mt19937 rng(std::random_device{}());
-        		std::shuffle(elementTypes.begin(), elementTypes.end(), rng);
-        		for (int i = 0; i < attrCounts.numElements && i < (int)elementTypes.size(); ++i) {
-            		auto [ctype, key, name] = elementTypes[i];
-            		const auto& range = elementBonuses[rarityId - 1];
-            		int bonus = uniform_random(range.first, range.second);
-            		std::string attrKey = key;
-            		item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-            		elementDesc += (elementDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus) + "% dmg";
-        		}
-    		}
-		}
-
-        std::string description = item->getStrAttr(ITEM_ATTRIBUTE_DESCRIPTION);
-        if (!description.empty()) {
-            description += ", ";
-        }
-        description += "Level: " + std::to_string(finalLevel);
-        if (!absorptionDesc.empty()) {
-            description += ", " + absorptionDesc;
-        }
-        if (!skillsDesc.empty()) {
-            description += ", " + skillsDesc;
-        }
-        if (!specialsDesc.empty()) {
-            description += ", " + specialsDesc;
-        }
-        if (!elementDesc.empty()) {
-            description += ", Element: " + elementDesc;
-        }
-        item->setStrAttr(ITEM_ATTRIBUTE_DESCRIPTION, description);
-    }
 }
 
 void Monster::setNormalCreatureLight()

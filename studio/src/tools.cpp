@@ -1003,8 +1003,6 @@ itemAttrTypes stringToItemAttribute(const std::string& str)
 		return ITEM_ATTRIBUTE_EXTRADEFENSE;
 	} else if (str == "armor") {
 		return ITEM_ATTRIBUTE_ARMOR;
-	} else if (str == "rarity") {
-		return ITEM_ATTRIBUTE_RARITY;
 	} else if (str == "hitchance") {
 		return ITEM_ATTRIBUTE_HITCHANCE;
 	} else if (str == "shootrange") {
@@ -1273,6 +1271,24 @@ const char* getReturnMessage(ReturnValue value)
 int64_t OTSYS_TIME()
 {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
+std::string getRarityName(uint16_t rarityId)
+{
+	switch (rarityId)
+	{
+		case ITEM_RARITY_COMMON:
+			return "Common";
+		case ITEM_RARITY_RARE:
+			return "Rare";
+		case ITEM_RARITY_EPIC:
+			return "Epic";
+		case ITEM_RARITY_LEGENDARY:
+			return "Legendary";
+		case ITEM_RARITY_BRUTAL:
+			return "Brutal";
+		default:
+			return "";
+	}
 }
 
 SpellGroup_t stringToSpellGroup(const std::string& value)

@@ -96,6 +96,7 @@ void NetworkMessage::addItem(uint16_t id, uint8_t count)
 	if (it.isAnimation) {
 		addByte(0xFE); // random phase (0xFF for async)
 	}
+	addByte(0); // item rarity
 }
 
 void NetworkMessage::addItem(const Item* item)
@@ -114,6 +115,7 @@ void NetworkMessage::addItem(const Item* item)
 	if (it.isAnimation) {
 		addByte(0xFE); // random phase (0xFF for async)
 	}
+	addByte(item->getRarity()); // item rarity
 }
 
 void NetworkMessage::addItemId(uint16_t itemId)

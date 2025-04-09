@@ -1596,7 +1596,7 @@ uint32_t ConditionDamage::getIcons() const
 		case CONDITION_BEWITCHED:
 			icons |= ICON_CURSED;
 			break;
-
+			
 		case CONDITION_BLEEDING:
 			icons |= ICON_BLEEDING;
 			break;

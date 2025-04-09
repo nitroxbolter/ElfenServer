@@ -1196,10 +1196,10 @@ class Player final : public Creature, public Cylinder
 		bool hasLearnedInstantSpell(const std::string& spellName) const;
 
 		void updateRegeneration();
-
+int32_t getItemAttributeValue(ItemTooltipAttributes_t id, int32_t type = -1);
 	private:
 		std::forward_list<Condition*> getMuteConditions() const;
-
+		void incrementDamage(CombatType_t combatType, int32_t& damage);
 		void checkTradeState(const Item* item);
 		bool hasCapacity(const Item* item, uint32_t count) const;
 

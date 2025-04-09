@@ -95,7 +95,7 @@ enum AttrTypes_t {
 	ATTR_OPENCONTAINER = 39,
 	ATTR_PODIUMOUTFIT = 40,
 	ATTR_TIER = 41,
-	ATTR_RARITY = 42,
+	ATTR_RARITY_ATTRIBUTES = 43,
 };
 
 enum Attr_ReadValue {
@@ -144,6 +144,12 @@ class ItemAttributes
 		}
 		const std::string& getWriter() const {
 			return getStrAttr(ITEM_ATTRIBUTE_WRITER);
+		}
+		void setRarityLevel(ItemRarity_t rarityLevel) {
+			setIntAttr(ITEM_ATTRIBUTE_RARITYLEVEL, rarityLevel);
+		}
+		ItemRarity_t getRarityLevel() {
+			return static_cast<ItemRarity_t>(getIntAttr(ITEM_ATTRIBUTE_RARITYLEVEL));
 		}
 
 		void setActionId(uint16_t n) {
@@ -230,6 +236,7 @@ class ItemAttributes
 
 			template<typename T>
 			const T& get();
+			
 
 			struct PushLuaVisitor : public boost::static_visitor<> {
 				lua_State* L;
@@ -501,7 +508,7 @@ class ItemAttributes
 			| ITEM_ATTRIBUTE_ARMOR | ITEM_ATTRIBUTE_HITCHANCE | ITEM_ATTRIBUTE_SHOOTRANGE | ITEM_ATTRIBUTE_OWNER
 			| ITEM_ATTRIBUTE_DURATION | ITEM_ATTRIBUTE_DECAYSTATE | ITEM_ATTRIBUTE_CORPSEOWNER | ITEM_ATTRIBUTE_CHARGES
 			| ITEM_ATTRIBUTE_FLUIDTYPE | ITEM_ATTRIBUTE_DOORID | ITEM_ATTRIBUTE_DECAYTO | ITEM_ATTRIBUTE_WRAPID | ITEM_ATTRIBUTE_STOREITEM
-			| ITEM_ATTRIBUTE_ATTACK_SPEED | ITEM_ATTRIBUTE_RARITY;
+			| ITEM_ATTRIBUTE_ATTACK_SPEED;
 		const static uint32_t stringAttributeTypes = ITEM_ATTRIBUTE_DESCRIPTION | ITEM_ATTRIBUTE_TEXT | ITEM_ATTRIBUTE_WRITER
 			| ITEM_ATTRIBUTE_NAME | ITEM_ATTRIBUTE_ARTICLE | ITEM_ATTRIBUTE_PLURALNAME;
 
@@ -531,8 +538,6 @@ class Item : virtual public Thing
 		static Container* CreateItemAsContainer(const uint16_t type, uint16_t size);
 		static Item* CreateItem(PropStream& propStream);
 		static Items items;
-		static Item* CreateItemWithRarity(const uint16_t type, uint16_t count, int rarityId);
-    	static void applyRarityEffects(Item* item);
 
 		// Constructor for items
 		Item(const uint16_t type, uint16_t count = 0);
@@ -698,6 +703,19 @@ class Item : virtual public Thing
 			return getStrAttr(ITEM_ATTRIBUTE_WRITER);
 		}
 
+		slots_t getRaritySlot() const;
+		void setRarityLevel(const Position& pos, bool fromMonster);
+		bool canHoldRarityLevel(slots_t slotId) const;
+		void setRarityLevel(ItemRarity_t rarityLevel) {
+			setIntAttr(ITEM_ATTRIBUTE_RARITYLEVEL, static_cast<int32_t>(rarityLevel));
+		}
+		ItemRarity_t getRarityLevel() {
+			if (!attributes) {
+				return ITEM_RARITY_NONE;
+			}
+			return static_cast<ItemRarity_t>(getIntAttr(ITEM_ATTRIBUTE_RARITYLEVEL));
+		}
+
 		void setActionId(uint16_t n) {
 			if (n < 100) {
 				n = 100;
@@ -705,6 +723,12 @@ class Item : virtual public Thing
 
 			setIntAttr(ITEM_ATTRIBUTE_ACTIONID, n);
 		}
+
+		uint8_t getRarity();
+		uint8_t getRarity() const {
+			return const_cast<Item*>(this)->getRarity();
+		}
+
 		uint16_t getActionId() const {
 			if (!attributes) {
 				return 0;
@@ -791,8 +815,11 @@ class Item : virtual public Thing
 			}
 			return items[id].decayTo;
 		}
-
+		void getTooltipData(TooltipDataContainer& tooltipData);
 		void getRarityLevel(TooltipDataContainer& tooltipData);
+		void addTooltipData(TooltipDataContainer& tooltipData, ItemTooltipAttributes_t id, int32_t value, int32_t type);
+		int32_t getAttributeValue(ItemTooltipAttributes_t id, int32_t type = -1);
+
 		static void getTooltipData(Item* item, uint16_t spriteId, uint16_t count, TooltipDataContainer& tooltipData);
 		static void getTooltipCombats(const ItemType& it, CombatType_t combatType, TooltipDataContainer& tooltipData);
 		static void getTooltipStats(const ItemType& it, TooltipDataContainer& tooltipData);
@@ -870,14 +897,6 @@ class Item : virtual public Thing
 			}
 			return items[id].armor;
 		}
-
-		int32_t getRarity() const {
-    		if (hasAttribute(ITEM_ATTRIBUTE_RARITY)) {
-        		return getIntAttr(ITEM_ATTRIBUTE_RARITY);
-    		}
-    		return items[getID()].rarity;
-		}
-		
 		int32_t getDefense() const {
 			if (hasAttribute(ITEM_ATTRIBUTE_DEFENSE)) {
 				return getIntAttr(ITEM_ATTRIBUTE_DEFENSE);
@@ -1069,6 +1088,9 @@ class Item : virtual public Thing
 		std::string getWeightDescription(uint32_t weight) const;
 
 		std::unique_ptr<ItemAttributes> attributes;
+		std::multimap<ItemTooltipAttributes_t, std::pair<int32_t, IntegerVector>> rarityAttributes;
+
+		ItemRarity_t rarityId = ITEM_RARITY_NONE;
 
 		uint32_t referenceCounter = 0;
 

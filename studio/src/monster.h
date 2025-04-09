@@ -84,7 +84,7 @@ class Monster final : public Creature
 			return mType->info.defense;
 		}
 		bool isPushable() const override {
-			return canMove() && mType->info.pushable && baseSpeed != 0;
+			return mType->info.pushable && baseSpeed != 0;
 		}
 		bool isAttackable() const override {
 			return mType->info.isAttackable;

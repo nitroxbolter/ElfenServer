@@ -193,6 +193,7 @@
     <ClCompile Include="..\src\iomapserialize.cpp" />
     <ClCompile Include="..\src\iomarket.cpp" />
     <ClCompile Include="..\src\item.cpp" />
+    <ClCompile Include="..\src\itemattributes.cpp" />
     <ClCompile Include="..\src\items.cpp" />
     <ClCompile Include="..\src\luascript.cpp" />
     <ClCompile Include="..\src\mailbox.cpp" />
@@ -284,6 +285,7 @@
     <ClInclude Include="..\src\iomapserialize.h" />
     <ClInclude Include="..\src\iomarket.h" />
     <ClInclude Include="..\src\item.h" />
+    <ClInclude Include="..\src\itemattributes.h" />
     <ClInclude Include="..\src\itemloader.h" />
     <ClInclude Include="..\src\items.h" />
     <ClInclude Include="..\src\lockfree.h" />

@@ -11,347 +11,16 @@
 #include "house.h"
 #include "game.h"
 #include "bed.h"
-#include <vector>
-#include <list>
-#include <tuple>
-#include <string>
-#include <random>
-#include <algorithm>
-#include <cstdint>
 
 #include "actions.h"
 #include "spells.h"
+#include "itemattributes.h"
 
 extern Game g_game;
 extern Spells* g_spells;
 extern Vocations g_vocations;
 
 Items Item::items;
-
-struct RarityAttributes {
-    int numAbsorbs;
-    int numSkills;
-    int numSpecials;
-    int numElements;
-};
-
-void Item::applyRarityEffects(Item* item) {
-    const auto rarityAttr = item->getCustomAttribute("rarity");
-    if (!rarityAttr) {
-        return;
-    }
-
-    int rarityId = 0;
-    const auto& value = rarityAttr->value;
-    if (value.type() == typeid(int64_t)) {
-        rarityId = boost::get<int64_t>(value);
-    }
-    if (rarityId <= 0) {
-        return;
-    }
-
-    struct Rarity {
-        int value;
-        double chance;
-        int minLevel;
-        int maxLevel;
-        int minBonus;
-        int maxBonus;
-    };
-    std::vector<Rarity> rarities = {
-        {1,   15.0,   1,   10,   1,   1},
-        {2,   14.0,  11,   20,   1,   2},
-        {3,   13.0,  21,   30,   1,   2},
-        {4,   12.0,  31,   40,   1,   3},
-        {5,   10.0,  41,   50,   1,   3},
-        {6,    8.0,  51,   60,   2,   4},
-        {7,    7.0,  61,   70,   2,   5},
-        {8,    6.0,  71,   80,   3,   6},
-        {9,    5.0,  81,   90,   3,   7},
-        {10,   4.5,  91,  100,   4,   8},
-        {11,   3.3, 101,  110,   4,   9},
-        {12,   2.2, 111,  120,   5,  10},
-        {13,   1.8, 121,  130,   6,  10},
-        {14,   1.3, 131,  140,   7,  12},
-        {15,   1.0, 141,  150,   9,  15}
-    };
-
-    std::vector<RarityAttributes> rarityAttributes = {
-        {1, 1, 0, 0}, // Rarity 1
-        {1, 1, 0, 1}, // Rarity 2
-        {1, 1, 0, 1}, // Rarity 3
-        {1, 1, 1, 1}, // Rarity 4
-        {1, 1, 1, 1}, // Rarity 5
-        {1, 2, 1, 1}, // Rarity 6
-        {1, 2, 1, 1}, // Rarity 7
-        {1, 2, 2, 1}, // Rarity 8
-        {2, 2, 2, 1}, // Rarity 9
-        {2, 2, 2, 1}, // Rarity 10
-        {2, 2, 2, 1}, // Rarity 11
-        {2, 2, 2, 1}, // Rarity 12
-        {2, 2, 2, 1}, // Rarity 13
-        {3, 3, 2, 1}, // Rarity 14
-        {3, 3, 2, 1}  // Rarity 15
-    };
-
-    std::vector<std::pair<int, int>> absorptionBonuses = {
-        {1, 1}, {1, 1}, {1, 1}, {1, 2}, {1, 2},
-        {1, 3}, {1, 3}, {1, 4}, {1, 4}, {2, 5},
-        {2, 5}, {2, 5}, {3, 6}, {4, 6}, {5, 6}
-    };
-
-    std::vector<std::pair<int, int>> elementBonuses = {
-        {1, 3}, {3, 6}, {4, 8}, {5, 10}, {6, 12},
-        {7, 14}, {8, 16}, {9, 18}, {10, 20}, {12, 22},
-        {14, 24}, {16, 26}, {18, 28}, {20, 30}, {25, 40}
-    };
-
-    const ItemType& it = Item::items[item->getID()];
-
-    if (item->getCustomAttribute("combatPowerLevel"))
-        return;
-
-    const uint32_t VALID_EQUIP_SLOTS =
-        SLOTP_HEAD |
-        SLOTP_NECKLACE |
-        SLOTP_ARMOR |
-        SLOTP_RIGHT |
-        SLOTP_LEFT |
-        SLOTP_LEGS |
-        SLOTP_FEET |
-        SLOTP_RING |
-        SLOTP_DECKBAD |
-        SLOTP_BELT |
-        SLOTP_GLOVES;
-
-    if ((it.slotPosition & VALID_EQUIP_SLOTS) == 0)
-        return;
-
-    bool isWeapon = (it.weaponType != WEAPON_NONE);
-
-    int finalLevel = 0, minBonus = 0, maxBonus = 0;
-    for (const Rarity& r : rarities) {
-        if (r.value == rarityId) {
-            finalLevel = uniform_random(r.minLevel, r.maxLevel);
-            minBonus = r.minBonus;
-            maxBonus = r.maxBonus;
-            break;
-        }
-    }
-    int bonusRange = maxBonus - minBonus + 1;
-    int finalBonus = minBonus + (finalLevel * bonusRange / 100);
-
-    if (it.attack > 0) {
-        int64_t newAttack = it.attack + finalBonus;
-        item->setIntAttr(ITEM_ATTRIBUTE_ATTACK, newAttack);
-    }
-    if (it.defense > 0) {
-        int64_t newDefense = it.defense + finalBonus;
-        item->setIntAttr(ITEM_ATTRIBUTE_DEFENSE, newDefense);
-    }
-    if (it.armor > 0) {
-        int64_t newArmor = it.armor + finalBonus;
-        item->setIntAttr(ITEM_ATTRIBUTE_ARMOR, newArmor);
-    }
-    if (it.hitChance > 0) {
-        int64_t newHitChance = it.hitChance + finalBonus;
-        item->setIntAttr(ITEM_ATTRIBUTE_HITCHANCE, newHitChance);
-    }
-
-    std::string levelKey = "combatPowerLevel";
-        item->setCustomAttribute(levelKey, static_cast<int64_t>(finalLevel));
-
-        RarityAttributes attrCounts = rarityAttributes[rarityId - 1];
-
-        std::vector<std::tuple<CombatType_t, std::string, std::string>> absorptionTypes = {
-            {COMBAT_PHYSICALDAMAGE, "rarity_physicalAbsorb", "Physical"},
-            {COMBAT_ENERGYDAMAGE, "rarity_energyAbsorb", "Energy"},
-            {COMBAT_EARTHDAMAGE, "rarity_earthAbsorb", "Earth"},
-            {COMBAT_FIREDAMAGE, "rarity_fireAbsorb", "Fire"},
-            {COMBAT_DROWNDAMAGE, "rarity_drownAbsorb", "Drown"},
-            {COMBAT_ICEDAMAGE, "rarity_iceAbsorb", "Ice"},
-            {COMBAT_HOLYDAMAGE, "rarity_holyAbsorb", "Holy"},
-            {COMBAT_DEATHDAMAGE, "rarity_deathAbsorb", "Death"},
-            {COMBAT_WATERDAMAGE, "rarity_waterAbsorb", "Water"},
-            {COMBAT_ARCANEDAMAGE, "rarity_arcaneAbsorb", "Arcane"}
-        };
-
-        std::vector<std::tuple<int, std::string, std::string>> skillTypes = {
-            {SKILL_FIST, "rarity_fistSkill", "Fist"},
-            {SKILL_CLUB, "rarity_clubSkill", "Club"},
-            {SKILL_SWORD, "rarity_swordSkill", "Sword"},
-            {SKILL_AXE, "rarity_axeSkill", "Axe"},
-            {SKILL_DISTANCE, "rarity_distanceSkill", "Distance"},
-            {SKILL_SHIELD, "rarity_shieldSkill", "Shielding"},
-            {SKILL_FISHING, "rarity_fishingSkill", "Fishing"},
-            {SKILL_CRAFTING, "rarity_craftingSkill", "Crafting"},
-            {SKILL_WOODCUTTING, "rarity_woodcuttingSkill", "Woodcutting"},
-            {SKILL_MINING, "rarity_miningSkill", "Mining"},
-            {SKILL_HERBALIST, "rarity_herbalistSkill", "Herbalism"},
-            {SKILL_ARMORSMITH, "rarity_armorsmithSkill", "Armorsmithing"},
-            {SKILL_WEAPONSMITH, "rarity_weaponsmithSkill", "Weaponsmithing"},
-            {SKILL_JEWELSMITH, "rarity_jewelsmithSkill", "Jewelsmithing"},
-            {SKILL_MAGLEVEL, "rarity_maglevelSkill", "Magic"}
-        };
-
-        std::vector<std::tuple<int, std::string, std::string>> specialSkillTypes = {
-            {SPECIALSKILL_CRITICALHITCHANCE, "rarity_criticalHitChance", "Critical Chance"},
-            {SPECIALSKILL_CRITICALHITAMOUNT, "rarity_criticalHitAmount", "Critical Hit"},
-            {SPECIALSKILL_MANALEECHCHANCE, "rarity_manaLeechChance", "Mana Chance"},
-            {SPECIALSKILL_MANALEECHAMOUNT, "rarity_manaLeechAmount", "Mana Amount"},
-            {SPECIALSKILL_LIFELEECHCHANCE, "rarity_lifeLeechChance", "Life Chance"},
-            {SPECIALSKILL_LIFELEECHAMOUNT, "rarity_lifeLeechAmount", "Life Amount"}
-        };
-
-        std::vector<std::tuple<CombatType_t, std::string, std::string>> elementTypes = {
-            {COMBAT_FIREDAMAGE,  "rarity_elementfire",  "Fire"},
-            {COMBAT_ICEDAMAGE,   "rarity_elementice",   "Ice"},
-            {COMBAT_ENERGYDAMAGE,"rarity_elementenergy", "Energy"},
-            {COMBAT_DEATHDAMAGE, "rarity_elementdeath", "Death"},
-            {COMBAT_EARTHDAMAGE, "rarity_elementearth", "Earth"},
-            {COMBAT_WATERDAMAGE, "rarity_elementwater", "Water"},
-            {COMBAT_ARCANEDAMAGE,"rarity_elementarcane", "Arcane"},
-            {COMBAT_HOLYDAMAGE,  "rarity_elementholy",  "Holy"}
-        };
-
-        std::string absorptionDesc;
-        if (attrCounts.numAbsorbs > 0) {
-            std::mt19937 rng(std::random_device{}());
-            std::shuffle(absorptionTypes.begin(), absorptionTypes.end(), rng);
-            for (int i = 0; i < attrCounts.numAbsorbs && i < (int)absorptionTypes.size(); ++i) {
-                auto [ctype, key, name] = absorptionTypes[i];
-                const auto& range = absorptionBonuses[rarityId - 1];
-                int bonus = uniform_random(range.first, range.second);
-                std::string attrKey = key;
-                item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-                absorptionDesc += (absorptionDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus) + "%";
-            }
-        }
-
-        std::string skillsDesc;
-        if (attrCounts.numSkills > 0) {
-            std::mt19937 rng(std::random_device{}());
-            std::shuffle(skillTypes.begin(), skillTypes.end(), rng);
-            for (int i = 0; i < attrCounts.numSkills && i < (int)skillTypes.size(); ++i) {
-                auto [skillId, key, name] = skillTypes[i];
-                const auto& range = absorptionBonuses[rarityId - 1];
-                int bonus = uniform_random(range.first, range.second);
-                std::string attrKey = key;
-                item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-                skillsDesc += (skillsDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus);
-            }
-        }
-
-        std::string specialsDesc;
-		bool criticalApplied = false;
-		bool manaApplied = false;
-		bool lifeApplied = false;
-
-		for (int i = 0; i < attrCounts.numSpecials && i < (int)specialSkillTypes.size(); ++i) {
-    		auto [specialId, key, name] = specialSkillTypes[i];
-    	if (specialId == SPECIALSKILL_CRITICALHITCHANCE || specialId == SPECIALSKILL_CRITICALHITAMOUNT) {
-        	if (!criticalApplied) {
-            	const auto& range = absorptionBonuses[rarityId - 1];
-            	int bonus = uniform_random(range.first, range.second);
-            	std::string critChanceKey = "rarity_criticalHitChance";
-            	std::string critHitKey    = "rarity_criticalHitAmount";
-            	item->setCustomAttribute(critChanceKey, static_cast<int64_t>(bonus));
-            	item->setCustomAttribute(critHitKey,    static_cast<int64_t>(bonus));
-            	specialsDesc += (specialsDesc.empty() ? "" : ", ") +
-                            std::string("Critical Chance +") + std::to_string(bonus) + "%";
-            	specialsDesc += ", " +
-                            std::string("Critical Hit +") + std::to_string(bonus) + "%";
-            	criticalApplied = true;
-        	}
-        	continue;
-    	}
-    	if (specialId == SPECIALSKILL_MANALEECHCHANCE || specialId == SPECIALSKILL_MANALEECHAMOUNT) {
-        	if (!manaApplied) {
-            	const auto& range = absorptionBonuses[rarityId - 1];
-            	int bonus = uniform_random(range.first, range.second);
-            	std::string manaChanceKey = "rarity_manaLeechChance";
-            	std::string manaAmountKey = "rarity_manaLeechAmount";
-            	item->setCustomAttribute(manaChanceKey, static_cast<int64_t>(bonus));
-            	item->setCustomAttribute(manaAmountKey, static_cast<int64_t>(bonus));
-            	specialsDesc += (specialsDesc.empty() ? "" : ", ") +
-                            std::string("Mana Chance +") + std::to_string(bonus) + "%";
-            	specialsDesc += ", " +
-                            std::string("Mana Amount +") + std::to_string(bonus) + "%";
-            	manaApplied = true;
-        	}
-        	continue;
-    	}
-    	if (specialId == SPECIALSKILL_LIFELEECHCHANCE || specialId == SPECIALSKILL_LIFELEECHAMOUNT) {
-        	if (!lifeApplied) {
-            	const auto& range = absorptionBonuses[rarityId - 1];
-            	int bonus = uniform_random(range.first, range.second);
-            	std::string lifeChanceKey = "rarity_lifeLeechChance";
-            	std::string lifeAmountKey = "rarity_lifeLeechAmount";
-            	item->setCustomAttribute(lifeChanceKey, static_cast<int64_t>(bonus));
-            	item->setCustomAttribute(lifeAmountKey, static_cast<int64_t>(bonus));
-            	specialsDesc += (specialsDesc.empty() ? "" : ", ") +
-                            std::string("Life Chance +") + std::to_string(bonus) + "%";
-            	specialsDesc += ", " +
-                            std::string("Life Amount +") + std::to_string(bonus) + "%";
-            	lifeApplied = true;
-        	}
-        	continue;
-    	}
-    	const auto& range = absorptionBonuses[rarityId - 1];
-    	int bonus = uniform_random(range.first, range.second);
-    	std::string attrKey = key;
-    	item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-    	specialsDesc += (specialsDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus) + "%";
-		}
-
-        std::string elementDesc;
-		if (isWeapon && it.attack > 0 && attrCounts.numElements > 0) {
-    		if (!it.abilities || it.abilities->elementDamage <= 0) {
-        		std::mt19937 rng(std::random_device{}());
-        		std::shuffle(elementTypes.begin(), elementTypes.end(), rng);
-        		for (int i = 0; i < attrCounts.numElements && i < (int)elementTypes.size(); ++i) {
-            		auto [ctype, key, name] = elementTypes[i];
-            		const auto& range = elementBonuses[rarityId - 1];
-            		int bonus = uniform_random(range.first, range.second);
-            		std::string attrKey = key;
-            		item->setCustomAttribute(attrKey, static_cast<int64_t>(bonus));
-            		elementDesc += (elementDesc.empty() ? "" : ", ") + name + " +" + std::to_string(bonus) + "% dmg";
-        		}
-    		}
-		}
-
-        std::string description = item->getStrAttr(ITEM_ATTRIBUTE_DESCRIPTION);
-        if (!description.empty()) {
-            description += ", ";
-        }
-        description += "Level: " + std::to_string(finalLevel);
-        if (!absorptionDesc.empty()) {
-            description += ", " + absorptionDesc;
-        }
-        if (!skillsDesc.empty()) {
-            description += ", " + skillsDesc;
-        }
-        if (!specialsDesc.empty()) {
-            description += ", " + specialsDesc;
-        }
-        if (!elementDesc.empty()) {
-            description += ", Element: " + elementDesc;
-        }
-        item->setStrAttr(ITEM_ATTRIBUTE_DESCRIPTION, description);
-}
-
-Item* Item::CreateItemWithRarity(const uint16_t type, uint16_t count, int rarityId) {
-    if (rarityId <= 0) {
-        return CreateItem(type, count);
-    }
-    Item* newItem = CreateItem(type, count);
-    if (newItem) {
-        std::string key = "rarity";
-        newItem->setCustomAttribute(key, static_cast<int64_t>(rarityId));
-        applyRarityEffects(newItem);
-    }
-    return newItem;
-}
 
 Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/)
 {
@@ -397,9 +66,6 @@ Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/)
 			newItem = new Item(18408, count);
 		} else {
 			newItem = new Item(type, count);
-		}
-		if(newItem && newItem->getCustomAttribute("rarity")) {
-    		applyRarityEffects(newItem);
 		}
 
 		newItem->incrementReferenceCounter();
@@ -891,15 +557,6 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 			break;
 		}
 
-		case ATTR_RARITY: {
-    		int32_t rarity;
-    		if (!propStream.read<int32_t>(rarity)) {
-        		return ATTR_READ_ERROR;
-    		}
-    		setIntAttr(ITEM_ATTRIBUTE_RARITY, rarity);
-    		break;
-		}
-
 		case ATTR_HITCHANCE: {
 			int8_t hitChance;
 			if (!propStream.read<int8_t>(hitChance)) {
@@ -930,7 +587,8 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 			break;
 		}
 
-		case ATTR_WRAPID: {
+		case ATTR_WRAPID:
+		{
 			uint16_t wrapId;
 			if (!propStream.read<uint16_t>(wrapId)) {
 				return ATTR_READ_ERROR;
@@ -1034,6 +692,49 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 				}
 
 				setCustomAttribute(key, val);
+			}
+			break;
+		}
+		case ATTR_RARITY_ATTRIBUTES: {
+			uint8_t rarity;
+			if (!propStream.read<uint8_t>(rarity)) {
+				return ATTR_READ_ERROR;
+			}
+
+			rarityId = static_cast<ItemRarity_t>(rarity);
+
+			uint64_t size;
+			if (!propStream.read<uint64_t>(size)) {
+				return ATTR_READ_ERROR;
+			}
+
+			for (uint64_t i = 0; i < size; i++) {
+				uint8_t attributeId;
+				if (!propStream.read<uint8_t>(attributeId)) {
+					return ATTR_READ_ERROR;
+				}
+
+				int32_t value;
+				if (!propStream.read<int32_t>(value)) {
+					return ATTR_READ_ERROR;
+				}
+
+				uint64_t attributesSize;
+				if (!propStream.read<uint64_t>(attributesSize)) {
+					return ATTR_READ_ERROR;
+				}
+
+				IntegerVector itemTypes;
+				for (uint64_t j = 0; j < attributesSize; j++) {
+					int32_t type;
+					if (!propStream.read<int32_t>(type)) {
+						return ATTR_READ_ERROR;
+					}
+					itemTypes.push_back(type);
+				}
+
+				const std::pair<int32_t, IntegerVector> types = { value, itemTypes };
+				rarityAttributes.emplace(static_cast<ItemTooltipAttributes_t>(attributeId), types);
 			}
 			break;
 		}
@@ -1166,11 +867,6 @@ void Item::serializeAttr(PropWriteStream& propWriteStream) const
 		propWriteStream.write<int32_t>(getIntAttr(ITEM_ATTRIBUTE_ARMOR));
 	}
 
-	if (hasAttribute(ITEM_ATTRIBUTE_RARITY)) {
-		propWriteStream.write<uint8_t>(ATTR_RARITY);
-		propWriteStream.write<int32_t>(getIntAttr(ITEM_ATTRIBUTE_RARITY));
-	}
-
 	if (hasAttribute(ITEM_ATTRIBUTE_HITCHANCE)) {
 		propWriteStream.write<uint8_t>(ATTR_HITCHANCE);
 		propWriteStream.write<int8_t>(getIntAttr(ITEM_ATTRIBUTE_HITCHANCE));
@@ -1206,6 +902,20 @@ void Item::serializeAttr(PropWriteStream& propWriteStream) const
 
 			// Serializing value type and value
 			entry.second.serialize(propWriteStream);
+		}
+	}
+
+	if (rarityId != ITEM_RARITY_NONE) {
+		propWriteStream.write<uint8_t>(ATTR_RARITY_ATTRIBUTES);
+		propWriteStream.write<uint8_t>(rarityId);
+		propWriteStream.write<uint64_t>(static_cast<uint64_t>(rarityAttributes.size()));
+		for (auto& itAttribute : rarityAttributes) {
+			propWriteStream.write<uint8_t>(itAttribute.first);
+			propWriteStream.write<int32_t>(itAttribute.second.first);
+			propWriteStream.write<uint64_t>(static_cast<uint64_t>(itAttribute.second.second.size()));
+			for (auto& itType : itAttribute.second.second) {
+				propWriteStream.write<int32_t>(itType);
+			}
 		}
 	}
 }
@@ -2260,6 +1970,7 @@ void Item::getTooltipOther(const ItemType& it, TooltipDataContainer& tooltipData
 	if (it.abilities->elementType == COMBAT_ARCANEDAMAGE && it.abilities->elementDamage != 0) {
 	tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ARCANE_ATTACK, it.abilities->elementDamage));
 	}
+
 }
 
 void Item::getTooltipData(Item* item, uint16_t spriteId, uint16_t count, TooltipDataContainer& tooltipData)
@@ -2281,66 +1992,32 @@ void Item::getTooltipData(Item* item, uint16_t spriteId, uint16_t count, Tooltip
 		}
 	}
 	else if (it.weaponType != WEAPON_NONE) {
-    if (it.weaponType == WEAPON_DISTANCE && it.ammoType != AMMO_NONE) {
-       if (item && item->hasAttribute(ITEM_ATTRIBUTE_ATTACK)) {
-        int32_t attack = item->getAttack();
-        if (attack > 0) {
-            tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK, attack));
-        }
-    	} else if (it.attack > 0) {
-        	tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK, it.attack));
-    	}
-
-        if (it.shootRange != 0) {
-            tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_SHOOTRANGE, it.shootRange));
-        }
-        if (item && item->hasAttribute(ITEM_ATTRIBUTE_HITCHANCE)) {
-        int32_t hitChance = item->getHitChance();
-        if (hitChance > 0) {
-            tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_HITCHANCE, hitChance));
-        }
-    } else if (it.hitChance > 0) {
-        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_HITCHANCE, it.hitChance));
-    }
-    } else if (it.weaponType != WEAPON_AMMO && it.weaponType != WEAPON_WAND && 
-               (it.attack != 0 || it.defense != 0 || it.extraDefense != 0)) {
-        if (item && item->hasAttribute(ITEM_ATTRIBUTE_ATTACK)) {
-        int32_t attack = item->getAttack();
-        if (attack > 0) {
-            tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK, attack));
-        }
-    } else if (it.attack > 0) {
-        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK, it.attack));
-    }
-
-        if (item && item->hasAttribute(ITEM_ATTRIBUTE_DEFENSE)) {
-        int32_t defense = item->getDefense();
-        if (defense > 0) {
-            tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_DEFENSE, defense));
-        }
-    } else if (it.defense > 0) {
-        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_DEFENSE, it.defense));
-    }
-
-        if (item && item->hasAttribute(ITEM_ATTRIBUTE_EXTRADEFENSE)) {
-        int32_t extraDefense = item->getExtraDefense();
-        if (extraDefense > 0) {
-            tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_EXTRADEFENSE, extraDefense));
-        }
-    } else if (it.extraDefense > 0) {
-        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_EXTRADEFENSE, it.extraDefense));
-    }
+		if (it.weaponType == WEAPON_DISTANCE && it.ammoType != AMMO_NONE) {
+			if (it.attack != 0) {
+				tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK, it.attack));
+			}
+			if (it.shootRange != 0) {
+				tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_SHOOTRANGE, it.shootRange));
+			}
+		}
+		else if (it.weaponType != WEAPON_AMMO && it.weaponType != WEAPON_WAND && (it.attack != 0 || it.defense != 0)) {
+			if (it.attack != 0) {
+				tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK, it.attack));
+			}
+				if (it.attackSpeed != 0) {
+		        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ATTACK_SPEED, it.attackSpeed));
+			}
+			if (it.defense != 0) {
+				tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_DEFENSE, it.defense));
+			}
+			if (it.extraDefense != 0) {
+				tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_EXTRADEFENSE, it.extraDefense));
+			}
+		}
 	}
-	} 
-	else if (item && item->hasAttribute(ITEM_ATTRIBUTE_ARMOR)) {
-    int32_t armor = item->getArmor();
-    if (armor > 0) {
-        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ARMOR, armor));
-    }
-	} else if (it.armor > 0) {
-    	tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ARMOR, it.armor));
+	else if (it.armor != 0) {
+		tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_ARMOR, it.armor));
 	}
-
 	else if (it.isFluidContainer()) {
 		if (item && item->getFluidType() != 0) {
 			tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_FLUIDTYPE, items[item->getFluidType()].name));
@@ -2444,27 +2121,188 @@ void Item::getTooltipData(Item* item, uint16_t spriteId, uint16_t count, Tooltip
 	getTooltipCombats(it, COMBAT_DEATHDAMAGE, tooltipData);
 	getTooltipCombats(it, COMBAT_WATERDAMAGE, tooltipData);
 	getTooltipCombats(it, COMBAT_ARCANEDAMAGE, tooltipData);
+
 	getTooltipStats(it, tooltipData);
 	getTooltipSkills(it, tooltipData);
+
 	getTooltipOther(it, tooltipData);
+	
+	if (item) {
+		item->getTooltipData(tooltipData);
+	}
+
+}
+void Item::addTooltipData(TooltipDataContainer& tooltipData, ItemTooltipAttributes_t id, int32_t value, int32_t type)
+{
+	for (auto& itData : tooltipData) {
+		if (itData.attributeId != id || itData.attributeType != type) {
+			continue;
+		}
+
+		if (!itData.isNumber()) {
+			// Update number values only
+			continue;
+		}
+
+		itData.attributeValue = itData.getNumber() + value;
+		return;
+	}
+
+	tooltipData.push_back(TooltipData(id, value, type));
+}
+
+int32_t Item::getAttributeValue(ItemTooltipAttributes_t id, int32_t type/* = -1*/)
+{
+	int32_t value = 0;
+	for (auto& itData : rarityAttributes) {
+		if (itData.first != id) {
+			continue;
+		}
+
+		if (type != -1 && std::find(itData.second.second.begin(), itData.second.second.end(), type) == itData.second.second.end()) {
+			continue;
+		}
+
+		value += itData.second.first;
+	}
+
+	return value;
+}
+
+void Item::getTooltipData(TooltipDataContainer& tooltipData)
+{
+	if (rarityId == ITEM_RARITY_NONE) {
+		return;
+	}
+
+	for (auto& itAttribute : rarityAttributes) {
+		if (itAttribute.second.second.empty()) {
+			// There are no sub types
+			addTooltipData(tooltipData, itAttribute.first, itAttribute.second.first, -1);
+		}
+		else {
+			// There are more sub types such as resistances or skills
+			for (auto& itType : itAttribute.second.second) {
+				addTooltipData(tooltipData, itAttribute.first, itAttribute.second.first, itType);
+			}
+		}
+	}
 }
 
 void Item::getRarityLevel(TooltipDataContainer& tooltipData)
 {
-    int rarity = 0;
-    const auto rarityId = getCustomAttribute("rarity");
-    if (rarityId) {
-        const auto& value = rarityId->value;
-        if (value.type() == typeid(int64_t)) {
-            rarity = boost::get<int64_t>(value);
-        }
-    }
-    if (rarity == 0) {
-        rarity = items[getID()].rarity;
-    }
-    if (rarity > 0) {
-        tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_RARITY, rarity));
-    }
+	if (rarityId == ITEM_RARITY_NONE) {
+		return;
+	}
+
+	tooltipData.push_back(TooltipData(TOOLTIP_ATTRIBUTE_RARITY, rarityId));
+}
+
+void Item::setRarityLevel(const Position& pos, bool fromMonster)
+
+{
+	(void)pos; // suprime o warning C4100
+	
+	if (isStackable()) {
+		return;
+	}
+
+	const slots_t slotId = getRaritySlot();
+	if (slotId == CONST_SLOT_WHEREEVER) {
+		return;
+	}
+
+	if (!canHoldRarityLevel(slotId)) {
+		return;
+	}
+
+	ItemRarity_t id = ItemRarityAttributes::getInstance()->getRandomRarityId(fromMonster);
+	if (id == ITEM_RARITY_NONE) {
+		return;
+	}
+
+	if (ItemRarityAttributes::getInstance()->setRandomAttributes(id, slotId, &rarityAttributes)) {
+		// Set the rarity id only if the attributes have been set correctly
+		rarityId = id;
+
+		TextColor_t color = TEXTCOLOR_NONE;
+		std::string text;
+		switch (rarityId) {
+			case ITEM_RARITY_RARE: {
+				color = TEXTCOLOR_BLUE;
+				text = "Rare";
+				break;
+			}
+			case ITEM_RARITY_EPIC: {
+				color = TEXTCOLOR_ELECTRICPURPLE;
+				text = "Epic";
+				break;
+			}
+			case ITEM_RARITY_LEGENDARY: {
+				color = TEXTCOLOR_YELLOW;
+				text = "Legendary";
+				break;
+			}
+			case ITEM_RARITY_BRUTAL: {
+				color = TEXTCOLOR_RED;
+				text = "Brutal";
+				break;
+			}
+			default:
+				break;
+		}
+
+		// if (color != TEXTCOLOR_NONE) {
+		// 	g_game.addAnimatedText(pos, TEXTCOLOR_BLUE, text);
+		// }
+	}
+}
+
+bool Item::canHoldRarityLevel(slots_t slotId) const
+{
+	switch (slotId)
+	{
+		case CONST_SLOT_WHEREEVER:
+		case CONST_SLOT_AMMO:
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+slots_t Item::getRaritySlot() const
+{
+	const ItemType& it = items[id];
+	const slots_t slotId = getSlotType(it);
+	switch (slotId)
+	{
+		case CONST_SLOT_RIGHT:
+		{
+			if (it.weaponType == WEAPON_SHIELD)
+			{
+				return CONST_SLOT_SHIELD;
+
+			}
+			return CONST_SLOT_WHEREEVER;
+		}
+		case CONST_SLOT_LEFT:
+		{
+			if (it.weaponType == WEAPON_WAND)
+			{
+				return CONST_SLOT_WAND;
+			}
+			else if (it.weaponType == WEAPON_SWORD || it.weaponType == WEAPON_CLUB || it.weaponType == WEAPON_AXE || it.weaponType == WEAPON_DISTANCE)
+			{
+				return CONST_SLOT_WEAPON;
+			}
+			return CONST_SLOT_WHEREEVER;
+		}
+		default:
+			break;
+	}
+	return slotId;
 }
 
 template<>
@@ -2501,4 +2339,8 @@ const bool& ItemAttributes::CustomAttribute::get<bool>() {
 	}
 
 	return emptyBool;
+}
+
+uint8_t Item::getRarity() {
+    return rarityId;
 }

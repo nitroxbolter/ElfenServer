@@ -15,6 +15,8 @@
 #include "movement.h"
 #include "scheduler.h"
 #include "weapons.h"
+#include "database.h"
+#include "tools.h"
 
 #include <fmt/format.h>
 
@@ -1950,7 +1952,7 @@ BlockType_t Player::blockHit(Creature* attacker, CombatType_t combatType, int32_
 				continue;
 			}
 
-			const int16_t& absorbPercent = it.abilities->absorbPercent[combatTypeToIndex(combatType)];
+			const int16_t& absorbPercent = it.abilities->absorbPercent[combatTypeToIndex(combatType)] + item->getAttributeValue(TOOLTIP_ATTRIBUTE_RESISTANCES, combatTypeToIndex(combatType));
 			if (absorbPercent != 0) {
 				damage -= std::round(damage * (absorbPercent / 100.));
 
@@ -3444,7 +3446,7 @@ void Player::onAddCombatCondition(ConditionType_t type)
 		case CONDITION_BEWITCHED:
 			sendTextMessage(MESSAGE_STATUS_DEFAULT, "You are bewitched.");
 			break;
-
+			
 		case CONDITION_FREEZING:
 			sendTextMessage(MESSAGE_STATUS_DEFAULT, "You are freezing.");
 			break;
@@ -4878,6 +4880,46 @@ void Player::updateRegeneration()
 		condition->setParam(CONDITION_PARAM_MANATICKS, vocation->getManaGainTicks() * 1000);
 	}
 }
+int32_t Player::getItemAttributeValue(ItemTooltipAttributes_t id, int32_t type/* = -1*/)
+{
+	int32_t value = 0;
+	for (int32_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_AMMO; ++slot) {
+		Item* item = inventory[slot];
+		if (!item) {
+			continue;
+		}
+
+		value += item->getAttributeValue(id, type);
+	}
+
+	return value;
+}
+
+void Player::incrementDamage(CombatType_t combatType, int32_t& damage)
+{
+	Creature::incrementDamage(combatType, damage);
+	for (int32_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_AMMO; ++slot) {
+		Item* item = inventory[slot];
+		if (!item) {
+			continue;
+		}
+
+		const ItemType& it = Item::items[item->getID()];
+		if (!it.abilities) {
+			continue;
+		}
+
+		const int16_t incrementPercent = item->getAttributeValue(TOOLTIP_ATTRIBUTE_INCREMENTS, combatTypeToIndex(combatType));
+		if (incrementPercent != 0) {
+			damage += damage * incrementPercent / 100;
+
+			uint16_t charges = item->getCharges();
+			if (charges != 0) {
+				g_game.transformItem(item, item->getID(), charges - 1);
+			}
+		}
+	}
+}
 void Player::setCharacterStat(CharacterStats_t stat, int16_t value)
 {
 	charStats[stat] = value;
@@ -4925,4 +4967,3 @@ Item* Player::getItemByUID(uint32_t uid) const {
 	}
 	return nullptr;
 }
-

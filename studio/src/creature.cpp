@@ -825,6 +825,9 @@ BlockType_t Creature::blockHit(Creature* attacker, CombatType_t combatType, int3
                                bool checkDefense /* = false */, bool checkArmor /* = false */, bool /* field = false */, bool /* ignoreResistances = false */)
 {
 	BlockType_t blockType = BLOCK_NONE;
+	if (attacker) {
+		attacker->incrementDamage(combatType, damage);
+	}
 
 	if (isImmune(combatType)) {
 		damage = 0;
@@ -1076,11 +1079,11 @@ void Creature::onTickCondition(ConditionType_t type, bool& bRemove)
 		case CONDITION_CURSED:
 			bRemove = (field->getCombatType() != COMBAT_DEATHDAMAGE);
 			break;
-		case CONDITION_BEWITCHED:
-			bRemove = (field->getCombatType() != COMBAT_ARCANEDAMAGE);
-			break;
 		case CONDITION_SPLASHED:
 			bRemove = (field->getCombatType() != COMBAT_WATERDAMAGE);
+			break;
+		case CONDITION_BEWITCHED:
+			bRemove = (field->getCombatType() != COMBAT_ARCANEDAMAGE);
 			break;
 		case CONDITION_DROWN:
 			bRemove = (field->getCombatType() != COMBAT_DROWNDAMAGE);

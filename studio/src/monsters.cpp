@@ -309,6 +309,10 @@ bool Monsters::deserializeSpell(const pugi::xml_node& node, spellBlock_t& sb, co
 			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_EARTHDAMAGE);
 		} else if (tmpName == "fire") {
 			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_FIREDAMAGE);
+		} else if (tmpName == "water") {
+			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_WATERDAMAGE);
+		} else if (tmpName == "arcane") {
+			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_ARCANEDAMAGE);
 		} else if (tmpName == "energy") {
 			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE);
 		} else if (tmpName == "drown") {
@@ -319,10 +323,6 @@ bool Monsters::deserializeSpell(const pugi::xml_node& node, spellBlock_t& sb, co
 			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_HOLYDAMAGE);
 		} else if (tmpName == "death") {
 			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_DEATHDAMAGE);
-		} else if (tmpName == "water") {
-			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_WATERDAMAGE);
-		} else if (tmpName == "arcane") {
-			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_ARCANEDAMAGE);
 		} else if (tmpName == "lifedrain") {
 			combat->setParam(COMBAT_PARAM_TYPE, COMBAT_LIFEDRAIN);
 		} else if (tmpName == "manadrain") {
@@ -1289,6 +1289,16 @@ MonsterType* Monsters::loadMonster(const std::string& file, const std::string& m
 				if (mType->info.damageImmunities & COMBAT_FIREDAMAGE) {
 					std::cout << "[Warning - Monsters::loadMonster] Same element \"fire\" on immunity and element tags. " << file << std::endl;
 				}
+			} else if ((attr = elementNode.attribute("waterPercent"))) {
+				mType->info.elementMap[COMBAT_WATERDAMAGE] = pugi::cast<int32_t>(attr.value());
+				if (mType->info.damageImmunities & COMBAT_WATERDAMAGE) {
+					std::cout << "[Warning - Monsters::loadMonster] Same element \"water\" on immunity and element tags. " << file << std::endl;
+				}
+			} else if ((attr = elementNode.attribute("arcanePercent"))) {
+				mType->info.elementMap[COMBAT_ARCANEDAMAGE] = pugi::cast<int32_t>(attr.value());
+				if (mType->info.damageImmunities & COMBAT_ARCANEDAMAGE) {
+					std::cout << "[Warning - Monsters::loadMonster] Same element \"arcane\" on immunity and element tags. " << file << std::endl;
+				}
 			} else if ((attr = elementNode.attribute("energyPercent"))) {
 				mType->info.elementMap[COMBAT_ENERGYDAMAGE] = pugi::cast<int32_t>(attr.value());
 				if (mType->info.damageImmunities & COMBAT_ENERGYDAMAGE) {
@@ -1303,16 +1313,6 @@ MonsterType* Monsters::loadMonster(const std::string& file, const std::string& m
 				mType->info.elementMap[COMBAT_DEATHDAMAGE] = pugi::cast<int32_t>(attr.value());
 				if (mType->info.damageImmunities & COMBAT_DEATHDAMAGE) {
 					std::cout << "[Warning - Monsters::loadMonster] Same element \"death\" on immunity and element tags. " << file << std::endl;
-				}
-			} else if ((attr = elementNode.attribute("waterPercent"))) {
-				mType->info.elementMap[COMBAT_WATERDAMAGE] = pugi::cast<int32_t>(attr.value());
-				if (mType->info.damageImmunities & COMBAT_WATERDAMAGE) {
-					std::cout << "[Warning - Monsters::loadMonster] Same element \"water\" on immunity and element tags. " << file << std::endl;
-				}
-			} else if ((attr = elementNode.attribute("arcanePercent"))) {
-				mType->info.elementMap[COMBAT_ARCANEDAMAGE] = pugi::cast<int32_t>(attr.value());
-				if (mType->info.damageImmunities & COMBAT_ARCANEDAMAGE) {
-					std::cout << "[Warning - Monsters::loadMonster] Same element \"arcane\" on immunity and element tags. " << file << std::endl;
 				}
 			} else if ((attr = elementNode.attribute("drownPercent"))) {
 				mType->info.elementMap[COMBAT_DROWNDAMAGE] = pugi::cast<int32_t>(attr.value());

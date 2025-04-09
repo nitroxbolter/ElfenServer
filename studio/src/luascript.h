@@ -205,6 +205,11 @@ class LuaScriptInterface
 		int32_t getEvent();
 		int32_t getMetaEvent(const std::string& globalName, const std::string& eventName);
 
+		static void registerGlobalVariable(lua_State* L, const std::string& name, lua_Number value);
+		static void registerEnums(lua_State*);
+		static void registerEnum(lua_State*, const char*, lua_Number);
+
+
 		static ScriptEnvironment* getScriptEnv() {
 			assert(scriptEnvIndex >= 0 && scriptEnvIndex < 16);
 			return scriptEnv + scriptEnvIndex;
@@ -355,6 +360,7 @@ class LuaScriptInterface
 		static Thing* getThing(lua_State* L, int32_t arg);
 		static Creature* getCreature(lua_State* L, int32_t arg);
 		static Player* getPlayer(lua_State* L, int32_t arg);
+		static uint64_t getFieldUnsigned(lua_State* L, const char* key);
 
 		template<typename T>
 		static T getField(lua_State* L, int32_t arg, const std::string& key)
@@ -449,7 +455,6 @@ class LuaScriptInterface
 		void registerMetaMethod(const std::string& className, const std::string& methodName, lua_CFunction func);
 		void registerGlobalMethod(const std::string& functionName, lua_CFunction func);
 		void registerVariable(const std::string& tableName, const std::string& name, lua_Number value);
-		void registerGlobalVariable(const std::string& name, lua_Number value);
 		void registerGlobalBoolean(const std::string& name, bool value);
 
 		static std::string getStackTrace(lua_State* L, const std::string& error_desc);
@@ -570,7 +575,6 @@ class LuaScriptInterface
 		static int luaGameGetReturnMessage(lua_State* L);
 
 		static int luaGameCreateItem(lua_State* L);
-		static int luaGameCreateItemWithRarity(lua_State* L);
 		static int luaGameCreateContainer(lua_State* L);
 		static int luaGameCreateMonster(lua_State* L);
 		static int luaGameCreateNpc(lua_State* L);
@@ -715,6 +719,7 @@ class LuaScriptInterface
 		static int luaItemGetTopParent(lua_State* L);
 
 		static int luaItemGetId(lua_State* L);
+		static int luaItemGetClientId(lua_State* L);
 
 		static int luaItemClone(lua_State* L);
 		static int luaItemSplit(lua_State* L);
@@ -899,6 +904,7 @@ class LuaScriptInterface
 		static int luaPlayerAddExperience(lua_State* L);
 		static int luaPlayerRemoveExperience(lua_State* L);
 		static int luaPlayerGetLevel(lua_State* L);
+		static int luaGetItemAttributeValue(lua_State* L);
 
 		static int luaPlayerGetMagicLevel(lua_State* L);
 		static int luaPlayerGetBaseMagicLevel(lua_State* L);
@@ -1250,7 +1256,6 @@ class LuaScriptInterface
 		static int luaItemTypeGetCorpseType(lua_State* L);
 		static int luaItemTypeHasShowCount(lua_State* L);
 		static int luaItemTypeGetAbilities(lua_State* L);
-		static int luaItemTypeGetAbsorbPercent(lua_State* L);
 		static int luaItemTypeHasShowAttributes(lua_State* L);
 		static int luaItemTypeHasShowCharges(lua_State* L);
 		static int luaItemTypeHasShowDuration(lua_State* L);
@@ -1264,6 +1269,7 @@ class LuaScriptInterface
 
 		static int luaItemTypeHasSubType(lua_State* L);
 		static int luaItemTypeGetSpecialSkill(lua_State *L);
+		static int luaItemTypeGetAbsorbPercent(lua_State *L);
 		static int luaItemTypeGetSkill(lua_State *L);
 		static int luaItemTypeGetSpeed(lua_State *L);
 		static int luaItemTypeGetStat(lua_State *L);

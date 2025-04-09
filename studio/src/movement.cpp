@@ -750,8 +750,9 @@ ReturnValue MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* ite
 		player->addCondition(condition);
 	}
 
-	if (it.abilities->speed != 0) {
-		g_game.changeSpeed(player, it.abilities->speed);
+	int32_t value = it.abilities->speed + item->getAttributeValue(TOOLTIP_ATTRIBUTE_SPEED);
+	if (value != 0) {
+		g_game.changeSpeed(player, value);
 	}
 
 	if (it.abilities->conditionSuppressions != 0) {
@@ -785,16 +786,52 @@ ReturnValue MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* ite
 	bool needUpdateSkills = false;
 
 	for (int32_t i = SKILL_FIRST; i <= SKILL_LAST; ++i) {
-		if (it.abilities->skills[i]) {
+		value = it.abilities->skills[i] + item->getAttributeValue(TOOLTIP_ATTRIBUTE_SKILL, i);
+		if (value != 0) {
 			needUpdateSkills = true;
-			player->setVarSkill(static_cast<skills_t>(i), it.abilities->skills[i]);
+			player->setVarSkill(static_cast<skills_t>(i), value);
 		}
 	}
 
 	for (int32_t i = SPECIALSKILL_FIRST; i <= SPECIALSKILL_LAST; ++i) {
-		if (it.abilities->specialSkills[i]) {
+		value = it.abilities->specialSkills[i];
+		switch(i)
+		{
+			case SPECIALSKILL_CRITICALHITCHANCE:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_CRITICALHIT_CHANCE);
+				break;
+			}
+			case SPECIALSKILL_CRITICALHITAMOUNT:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_CRITICALHIT_AMOUNT);
+				break;
+			}
+			case SPECIALSKILL_LIFELEECHCHANCE:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_LIFE_LEECH_CHANCE);
+				break;
+			}
+			case SPECIALSKILL_LIFELEECHAMOUNT:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_LIFE_LEECH_AMOUNT);
+				break;
+			}
+			case SPECIALSKILL_MANALEECHCHANCE:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_MANA_LEECH_CHANCE);
+				break;
+			}
+			case SPECIALSKILL_MANALEECHAMOUNT:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_MANA_LEECH_AMOUNT);
+				break;
+			}
+		}
+
+		if (value != 0) {
 			needUpdateSkills = true;
-			player->setVarSpecialSkill(static_cast<SpecialSkills_t>(i), it.abilities->specialSkills[i]);
+			player->setVarSpecialSkill(static_cast<SpecialSkills_t>(i), value);
 		}
 	}
 
@@ -806,9 +843,10 @@ ReturnValue MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* ite
 	bool needUpdateStats = false;
 
 	for (int32_t s = STAT_FIRST; s <= STAT_LAST; ++s) {
-		if (it.abilities->stats[s]) {
+		value = it.abilities->stats[s] + item->getAttributeValue(TOOLTIP_ATTRIBUTE_STATS, s);
+		if (value != 0) {
 			needUpdateStats = true;
-			player->setVarStats(static_cast<stats_t>(s), it.abilities->stats[s]);
+			player->setVarStats(static_cast<stats_t>(s), value);
 		}
 
 		if (it.abilities->statsPercent[s]) {
@@ -850,8 +888,9 @@ ReturnValue MoveEvent::DeEquipItem(MoveEvent*, Player* player, Item* item, slots
 		player->removeCondition(CONDITION_MANASHIELD, static_cast<ConditionId_t>(slot));
 	}
 
-	if (it.abilities->speed != 0) {
-		g_game.changeSpeed(player, -it.abilities->speed);
+	int32_t value = it.abilities->speed + item->getAttributeValue(TOOLTIP_ATTRIBUTE_SPEED);
+	if (value != 0) {
+		g_game.changeSpeed(player, -value);
 	}
 
 	if (it.abilities->conditionSuppressions != 0) {
@@ -867,16 +906,52 @@ ReturnValue MoveEvent::DeEquipItem(MoveEvent*, Player* player, Item* item, slots
 	bool needUpdateSkills = false;
 
 	for (int32_t i = SKILL_FIRST; i <= SKILL_LAST; ++i) {
-		if (it.abilities->skills[i] != 0) {
+		value = it.abilities->skills[i] + item->getAttributeValue(TOOLTIP_ATTRIBUTE_SKILL, i);
+		if (value != 0) {
 			needUpdateSkills = true;
-			player->setVarSkill(static_cast<skills_t>(i), -it.abilities->skills[i]);
+			player->setVarSkill(static_cast<skills_t>(i), -value);
 		}
 	}
 
 	for (int32_t i = SPECIALSKILL_FIRST; i <= SPECIALSKILL_LAST; ++i) {
-		if (it.abilities->specialSkills[i] != 0) {
+		value = it.abilities->specialSkills[i];
+		switch(i)
+		{
+			case SPECIALSKILL_CRITICALHITCHANCE:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_CRITICALHIT_CHANCE);
+				break;
+			}
+			case SPECIALSKILL_CRITICALHITAMOUNT:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_CRITICALHIT_AMOUNT);
+				break;
+			}
+			case SPECIALSKILL_LIFELEECHCHANCE:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_LIFE_LEECH_CHANCE);
+				break;
+			}
+			case SPECIALSKILL_LIFELEECHAMOUNT:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_LIFE_LEECH_AMOUNT);
+				break;
+			}
+			case SPECIALSKILL_MANALEECHCHANCE:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_MANA_LEECH_CHANCE);
+				break;
+			}
+			case SPECIALSKILL_MANALEECHAMOUNT:
+			{
+				value += item->getAttributeValue(TOOLTIP_ATTRIBUTE_MANA_LEECH_AMOUNT);
+				break;
+			}
+		}
+
+		if (value != 0) {
 			needUpdateSkills = true;
-			player->setVarSpecialSkill(static_cast<SpecialSkills_t>(i), -it.abilities->specialSkills[i]);
+			player->setVarSpecialSkill(static_cast<SpecialSkills_t>(i), -value);
 		}
 	}
 
@@ -888,9 +963,10 @@ ReturnValue MoveEvent::DeEquipItem(MoveEvent*, Player* player, Item* item, slots
 	bool needUpdateStats = false;
 
 	for (int32_t s = STAT_FIRST; s <= STAT_LAST; ++s) {
-		if (it.abilities->stats[s]) {
+		value = it.abilities->stats[s] + item->getAttributeValue(TOOLTIP_ATTRIBUTE_STATS, s);
+		if (value != 0) {
 			needUpdateStats = true;
-			player->setVarStats(static_cast<stats_t>(s), -it.abilities->stats[s]);
+			player->setVarStats(static_cast<stats_t>(s), -value);
 		}
 
 		if (it.abilities->statsPercent[s]) {
