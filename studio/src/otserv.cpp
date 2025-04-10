@@ -125,8 +125,7 @@ void printServerVersion()
 	std::cout << std::endl;
 
 	std::cout << "A server developed by " << STATUS_SERVER_DEVELOPERS << std::endl;
-	std::cout << "Custom server modified by OpenGamesCommunity" << std::endl;
-	std::cout << "Visit our forum for updates, support, and resources: https://opengamescommunity.com/." << std::endl;
+	std::cout << "Custom server modified by Edu" << std::endl;
 	std::cout << std::endl;
 }
 

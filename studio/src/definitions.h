@@ -4,9 +4,9 @@
 #ifndef FS_DEFINITIONS_H_877452FEC245450C9F96B8FD268D8963
 #define FS_DEFINITIONS_H_877452FEC245450C9F96B8FD268D8963
 
-static constexpr auto STATUS_SERVER_NAME = "Hellgrave Exodus v3.6.5";
-static constexpr auto STATUS_SERVER_VERSION = "TFS 1.4.2";
-static constexpr auto STATUS_SERVER_DEVELOPERS = "The Forgotten Server Team";
+static constexpr auto STATUS_SERVER_NAME = "Elfen Server";
+static constexpr auto STATUS_SERVER_VERSION = "1.4";
+static constexpr auto STATUS_SERVER_DEVELOPERS = "Elfen Team";
 
 static constexpr auto CLIENT_VERSION_MIN = 1097;
 static constexpr auto CLIENT_VERSION_MAX = 1098;

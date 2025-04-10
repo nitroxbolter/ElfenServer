@@ -25,11 +25,11 @@ loginProtocolPort = 7171
 gameProtocolPort = 7172
 statusProtocolPort = 7171
 maxPlayers = 0
-motd = "Welcome to Hellgrave Exodus Server!"
+motd = "Welcome to Elfen Server!"
 onePlayerOnlinePerAccount = false
 allowClones = false
 allowWalkthrough = true
-serverName = "Hellgrave"
+serverName = "Elfen"
 statusTimeout = 5000
 replaceKickOnLogin = true
 maxPacketsPerSecond = 50
@@ -184,7 +184,7 @@ defaultPriority = "high"
 startupDatabaseOptimization = false
 
 -- Status Server Information
-ownerName = "Alexv45"
+ownerName = "Edu"
 ownerEmail = ""
-url = "https://opengamescommunity.com/"
-location = "Spain"
+url = ""
+location = "Brasil"

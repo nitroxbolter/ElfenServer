@@ -8,7 +8,7 @@ local znote_loginWebService = GlobalEvent("znote_loginWebService")
 function znote_loginWebService.onStartup()
     print(" ")
 	print("=============================")
-	print("= Hellgrave Exodus Login =")
+	print("= Elfen Server Login =")
 	print("=============================")
     local configLua = {
         ["SERVER_NAME"] = configManager.getString(configKeys.SERVER_NAME),

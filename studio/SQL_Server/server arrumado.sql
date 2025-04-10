@@ -14501,7 +14501,7 @@ CREATE TABLE `znote_global_storage` (
 INSERT INTO `znote_global_storage` (`key`, `value`) VALUES
 ('GAME_PORT', '7172'),
 ('IP', '127.0.0.1'),
-('SERVER_NAME', 'Hellgrave');
+('SERVER_NAME', 'Elfen');
 
 -- --------------------------------------------------------
 

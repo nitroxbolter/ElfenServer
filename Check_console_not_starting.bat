@@ -3,7 +3,7 @@
 
 
 :DEMON
-@"Hellgrave_Exodus-x64.exe"
+@"Elfen-Server-x64.exe"
 
 @echo Restarting. . .
 goto DEMON

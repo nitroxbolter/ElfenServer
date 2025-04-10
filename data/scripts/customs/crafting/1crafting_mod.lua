@@ -271,7 +271,7 @@ function Crafting:craft(player, category, craftId)
   if craft.storage and craft.storage > 0 then
     local playerStorage = player:getStorageValue(craft.storage)
     if playerStorage ~= 1 then
-      local message = "Você precisa desbloquear a receita."
+      local message = "Vocï¿½ precisa desbloquear a receita."
       if craft.storageText and craft.storageText ~= "" then
         message = message .. "\n" .. craft.storageText
       end
@@ -281,12 +281,12 @@ function Crafting:craft(player, category, craftId)
   end
 
   if money < craft.cost then
-    player:popupFYI(string.format("Você não tem gold Suficiente: %d.", craft.cost))
+    player:popupFYI(string.format("Vocï¿½ nï¿½o tem gold Suficiente: %d.", craft.cost))
     return
   end
 
   if playerSkill < craft.level then
-    player:popupFYI(string.format("Você não tem skill requeridos %s skill: %d. Your skill is: %d.", skillNames[skillType], craft.level, playerSkill))
+    player:popupFYI(string.format("Vocï¿½ nï¿½o tem skill requeridos %s skill: %d. Your skill is: %d.", skillNames[skillType], craft.level, playerSkill))
     return
   end
 
@@ -307,7 +307,7 @@ function Crafting:craft(player, category, craftId)
     -- Verifica se o jogador tem uma mochila equipada e espa?o dispon?vel
     local backpack = player:getSlotItem(CONST_SLOT_BACKPACK)
     if not backpack or not backpack:isContainer() or backpack:getEmptySlots() <= 0 then
-        player:popupFYI("Sua mochila está cheia, ou você não está usando uma mochila.")
+        player:popupFYI("Sua mochila estï¿½ cheia, ou vocï¿½ nï¿½o estï¿½ usando uma mochila.")
         return
     end
 
@@ -324,22 +324,21 @@ function Crafting:craft(player, category, craftId)
         return
     end
 
-    local rarityId, rarityName = rollRarity(player)
-    local item
+    -- Criar o item
+    local item = Game.createItem(craft.id, craft.count)
 
+    -- Rolar a raridade do item
     local rarityId, rarityName = rollRarity(player)
-    local item
 
-    -- Criar o item com raridade se houver
+    -- Aplicar a raridade ao item
     if rarityId > 0 then
-        item = Game.createItemWithRarity(craft.id, craft.count, rarityId)
-        player:popupFYI("Você criou um item com Raridade " .. rarityName)
+        item:setRarityLevel(rarityId)  -- Chame a funÃ§Ã£o para definir a raridade
+        player:popupFYI("VocÃª criou um item com Raridade " .. rarityName)
     else
-        item = Game.createItem(craft.id, craft.count)
         player:popupFYI(string.format("Item Criado com Sucesso: %s", ItemType(craft.id):getName()))
     end
 
-    -- Se tiver espaço suficiente, adicionamos o item ? mochila
+    -- Se tiver espaï¿½o suficiente, adicionamos o item ? mochila
     if player:addItemEx(item) then
         player:removeMoney(craft.cost)
         if craft.materials then
@@ -371,7 +370,7 @@ function Crafting:craft(player, category, craftId)
         -- S? envia a confirma??o de sucesso depois que o item for realmente criado e adicionado
         player:sendExtendedOpcode(CODE_CRAFTING, json.encode({action = "craft", data = {success = true}}))
     else
-        player:popupFYI("Você não tem espaço suficiente para receber o item criado.")
+        player:popupFYI("Vocï¿½ nï¿½o tem espaï¿½o suficiente para receber o item criado.")
     end
 end, 860)
 end
